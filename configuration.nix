@@ -150,5 +150,5 @@ in {
     QT_SCREEN_SCALE_FACTORS = "1.5";
   };
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.05"; # Did you read the comment?
 }
