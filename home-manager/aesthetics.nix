@@ -11,7 +11,7 @@
   gtk = {
     enable = true;
     font = {
-      name = "ZedMono Nerd Font Propo";
+      name = "Work Sans";
       size = 10;
       package = pkgs.work-sans;
     };
