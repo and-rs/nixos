@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     home-manager
+    imagemagick
     alacritty
     keepassxc
     fastfetch
@@ -18,16 +19,15 @@
     zsh
     fd
 
-    i3lock-color
-    imagemagick
-    playerctl
-    xidlehook
-    scrot
-
     brightnessctl
+    i3lock-color
+    appimage-run
     pavucontrol
     polybarFull
     libnotify
+    playerctl
+    xidlehook
+    scrot
     dunst
     xclip
     xsel
