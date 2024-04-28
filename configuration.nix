@@ -15,7 +15,7 @@ in {
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  boot.kernelPackages = pkgs.linuxPackages_testing;
+  boot.kernelPackages = pkgs.linuxPackages_lqx;
   boot.kernelParams = [
     "intel_idle.max_cstate=1"
     "rd.driver.blacklist=nouveau"
@@ -83,7 +83,6 @@ in {
   services.displayManager.sddm = {
     enable = true;
     theme = "where_is_my_sddm_theme";
-    package = pkgs.libsForQt5.sddm;
     settings = { Theme = { CursorTheme = "macOS-Monterey"; }; };
   };
 
