@@ -29,6 +29,7 @@
     playerctl
     xidlehook
     powertop
+    asusctl
     scrot
     dunst
     xclip

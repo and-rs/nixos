@@ -15,7 +15,7 @@ in {
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  boot.kernelPackages = pkgs.linuxPackages_lqx;
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   boot.kernelParams = [
     "intel_idle.max_cstate=1"
     "rd.driver.blacklist=nouveau"
@@ -62,12 +62,9 @@ in {
     enable = true;
     xkb.layout = "us";
     xkb.variant = "";
+    synaptics.enable = false;
     windowManager.i3.enable = true;
     windowManager.i3.package = pkgs.i3-gaps;
-
-    libinput.enable = true;
-    synaptics.enable = false;
-    libinput.touchpad.naturalScrolling = true;
   };
 
   environment.systemPackages = with pkgs; [
@@ -79,13 +76,6 @@ in {
     enable = true;
     theme = "where_is_my_sddm_theme";
     settings = { Theme = { CursorTheme = "macOS-Monterey"; }; };
-  };
-
-  services = {
-    thermald.enable = true;
-    blueman.enable = true;
-    openssh.enable = true;
-    gnome.gnome-keyring.enable = true;
   };
 
   sound.enable = true;
@@ -126,7 +116,7 @@ in {
   services.tlp = {
     enable = true;
     settings = {
-      CPU_MAX_PERF_ON_BAT = 40;
+      CPU_MAX_PERF_ON_BAT = 30;
       RUNTIME_PM_ON_BAT = "auto";
       PCIE_ASPM_ON_BAT = "powersupersave";
       PLATFORM_PROFILE_ON_BAT = "low-power";
@@ -144,5 +134,29 @@ in {
     QT_SCREEN_SCALE_FACTORS = "1.5";
   };
 
-  system.stateVersion = "24.05"; # Did you read the comment?
+  services = {
+    gnome.gnome-keyring.enable = true;
+    supergfxd.enable = true;
+    thermald.enable = true;
+    blueman.enable = true;
+    openssh.enable = true;
+
+    libinput.enable = true;
+    libinput.touchpad.naturalScrolling = true;
+  };
+
+  programs.auto-cpufreq.enable = true;
+  programs.auto-cpufreq.settings = {
+    charger = {
+      governor = "performance";
+      turbo = "auto";
+    };
+
+    battery = {
+      governor = "powersave";
+      turbo = "auto";
+    };
+  };
+
+  system.stateVersion = "24.05";
 }

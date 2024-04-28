@@ -1,9 +1,9 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     bun
-    nodejs_21
     eslint_d
     prettierd
+    nodePackages_latest.nodejs
     nodePackages_latest.eslint
     nodePackages_latest.prettier
     vscode-langservers-extracted
