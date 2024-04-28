@@ -24,9 +24,11 @@
     appimage-run
     pavucontrol
     polybarFull
+    supergfxctl
     libnotify
     playerctl
     xidlehook
+    powertop
     scrot
     dunst
     xclip

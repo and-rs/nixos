@@ -43,11 +43,6 @@ in {
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
 
-  powerManagement = {
-    enable = true;
-    powertop.enable = true;
-  };
-
   time.timeZone = "America/Bogota";
   i18n.defaultLocale = "en_US.UTF-8";
 
