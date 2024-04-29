@@ -10,27 +10,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    auto-cpufreq = {
-      url = "github:AdnanHodzic/auto-cpufreq";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, spicetify-nix, auto-cpufreq, ... }@inputs:
+  outputs = { self, nixpkgs, spicetify-nix, ... }@inputs:
     let system = "x86_64-linux";
     in {
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs system spicetify-nix auto-cpufreq; };
-        modules = [
-          ./configuration.nix
-          ./spicetify.nix
-          auto-cpufreq.nixosModules.default
-        ];
+        specialArgs = { inherit inputs system spicetify-nix; };
+        modules = [ ./configuration.nix ./spicetify.nix ];
       };
     };
 }

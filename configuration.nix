@@ -15,9 +15,7 @@ in {
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   boot.kernelParams = [
-    "intel_idle.max_cstate=1"
     "rd.driver.blacklist=nouveau"
     "modprobe.blacklist=nouveau"
     "rhgb"
@@ -143,19 +141,6 @@ in {
 
     libinput.enable = true;
     libinput.touchpad.naturalScrolling = true;
-  };
-
-  programs.auto-cpufreq.enable = true;
-  programs.auto-cpufreq.settings = {
-    charger = {
-      governor = "performance";
-      turbo = "auto";
-    };
-
-    battery = {
-      governor = "powersave";
-      turbo = "auto";
-    };
   };
 
   system.stateVersion = "24.05";
