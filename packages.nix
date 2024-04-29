@@ -19,7 +19,6 @@
     zsh
     fd
 
-    intel-media-driver
     brightnessctl
     i3lock-color
     appimage-run

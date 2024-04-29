@@ -16,6 +16,7 @@ in {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   boot.kernelParams = [
+    "i915.force_probe=46a6"
     "rd.driver.blacklist=nouveau"
     "modprobe.blacklist=nouveau"
     "rhgb"
@@ -119,7 +120,7 @@ in {
       PCIE_ASPM_ON_BAT = "powersupersave";
       PLATFORM_PROFILE_ON_BAT = "low-power";
       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
 
       START_CHARGE_THRESH_BAT0 = 40;
       STOP_CHARGE_THRESH_BAT0 = 90;
@@ -142,6 +143,17 @@ in {
     libinput.enable = true;
     libinput.touchpad.naturalScrolling = true;
   };
+
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+      intel-vaapi-driver
+      libvdpau-va-gl
+    ];
+  };
+
+  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
 
   system.stateVersion = "24.05";
 }
