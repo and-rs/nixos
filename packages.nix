@@ -19,9 +19,11 @@
     zsh
     fd
 
+    intel-media-driver
     brightnessctl
     i3lock-color
     appimage-run
+    libva-utils
     pavucontrol
     polybarFull
     supergfxctl
@@ -29,7 +31,7 @@
     playerctl
     xidlehook
     powertop
-    asusctl
+    pciutils
     scrot
     dunst
     xclip
