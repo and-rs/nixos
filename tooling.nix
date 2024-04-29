@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     bun
+    yarn
     eslint_d
     prettierd
     nodePackages_latest.nodejs

@@ -26,7 +26,11 @@
     in {
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs system spicetify-nix auto-cpufreq; };
-        modules = [ ./configuration.nix ./spicetify.nix ];
+        modules = [
+          ./configuration.nix
+          ./spicetify.nix
+          auto-cpufreq.nixosModules.default
+        ];
       };
     };
 }
