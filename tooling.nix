@@ -28,6 +28,8 @@
     nixfmt-classic
     nil
     gcc
+
+    neovide
   ];
 
   programs.neovim = {
