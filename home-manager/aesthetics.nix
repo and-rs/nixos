@@ -33,13 +33,21 @@
   services.picom = {
     enable = true;
     vSync = true;
-    backend = "glx";
+    backend = "egl";
     shadow = true;
     fade = true;
     fadeDelta = 3;
     inactiveOpacity = 0.8;
-    shadowExclude = [ "class_g *?= 'polybar'" ];
-    opacityRules = [ "100:class_g *?= 'rofi'" "100:class_g *?= 'firefox'" ];
+    shadowExclude = [
+      "class_g *?= 'polybar'"
+      "class_g *?= 'i3-frame'"
+      "class_g = 'firefox' && (window_type = 'popup_menu' || window_type = 'utility')"
+    ];
+    opacityRules = [
+      "100:class_g *?= 'rofi'"
+      "100:class_g *?= 'firefox'"
+      "100:class_g *?= 'i3-frame'"
+    ];
     settings = {
       corner-radius = 12;
       blur = {
@@ -47,6 +55,10 @@
         size = 10;
         deviation = 5.0;
       };
+      blur-background-exclude = [
+        "class_g *?= 'i3-frame'"
+        "class_g = 'firefox' && (window_type = 'popup_menu' || window_type = 'utility')"
+      ];
     };
   };
 }

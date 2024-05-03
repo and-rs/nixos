@@ -43,6 +43,7 @@
     xfce.thunar
 
     ungoogled-chromium
+    firefox-devedition
     discord
   ];
 }
