@@ -61,6 +61,7 @@ in {
     enable = true;
     xkb.layout = "us";
     xkb.variant = "";
+    xkb.options = "ctrl:swapcaps";
     synaptics.enable = false;
     windowManager.i3.enable = true;
     windowManager.i3.package = pkgs.i3-gaps;

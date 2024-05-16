@@ -10,7 +10,9 @@
     vscode-langservers-extracted
     tailwindcss-language-server
     nodePackages_latest.typescript-language-server
+    nodePackages_latest.vscode-json-languageserver
     typescript
+    emmet-ls
 
     sumneko-lua-language-server
     stylua
