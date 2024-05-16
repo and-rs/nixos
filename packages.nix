@@ -42,6 +42,8 @@
     xfce.tumbler
     xfce.thunar
 
+    chromium
+    google-chrome
     ungoogled-chromium
     firefox-devedition
     discord
