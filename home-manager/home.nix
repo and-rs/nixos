@@ -19,10 +19,12 @@
     (pkgs.nerdfonts.override {
       fonts = [ "JetBrainsMono" "GeistMono" "Lilex" "ZedMono" "Recursive" ];
     })
-    pkgs.work-sans
-
-    pkgs.pkgs.papirus-icon-theme
-    pkgs.colloid-gtk-theme
+    pkgs.inter
+    pkgs.whitesur-icon-theme
+    (pkgs.whitesur-gtk-theme.override {
+      colorVariants = [ "Dark" ];
+      themeVariants = [ "grey" ];
+    })
   ];
 
   home = {

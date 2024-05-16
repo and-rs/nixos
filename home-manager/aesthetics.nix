@@ -11,17 +11,17 @@
   gtk = {
     enable = true;
     font = {
-      name = "Work Sans";
+      name = "Inter";
       size = 10;
-      package = pkgs.work-sans;
+      package = pkgs.inter;
     };
     theme = {
-      name = "Colloid-Dark";
-      package = pkgs.colloid-gtk-theme;
+      name = "WhiteSur-Dark-grey";
+      package = pkgs.whitesur-gtk-theme;
     };
     iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
+      name = "WhiteSur-dark";
+      package = pkgs.whitesur-icon-theme;
     };
   };
 
@@ -41,7 +41,10 @@
     shadowExclude = [
       "class_g *?= 'polybar'"
       "class_g *?= 'i3-frame'"
-      "class_g = 'firefox' && (window_type = 'popup_menu' || window_type = 'utility')"
+      "window_type = 'menu'"
+      "window_type = 'dropdown_menu'"
+      "window_type = 'popup_menu'"
+      "window_type = 'tooltip'"
     ];
     opacityRules = [
       "100:class_g *?= 'rofi'"
@@ -56,8 +59,11 @@
         deviation = 5.0;
       };
       blur-background-exclude = [
+        "window_type = 'menu'"
+        "window_type = 'dropdown_menu'"
+        "window_type = 'popup_menu'"
+        "window_type = 'tooltip'"
         "class_g *?= 'i3-frame'"
-        "class_g = 'firefox' && (window_type = 'popup_menu' || window_type = 'utility')"
       ];
     };
   };

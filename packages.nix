@@ -22,6 +22,7 @@
     brightnessctl
     i3lock-color
     appimage-run
+    lxappearance
     libva-utils
     pavucontrol
     polybarFull
@@ -42,10 +43,7 @@
     xfce.tumbler
     xfce.thunar
 
-    chromium
-    google-chrome
     ungoogled-chromium
-    firefox-devedition
     discord
   ];
 }
