@@ -4,26 +4,29 @@
     imagemagick
     alacritty
     keepassxc
-    fastfetch
-    neofetch
     cbonsai
     ripgrep
     unzip
+    delta
+    p7zip
     btop
     tmux
     wget
     tldr
     git
     eza
+    bat
     fzf
     zsh
     fd
 
+    bunnyfetch
+    fastfetch
+    disfetch
+
     brightnessctl
     i3lock-color
     appimage-run
-    lxappearance
-    libva-utils
     pavucontrol
     polybarFull
     supergfxctl
@@ -42,8 +45,12 @@
     xfce.ristretto
     xfce.tumbler
     xfce.thunar
+    mpv
 
     ungoogled-chromium
+    obs-studio
+    openh264
     discord
+    x264
   ];
 }

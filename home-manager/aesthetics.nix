@@ -2,6 +2,19 @@
 
   fonts.fontconfig.enable = true;
 
+  home.packages = [
+    (pkgs.nerdfonts.override {
+      fonts = [ "JetBrainsMono" "GeistMono" "Lilex" "ZedMono" "Recursive" ];
+    })
+    pkgs.inter
+    (pkgs.epapirus-icon-theme.override { color = "grey"; })
+    (pkgs.colloid-gtk-theme.override {
+      colorVariants = [ "dark" ];
+      themeVariants = [ "grey" ];
+      tweaks = [ "black" "float" "rimless" ];
+    })
+  ];
+
   home.pointerCursor = {
     name = "macOS-Monterey";
     package = pkgs.apple-cursor;
@@ -13,16 +26,9 @@
     font = {
       name = "Inter";
       size = 10;
-      package = pkgs.inter;
     };
-    theme = {
-      name = "WhiteSur-Dark-grey";
-      package = pkgs.whitesur-gtk-theme;
-    };
-    iconTheme = {
-      name = "WhiteSur-dark";
-      package = pkgs.whitesur-icon-theme;
-    };
+    theme = { name = "Colloid-Grey-Dark"; };
+    iconTheme = { name = "ePapirus-Dark"; };
   };
 
   qt = {

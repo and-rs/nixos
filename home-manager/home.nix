@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ ... }: {
   imports = [ ./aesthetics.nix ];
 
   programs.home-manager.enable = true;
@@ -14,18 +14,6 @@
       allowUnfreePredicate = _: true;
     };
   };
-
-  home.packages = [
-    (pkgs.nerdfonts.override {
-      fonts = [ "JetBrainsMono" "GeistMono" "Lilex" "ZedMono" "Recursive" ];
-    })
-    pkgs.inter
-    pkgs.whitesur-icon-theme
-    (pkgs.whitesur-gtk-theme.override {
-      colorVariants = [ "Dark" ];
-      themeVariants = [ "grey" ];
-    })
-  ];
 
   home = {
     username = "dagger";

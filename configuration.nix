@@ -99,11 +99,12 @@ in {
   };
 
   programs = {
+    zsh.enable = true;
+    dconf.enable = true;
     nm-applet.enable = true;
+    noisetorch.enable = true;
     gnupg.agent.enable = true;
     gnupg.agent.enableSSHSupport = true;
-    dconf.enable = true;
-    zsh.enable = true;
   };
 
   services.logind = {
@@ -122,6 +123,12 @@ in {
       PLATFORM_PROFILE_ON_BAT = "low-power";
       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
       CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+
+      RUNTIME_PM_ON_AC = "auto";
+      PCIE_ASPM_ON_AC = "powersupersave";
+      PLATFORM_PROFILE_ON_AC = "low-power";
+      CPU_SCALING_GOVERNOR_ON_AC = "powersave";
+      CPU_ENERGY_PERF_POLICY_ON_AC = "power";
 
       START_CHARGE_THRESH_BAT0 = 40;
       STOP_CHARGE_THRESH_BAT0 = 90;
@@ -150,7 +157,11 @@ in {
     extraPackages = with pkgs; [
       intel-media-driver
       intel-vaapi-driver
+      vaapi-intel-hybrid
+      onevpl-intel-gpu
+      intel-media-sdk
       libvdpau-va-gl
+      libva-utils
     ];
   };
 
