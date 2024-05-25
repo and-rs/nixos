@@ -31,6 +31,10 @@
     nil
     gcc
 
+    zig-shell-completions
+    zig
+    zls
+
     neovide
   ];
 
