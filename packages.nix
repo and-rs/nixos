@@ -19,6 +19,7 @@
     fzf
     zsh
     fd
+    gh
 
     bunnyfetch
     fastfetch

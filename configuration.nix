@@ -15,6 +15,8 @@ in {
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+
   boot.kernelParams = [
     "i915.force_probe=46a6"
     "rd.driver.blacklist=nouveau"
@@ -136,11 +138,12 @@ in {
   };
 
   services = {
-    gnome.gnome-keyring.enable = true;
-    supergfxd.enable = true;
-    thermald.enable = true;
+    asusd.enable = true;
     blueman.enable = true;
     openssh.enable = true;
+    thermald.enable = true;
+    supergfxd.enable = true;
+    gnome.gnome-keyring.enable = true;
 
     libinput.enable = true;
     libinput.touchpad.naturalScrolling = true;
