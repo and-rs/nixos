@@ -5,7 +5,6 @@ in {
     ./hardware-configuration.nix
     ./tooling.nix
     ./packages.nix
-    ./nvidia.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -117,20 +116,21 @@ in {
     lidSwitch = "suspend";
   };
 
-  #services.tlp = {
-  #  enable = true;
-  #  settings = {
-  #    CPU_MAX_PERF_ON_BAT = 30;
-  #    RUNTIME_PM_ON_BAT = "auto";
-  #    PCIE_ASPM_ON_BAT = "powersupersave";
-  #    PLATFORM_PROFILE_ON_BAT = "low-power";
-  #    CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-  #    CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-  #
-  #    START_CHARGE_THRESH_BAT0 = 40;
-  #    STOP_CHARGE_THRESH_BAT0 = 80;
-  #  };
-  #};
+  services.tlp = {
+    enable = true;
+    settings = {
+      CPU_MAX_PERF_ON_BAT = 30;
+      CPU_MAX_PERF_ON_AC = 70;
+      RUNTIME_PM_ON_BAT = "auto";
+      PCIE_ASPM_ON_BAT = "powersupersave";
+      PLATFORM_PROFILE_ON_BAT = "low-power";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+
+      START_CHARGE_THRESH_BAT0 = 40;
+      STOP_CHARGE_THRESH_BAT0 = 80;
+    };
+  };
 
   environment.variables = {
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
@@ -146,8 +146,15 @@ in {
     supergfxd.enable = true;
     gnome.gnome-keyring.enable = true;
 
-    libinput.enable = true;
-    libinput.touchpad.naturalScrolling = true;
+    libinput = {
+      enable = true;
+      touchpad = {
+        naturalScrolling = true;
+        tapping = false;
+        clickMethod = "clickfinger";
+        accelProfile = "flat";
+      };
+    };
   };
 
   hardware.opengl = {
