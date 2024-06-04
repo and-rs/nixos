@@ -36,6 +36,7 @@
     xidlehook
     powertop
     pciutils
+    thermald
     scrot
     dunst
     xclip
