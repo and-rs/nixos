@@ -2,8 +2,9 @@
   environment.systemPackages = with pkgs; [
     bun
     yarn
-    eslint_d
     prettierd
+    pnpm-shell-completion
+    nodePackages_latest.pnpm
     nodePackages_latest.nodejs
     nodePackages_latest.eslint
     nodePackages_latest.prettier
