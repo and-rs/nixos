@@ -1,6 +1,5 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    home-manager
     imagemagick
     alacritty
     keepassxc
@@ -10,6 +9,7 @@
     delta
     p7zip
     btop
+    stow
     tmux
     wget
     tldr
@@ -20,29 +20,26 @@
     zsh
     fd
     gh
+    jq
 
     bunnyfetch
     fastfetch
     disfetch
 
+    networkmanagerapplet
+    inotify-tools
     brightnessctl
-    i3lock-color
     appimage-run
+    home-manager
     pavucontrol
-    polybarFull
     supergfxctl
     libnotify
     playerctl
-    xidlehook
     powertop
     pciutils
     thermald
     psensor
-    scrot
     dunst
-    xclip
-    xsel
-    rofi
     feh
 
     xfce.ristretto
@@ -50,10 +47,11 @@
     xfce.thunar
     mpv
 
-    ungoogled-chromium
+    firefox-devedition
     obs-studio
     openh264
     discord
+    vesktop
     x264
   ];
 }

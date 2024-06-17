@@ -20,7 +20,7 @@
     lua
 
     python3
-    nodePackages_latest.pyright
+    pyright
     black
     mypy
     ruff

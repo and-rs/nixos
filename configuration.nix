@@ -1,10 +1,11 @@
-{ pkgs, inputs, system, ... }:
-let stable = inputs.stable.legacyPackages.${system};
-in {
+{ pkgs, inputs, ... }: {
   imports = [
     ./hardware-configuration.nix
     ./tooling.nix
     ./packages.nix
+    ./hyprland.nix
+    ./tlp.nix
+    ./sddm.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -14,6 +15,7 @@ in {
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nixpkgs.config.allowUnfree = true;
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
@@ -25,20 +27,22 @@ in {
     "quite"
   ];
 
-  boot.loader.grub = {
-    enable = true;
-    efiSupport = true;
-    device = "nodev";
-    useOSProber = true;
-    splashImage = null;
-    backgroundColor = null;
-    theme = pkgs.sleek-grub-theme.override {
-      withStyle = "dark";
-      withBanner = "";
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    grub = {
+      enable = true;
+      efiSupport = true;
+      device = "nodev";
+      useOSProber = true;
+      splashImage = null;
+      backgroundColor = null;
+      theme = pkgs.sleek-grub-theme.override {
+        withStyle = "dark";
+        withBanner = "";
+      };
     };
   };
 
-  boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "killer";
   networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
@@ -59,27 +63,6 @@ in {
     LC_TIME = "es_CO.UTF-8";
   };
 
-  services.xserver = {
-    enable = true;
-    xkb.layout = "us";
-    xkb.variant = "";
-    xkb.options = "ctrl:swapcaps";
-    synaptics.enable = false;
-    windowManager.i3.enable = true;
-    windowManager.i3.package = pkgs.i3-gaps;
-  };
-
-  environment.systemPackages = with pkgs; [
-    stable.where-is-my-sddm-theme
-    apple-cursor
-  ];
-
-  services.displayManager.sddm = {
-    enable = true;
-    theme = "where_is_my_sddm_theme";
-    settings = { Theme = { CursorTheme = "macOS-Monterey"; }; };
-  };
-
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -88,9 +71,8 @@ in {
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    wireplumber.enable = true;
   };
-
-  nixpkgs.config.allowUnfree = true;
 
   users.users.dagger = {
     shell = pkgs.zsh;
@@ -116,30 +98,6 @@ in {
     lidSwitch = "suspend";
   };
 
-  services.tlp = {
-    enable = true;
-    settings = {
-      CPU_MAX_PERF_ON_BAT = 30;
-      RUNTIME_PM_ON_BAT = "auto";
-      PCIE_ASPM_ON_BAT = "powersupersave";
-      PLATFORM_PROFILE_ON_BAT = "low-power";
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-
-      CPU_SCALING_GOVERNOR_ON_AC = "powersave";
-      CPU_ENERGY_PERF_POLICY_ON_AC = "power";
-
-      START_CHARGE_THRESH_BAT0 = 40;
-      STOP_CHARGE_THRESH_BAT0 = 80;
-    };
-  };
-
-  environment.variables = {
-    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-    QT_ENABLE_HIGHDPI_SCALING = "1";
-    QT_SCREEN_SCALE_FACTORS = "1.5";
-  };
-
   services = {
     asusd.enable = true;
     blueman.enable = true;
@@ -147,15 +105,6 @@ in {
     thermald.enable = true;
     supergfxd.enable = true;
     gnome.gnome-keyring.enable = true;
-
-    libinput = {
-      enable = true;
-      touchpad = {
-        naturalScrolling = true;
-        tapping = false;
-        clickMethod = "clickfinger";
-      };
-    };
   };
 
   hardware.opengl = {
@@ -163,14 +112,19 @@ in {
     extraPackages = with pkgs; [
       intel-media-driver
       intel-vaapi-driver
-      onevpl-intel-gpu
       intel-media-sdk
       libvdpau-va-gl
       libva-utils
+      vpl-gpu-rt
     ];
   };
 
-  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
+  environment.variables = {
+    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    QT_ENABLE_HIGHDPI_SCALING = "1";
+    QT_SCREEN_SCALE_FACTORS = "1.5";
+    LIBVA_DRIVER_NAME = "iHD";
+  };
 
   system.stateVersion = "24.05";
 }
