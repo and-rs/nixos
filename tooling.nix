@@ -1,10 +1,10 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     bun
+    pnpm
     yarn
     prettierd
     pnpm-shell-completion
-    nodePackages_latest.pnpm
     nodePackages_latest.nodejs
     nodePackages_latest.eslint
     nodePackages_latest.prettier
@@ -37,6 +37,7 @@
     zls
 
     neovide
+    insomnia
   ];
 
   programs.neovim = {
