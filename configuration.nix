@@ -126,7 +126,9 @@ in {
       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
       CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
 
-      CPU_MAX_PERF_ON_AC = 30;
+      CPU_SCALING_GOVERNOR_ON_AC = "powersave";
+      CPU_ENERGY_PERF_POLICY_ON_AC = "power";
+
       START_CHARGE_THRESH_BAT0 = 40;
       STOP_CHARGE_THRESH_BAT0 = 80;
     };
@@ -152,7 +154,6 @@ in {
         naturalScrolling = true;
         tapping = false;
         clickMethod = "clickfinger";
-        accelProfile = "flat";
       };
     };
   };
@@ -162,7 +163,6 @@ in {
     extraPackages = with pkgs; [
       intel-media-driver
       intel-vaapi-driver
-      vaapi-intel-hybrid
       onevpl-intel-gpu
       intel-media-sdk
       libvdpau-va-gl

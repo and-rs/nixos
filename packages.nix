@@ -37,6 +37,7 @@
     powertop
     pciutils
     thermald
+    psensor
     scrot
     dunst
     xclip
