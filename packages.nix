@@ -2,9 +2,9 @@
   environment.systemPackages = with pkgs; [
     imagemagick
     alacritty
-    keepassxc
     cbonsai
     ripgrep
+    helix
     unzip
     delta
     p7zip
@@ -49,6 +49,7 @@
 
     firefox-devedition
     obs-studio
+    keepassxc
     openh264
     discord
     vesktop
