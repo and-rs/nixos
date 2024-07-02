@@ -18,6 +18,7 @@
     bat
     fzf
     zsh
+    nnn
     fd
     gh
     jq

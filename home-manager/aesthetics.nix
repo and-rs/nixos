@@ -3,7 +3,8 @@
 
   home.packages = [
     (pkgs.nerdfonts.override {
-      fonts = [ "JetBrainsMono" "GeistMono" "Lilex" "ZedMono" "Recursive" ];
+      fonts =
+        [ "JetBrainsMono" "GeistMono" "ZedMono" "Recursive" "CommitMono" ];
     })
     pkgs.inter
     (pkgs.epapirus-icon-theme.override { color = "grey"; })
