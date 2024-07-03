@@ -16,6 +16,7 @@
     emmet-ls
 
     sumneko-lua-language-server
+    luajitPackages.luarocks
     stylua
     lua
 
