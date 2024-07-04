@@ -39,6 +39,7 @@
 
     neovide
     insomnia
+    postgresql
   ];
 
   programs.neovim = {
