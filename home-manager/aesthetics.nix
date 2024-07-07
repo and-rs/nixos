@@ -1,12 +1,20 @@
 { pkgs, ... }: {
+  nixpkgs.config.input-fonts.acceptLicense = true;
   fonts.fontconfig.enable = true;
 
   home.packages = [
     (pkgs.nerdfonts.override {
-      fonts =
-        [ "JetBrainsMono" "GeistMono" "ZedMono" "Recursive" "CommitMono" ];
+      fonts = [
+        "JetBrainsMono"
+        "GeistMono"
+        "ZedMono"
+        "Recursive"
+        "CommitMono"
+        "NerdFontsSymbolsOnly"
+      ];
     })
     pkgs.inter
+    pkgs.input-fonts
     (pkgs.epapirus-icon-theme.override { color = "grey"; })
     (pkgs.colloid-gtk-theme.override {
       colorVariants = [ "dark" ];

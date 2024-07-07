@@ -8,6 +8,7 @@
     unzip
     delta
     p7zip
+    kitty
     btop
     stow
     tmux

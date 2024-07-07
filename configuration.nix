@@ -105,6 +105,17 @@
     thermald.enable = true;
     supergfxd.enable = true;
     gnome.gnome-keyring.enable = true;
+
+    postgresql = {
+      enable = true;
+      enableTCPIP = true;
+      authentication = pkgs.lib.mkOverride 10 ''
+        #type  database    DBuser    auth-method
+        local  all         all       trust
+        host   all         postgres  127.0.0.1/32  md5
+        host   all         postgres  ::1/128       md5
+      '';
+    };
   };
 
   hardware.opengl = {
