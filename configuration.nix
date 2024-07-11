@@ -79,7 +79,7 @@
     isNormalUser = true;
     description = "dagger";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ firefox ];
+    packages = with pkgs; [ firefox steam-run ];
   };
 
   programs = {
