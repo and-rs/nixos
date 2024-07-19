@@ -27,6 +27,9 @@
     mypy
     ruff
 
+    go
+    gopls
+
     shellcheck
     beautysh
 
