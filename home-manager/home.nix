@@ -1,5 +1,6 @@
-{ ... }: {
-  imports = [ ./aesthetics.nix ];
+{ inputs, ... }: {
+  imports =
+    [ ./aesthetics.nix inputs.spicetify-nix.homeManagerModules.default ];
 
   programs.home-manager.enable = true;
   programs.git = {

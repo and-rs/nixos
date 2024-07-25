@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   nixpkgs.config.input-fonts.acceptLicense = true;
   fonts.fontconfig.enable = true;
 
@@ -44,4 +44,17 @@
     enable = true;
     platformTheme.name = "gtk3";
   };
+
+  programs.spicetify =
+    let spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+    in {
+      enable = true;
+      theme = spicePkgs.themes.text;
+
+      enabledExtensions = with spicePkgs.extensions; [
+        fullAppDisplay
+        shuffle
+        hidePodcasts
+      ];
+    };
 }

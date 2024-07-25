@@ -6,7 +6,7 @@
     stable.url = "github:nixos/nixpkgs/nixos-23.11";
 
     spicetify-nix = {
-      url = "github:the-argus/spicetify-nix";
+      url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -21,7 +21,7 @@
     in {
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs system spicetify-nix; };
-        modules = [ ./configuration.nix ./spicetify.nix ];
+        modules = [ ./configuration.nix ];
       };
     };
 }

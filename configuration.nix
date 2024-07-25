@@ -1,11 +1,11 @@
 { pkgs, inputs, ... }: {
   imports = [
     ./hardware-configuration.nix
-    ./tooling.nix
-    ./packages.nix
-    ./hyprland.nix
-    ./tlp.nix
-    ./sddm.nix
+    ./apps/tooling.nix
+    ./apps/packages.nix
+    ./desktop/hyprland.nix
+    ./desktop/tlp.nix
+    ./desktop/sddm.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -63,7 +63,6 @@
     LC_TIME = "es_CO.UTF-8";
   };
 
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
