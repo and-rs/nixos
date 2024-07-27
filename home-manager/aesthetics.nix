@@ -49,7 +49,8 @@
     let spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
     in {
       enable = true;
-      theme = spicePkgs.themes.text;
+      theme = spicePkgs.themes.comfy;
+      colorScheme = "mono";
 
       enabledExtensions = with spicePkgs.extensions; [
         fullAppDisplay
