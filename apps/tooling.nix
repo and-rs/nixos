@@ -43,9 +43,8 @@
 
     neovide
     insomnia
-    postgresql
 
-    docker
+    docker_27
     docker-compose
   ];
 
@@ -54,10 +53,10 @@
     defaultEditor = true;
   };
 
-  virtualisation.docker.rootless = {
-    enable = true;
-    setSocketVariable = true;
+  virtualisation.docker = {
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
   };
-
-  users.extraGroups.docker.members = [ "dagger" ];
 }
