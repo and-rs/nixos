@@ -77,7 +77,7 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "dagger";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [ firefox steam-run ];
   };
 

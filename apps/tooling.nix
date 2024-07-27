@@ -44,7 +44,9 @@
     neovide
     insomnia
     postgresql
+
     docker
+    docker-compose
   ];
 
   programs.neovim = {
