@@ -21,6 +21,8 @@
     stylua
     lua
 
+    python311Packages.pip
+    ruff-lsp
     python3
     pyright
     black
