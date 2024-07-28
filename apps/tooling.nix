@@ -22,12 +22,11 @@
     lua
 
     python311Packages.pip
+    basedpyright
     ruff-lsp
     python3
-    pyright
     black
     mypy
-    ruff
 
     go
     gopls
