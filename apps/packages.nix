@@ -55,6 +55,7 @@
     openh264
     discord
     vesktop
+    zoom-us
     x264
   ];
 }

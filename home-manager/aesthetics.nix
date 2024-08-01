@@ -14,7 +14,7 @@
       ];
     })
     pkgs.inter
-    pkgs.input-fonts
+    pkgs.material-symbols
     (pkgs.epapirus-icon-theme.override { color = "grey"; })
     (pkgs.colloid-gtk-theme.override {
       colorVariants = [ "dark" ];
