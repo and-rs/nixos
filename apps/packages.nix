@@ -35,6 +35,7 @@
     home-manager
     pavucontrol
     supergfxctl
+    alsa-utils
     libnotify
     playerctl
     powertop
@@ -55,7 +56,6 @@
     openh264
     discord
     vesktop
-    zoom-us
     x264
   ];
 }
