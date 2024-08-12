@@ -54,7 +54,6 @@
     obs-studio
     keepassxc
     openh264
-    discord
     vesktop
     x264
   ];
