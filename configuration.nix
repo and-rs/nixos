@@ -17,6 +17,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
 
+  # boot.kernelPackages = pkgs.linuxPackages;
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
   boot.kernelParams = [
@@ -63,7 +64,6 @@
     LC_TIME = "es_CO.UTF-8";
   };
 
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;

@@ -1,37 +1,39 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     bun
-    yarn
+    deno
+    biome
+    rustywind
     corepack_latest
     pnpm-shell-completion
     nodePackages_latest.nodejs
 
-    emmet-ls
     prettierd
     typescript
+    typescript-language-server
     nodePackages_latest.eslint
     nodePackages_latest.prettier
     vscode-langservers-extracted
     tailwindcss-language-server
-    nodePackages_latest.typescript-language-server
-    nodePackages_latest.vscode-json-languageserver
 
-    sumneko-lua-language-server
     luajitPackages.luarocks
+    lua-language-server
     stylua
     lua
 
-    python312Packages.pip
-    basedpyright
-    python3Full
+    # basedpyright
     virtualenv
-    ruff-lsp
+    # python314
+    poetry
     black
+    ruff
     pdm
+    uv
 
     go
     gopls
 
+    bash-language-server
     shellcheck
     beautysh
 
@@ -40,8 +42,6 @@
     gcc
 
     zig-shell-completions
-    zig
-    zls
 
     neovide
     insomnia

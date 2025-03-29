@@ -1,14 +1,13 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     imagemagick
-    alacritty
+    ghostty
     cbonsai
     ripgrep
-    helix
+    direnv
     unzip
     delta
     p7zip
-    kitty
     btop
     stow
     tmux
@@ -41,7 +40,6 @@
     powertop
     pciutils
     thermald
-    psensor
     dunst
     feh
 

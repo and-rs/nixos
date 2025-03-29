@@ -22,8 +22,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    kdePackages.xwaylandvideobridge
     xdg-desktop-portal-hyprland
-    xwaylandvideobridge
     rofi-wayland
     wl-clipboard
     hyprcursor

@@ -3,18 +3,11 @@
   fonts.fontconfig.enable = true;
 
   home.packages = [
-    (pkgs.nerdfonts.override {
-      fonts = [
-        "JetBrainsMono"
-        "GeistMono"
-        "ZedMono"
-        "Recursive"
-        "CommitMono"
-        "NerdFontsSymbolsOnly"
-      ];
-    })
-    pkgs.inter
+    pkgs.nerd-fonts.symbols-only
     pkgs.material-symbols
+    pkgs.input-fonts
+    pkgs.inter
+
     (pkgs.epapirus-icon-theme.override { color = "grey"; })
     (pkgs.colloid-gtk-theme.override {
       colorVariants = [ "dark" ];
