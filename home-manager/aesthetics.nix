@@ -6,8 +6,7 @@
     pkgs.nerd-fonts.symbols-only
     pkgs.material-symbols
     pkgs.input-fonts
-    pkgs.work-sans
-    pkgs.inter
+    pkgs.ibm-plex
 
     (pkgs.epapirus-icon-theme.override { color = "grey"; })
     (pkgs.colloid-gtk-theme.override {
@@ -28,7 +27,7 @@
   gtk = {
     enable = true;
     font = {
-      name = "Work Sans";
+      name = "IBM Plex Sans";
       size = 10;
     };
     theme = { name = "Colloid-Grey-Dark"; };
