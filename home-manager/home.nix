@@ -17,9 +17,9 @@
   };
 
   home = {
-    username = "dagger";
-    homeDirectory = "/home/dagger";
-    stateVersion = "23.11";
+    username = "and-rs";
+    homeDirectory = "/home/and-rs";
+    stateVersion = "24.11";
   };
 
   # Nicely reload system units when changing configs

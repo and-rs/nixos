@@ -6,6 +6,7 @@
     pkgs.nerd-fonts.symbols-only
     pkgs.material-symbols
     pkgs.input-fonts
+    pkgs.work-sans
     pkgs.inter
 
     (pkgs.epapirus-icon-theme.override { color = "grey"; })
@@ -16,17 +17,18 @@
     })
   ];
 
-  home.pointerCursor = {
-    gtk.enable = true;
-    name = "macOS-Monterey";
-    package = pkgs.apple-cursor;
-    size = 32;
-  };
+  # home.pointerCursor = {
+  #   x11.enable = true;
+  #   gtk.enable = true;
+  #   name = "macOS1";
+  #   package = pkgs.apple-cursor;
+  #   size = 24;
+  # };
 
   gtk = {
     enable = true;
     font = {
-      name = "Inter";
+      name = "Work Sans";
       size = 10;
     };
     theme = { name = "Colloid-Grey-Dark"; };

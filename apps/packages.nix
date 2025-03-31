@@ -1,10 +1,11 @@
-{ pkgs, ... }: {
+{ pkgs, system, inputs, ... }: {
   environment.systemPackages = with pkgs; [
     imagemagick
     ghostty
     cbonsai
     ripgrep
     direnv
+    kitty
     unzip
     delta
     p7zip
@@ -48,11 +49,13 @@
     xfce.thunar
     mpv
 
-    firefox-devedition
+    inputs.zen-browser.packages."${system}".default
+    google-chrome
     obs-studio
     keepassxc
     openh264
     vesktop
+    discord
     x264
   ];
 }

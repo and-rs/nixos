@@ -4,6 +4,7 @@
     ./apps/tooling.nix
     ./apps/packages.nix
     ./desktop/hyprland.nix
+    ./desktop/keyd.nix
     ./desktop/tlp.nix
     ./desktop/sddm.nix
     inputs.home-manager.nixosModules.home-manager
@@ -11,7 +12,7 @@
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
-    users = { dagger = import ./home-manager/home.nix; };
+    users = { and-rs = import ./home-manager/home.nix; };
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -44,7 +45,7 @@
     };
   };
 
-  networking.hostName = "killer";
+  networking.hostName = "M16"; # Define your hostname.
   networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
@@ -73,12 +74,12 @@
     wireplumber.enable = true;
   };
 
-  users.users.dagger = {
+  users.users.and-rs = {
     shell = pkgs.zsh;
     isNormalUser = true;
-    description = "dagger";
+    description = "and-rs";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ firefox steam-run ];
+    packages = with pkgs; [ steam-run ];
   };
 
   programs = {
@@ -120,10 +121,10 @@
 
   environment.variables = {
     QT_ENABLE_HIGHDPI_SCALING = "1";
-    QT_SCREEN_SCALE_FACTORS = "1.5";
+    QT_SCREEN_SCALE_FACTORS = "1";
     QT_QPA_PLATFORM = "wayland";
     LIBVA_DRIVER_NAME = "iHD";
   };
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11"; # do not change at all
 }

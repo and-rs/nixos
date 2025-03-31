@@ -2,6 +2,7 @@
 let stable = inputs.stable.legacyPackages.${system};
 in {
   environment.systemPackages = with pkgs; [
+    libsForQt5.qt5.qtgraphicaleffects
     stable.where-is-my-sddm-theme
     apple-cursor
   ];
