@@ -16,13 +16,15 @@
     })
   ];
 
-  # home.pointerCursor = {
-  #   x11.enable = true;
-  #   gtk.enable = true;
-  #   name = "macOS1";
-  #   package = pkgs.apple-cursor;
-  #   size = 24;
-  # };
+  home.pointerCursor = {
+    package = pkgs.apple-cursor;
+    name = "nix_macOS";
+    size = 24;
+    x11 = {
+      enable = true;
+      defaultCursor = "macOS";
+    };
+  };
 
   gtk = {
     enable = true;

@@ -3,7 +3,7 @@
     ./hardware-configuration.nix
     ./apps/tooling.nix
     ./apps/packages.nix
-    ./desktop/hyprland.nix
+    ./desktop/wm.nix
     ./desktop/keyd.nix
     ./desktop/tlp.nix
     ./desktop/sddm.nix

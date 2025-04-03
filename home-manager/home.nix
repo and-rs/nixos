@@ -6,7 +6,7 @@
   programs.git = {
     enable = true;
     userEmail = "deserd@protonmail.com";
-    userName = "JuanBaut";
+    userName = "and-rs";
   };
 
   nixpkgs = {
