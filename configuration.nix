@@ -18,7 +18,6 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
 
-  # boot.kernelPackages = pkgs.linuxPackages;
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
   boot.kernelParams = [
@@ -85,10 +84,22 @@
   programs = {
     zsh.enable = true;
     dconf.enable = true;
+    thunar.enable = true;
     nm-applet.enable = true;
     noisetorch.enable = true;
     gnupg.agent.enable = true;
     gnupg.agent.enableSSHSupport = true;
+  };
+
+  services = {
+    gvfs.enable = true;
+    asusd.enable = true;
+    tumbler.enable = true;
+    blueman.enable = true;
+    openssh.enable = true;
+    thermald.enable = true;
+    supergfxd.enable = true;
+    gnome.gnome-keyring.enable = true;
   };
 
   services.logind = {
@@ -96,15 +107,6 @@
     suspendKey = "suspend";
     hibernateKey = "suspend";
     lidSwitch = "suspend";
-  };
-
-  services = {
-    asusd.enable = true;
-    blueman.enable = true;
-    openssh.enable = true;
-    thermald.enable = true;
-    supergfxd.enable = true;
-    gnome.gnome-keyring.enable = true;
   };
 
   hardware.graphics = {
@@ -119,11 +121,16 @@
     ];
   };
 
-  environment.variables = {
-    QT_ENABLE_HIGHDPI_SCALING = "1";
-    QT_SCREEN_SCALE_FACTORS = "1";
-    QT_QPA_PLATFORM = "wayland";
-    LIBVA_DRIVER_NAME = "iHD";
+  xdg.mime = {
+    enable = true;
+    defaultApplications = {
+      "text/html" = "zen-beta.desktop";
+      "inode/directory" = "thunar.desktop";
+      "x-scheme-handler/http" = "zen-beta.desktop";
+      "x-scheme-handler/https" = "zen-beta.desktop";
+      "x-scheme-handler/about" = "zen-beta.desktop";
+      "x-scheme-handler/unknown" = "zen-beta.desktop";
+    };
   };
 
   system.stateVersion = "24.11"; # do not change at all

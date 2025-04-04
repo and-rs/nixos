@@ -18,7 +18,8 @@
 
   home.pointerCursor = {
     package = pkgs.apple-cursor;
-    name = "nix_macOS";
+    gtk.enable = true;
+    name = "macOS";
     size = 24;
     x11 = {
       enable = true;

@@ -29,6 +29,7 @@
     disfetch
 
     networkmanagerapplet
+    xfce.ristretto
     inotify-tools
     brightnessctl
     appimage-run
@@ -43,10 +44,6 @@
     thermald
     dunst
     feh
-
-    xfce.ristretto
-    xfce.tumbler
-    xfce.thunar
     mpv
 
     inputs.zen-browser.packages."${system}".default
@@ -55,7 +52,6 @@
     keepassxc
     openh264
     vesktop
-    discord
     x264
   ];
 }

@@ -13,6 +13,11 @@
   programs.niri.enable = true;
 
   environment.sessionVariables = {
+    QT_ENABLE_HIGHDPI_SCALING = "1";
+    QT_SCREEN_SCALE_FACTORS = "1";
+    QT_QPA_PLATFORM = "wayland";
+    LIBVA_DRIVER_NAME = "iHD";
+
     WLR_NO_HARDWARE_CURSORS = "1";
     XDG_CURRENT_DESKTOP = "niri";
     XDG_SESSION_TYPE = "wayland";
@@ -21,8 +26,10 @@
 
   environment.systemPackages = with pkgs; [
     kdePackages.xwaylandvideobridge
+    xwayland-satellite
     rofi-wayland
     wl-clipboard
+    xwayland
     clipman
     waybar
     slurp

@@ -43,8 +43,10 @@
 
     zig-shell-completions
 
-    neovide
-    insomnia
+    bruno-cli
+    bruno
+    hurl
+    curl
 
     docker_27
     docker-compose
