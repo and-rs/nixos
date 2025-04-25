@@ -43,8 +43,6 @@
 
     zig-shell-completions
 
-    bruno-cli
-    bruno
     hurl
     curl
 
