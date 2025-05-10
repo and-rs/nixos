@@ -18,7 +18,8 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+  services.scx.enable = true;
 
   boot.kernelParams = [
     "i915.force_probe=46a6"
@@ -84,7 +85,6 @@
   programs = {
     zsh.enable = true;
     dconf.enable = true;
-    thunar.enable = true;
     nm-applet.enable = true;
     noisetorch.enable = true;
     gnupg.agent.enable = true;
@@ -93,12 +93,10 @@
 
   services = {
     gvfs.enable = true;
-    asusd.enable = true;
     tumbler.enable = true;
     blueman.enable = true;
     openssh.enable = true;
     thermald.enable = true;
-    supergfxd.enable = true;
     gnome.gnome-keyring.enable = true;
   };
 
@@ -125,7 +123,7 @@
     enable = true;
     defaultApplications = {
       "text/html" = "zen-beta.desktop";
-      "inode/directory" = "thunar.desktop";
+      "inode/directory" = "nautilus.desktop";
       "x-scheme-handler/http" = "zen-beta.desktop";
       "x-scheme-handler/https" = "zen-beta.desktop";
       "x-scheme-handler/about" = "zen-beta.desktop";

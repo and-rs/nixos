@@ -9,6 +9,15 @@
     ];
   };
 
+  programs.dconf.profiles.user = {
+    databases = [{
+      lockAll = true;
+      settings = {
+        "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
+      };
+    }];
+  };
+
   programs.waybar.enable = true;
   programs.niri.enable = true;
 
@@ -25,15 +34,13 @@
   };
 
   environment.systemPackages = with pkgs; [
+    (rofi-wayland.override { plugins = [ rofi-calc ]; })
     kdePackages.xwaylandvideobridge
     xwayland-satellite
-    rofi-wayland
     wl-clipboard
     xwayland
-    clipman
     waybar
-    slurp
-    grim
     swww
+
   ];
 }

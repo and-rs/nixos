@@ -12,7 +12,7 @@
     (pkgs.colloid-gtk-theme.override {
       colorVariants = [ "dark" ];
       themeVariants = [ "grey" ];
-      tweaks = [ "black" "float" "rimless" ];
+      tweaks = [ "black" ];
     })
   ];
 
@@ -47,7 +47,7 @@
     in {
       enable = true;
       theme = spicePkgs.themes.comfy;
-      colorScheme = "mono";
+      colorScheme = "Mono";
 
       enabledExtensions = with spicePkgs.extensions; [
         fullAppDisplay

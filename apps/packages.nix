@@ -35,13 +35,13 @@
     appimage-run
     home-manager
     pavucontrol
-    supergfxctl
     alsa-utils
     libnotify
     playerctl
     powertop
     pciutils
     thermald
+    nautilus
     dunst
     feh
     mpv
