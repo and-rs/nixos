@@ -9,5 +9,5 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ asusctl supergfxd ];
+  environment.systemPackages = with pkgs; [ asusctl supergfxctl ];
 }
