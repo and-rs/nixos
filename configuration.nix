@@ -22,6 +22,7 @@
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
   services.scx.enable = true;
 
+  boot.blacklistedKernelModules = [ "nouveau" "sdhci_pci" ];
   boot.kernelParams = [
     "modprobe.blacklist=sdhci_pci"
     "rd.driver.blacklist=nouveau"
