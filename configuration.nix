@@ -7,6 +7,7 @@
     ./desktop/keyd.nix
     ./desktop/tlp.nix
     ./desktop/sddm.nix
+    ./desktop/asus.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -22,11 +23,12 @@
   services.scx.enable = true;
 
   boot.kernelParams = [
-    "i915.force_probe=46a6"
+    "modprobe.blacklist=sdhci_pci"
     "rd.driver.blacklist=nouveau"
     "modprobe.blacklist=nouveau"
-    "rhgb"
+    "i915.force_probe=46a6"
     "quite"
+    "rhgb"
   ];
 
   boot.loader = {
@@ -102,9 +104,9 @@
 
   services.logind = {
     powerKey = "suspend";
+    lidSwitch = "suspend";
     suspendKey = "suspend";
     hibernateKey = "suspend";
-    lidSwitch = "suspend";
   };
 
   hardware.graphics = {
