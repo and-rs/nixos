@@ -18,7 +18,6 @@
     }];
   };
 
-  programs.waybar.enable = true;
   programs.niri.enable = true;
 
   environment.sessionVariables = {
@@ -41,6 +40,5 @@
     xwayland
     waybar
     swww
-
   ];
 }

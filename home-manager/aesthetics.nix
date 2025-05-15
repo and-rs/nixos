@@ -16,16 +16,7 @@
     })
   ];
 
-  home.pointerCursor = {
-    package = pkgs.apple-cursor;
-    gtk.enable = true;
-    name = "macOS";
-    size = 24;
-    x11 = {
-      enable = true;
-      defaultCursor = "macOS";
-    };
-  };
+  home.sessionVariables.GTK_THEME = "Colloid-Grey-Dark";
 
   gtk = {
     enable = true;
@@ -37,17 +28,25 @@
     iconTheme = { name = "ePapirus-Dark"; };
   };
 
-  qt = {
-    enable = true;
-    platformTheme.name = "gtk3";
+  home.pointerCursor = {
+    package = pkgs.apple-cursor;
+    gtk.enable = true;
+    name = "macOS";
+    size = 24;
+    x11 = {
+      enable = true;
+      defaultCursor = "macOS";
+    };
   };
+
+  qt = { enable = true; };
 
   programs.spicetify =
     let spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
     in {
       enable = true;
-      theme = spicePkgs.themes.comfy;
-      colorScheme = "Mono";
+      theme = spicePkgs.themes.text;
+      # colorScheme = "Mono";
 
       enabledExtensions = with spicePkgs.extensions; [
         fullAppDisplay

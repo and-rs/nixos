@@ -1,14 +1,18 @@
 { pkgs, system, inputs, ... }: {
   environment.systemPackages = with pkgs; [
     imagemagick
+    fastfetch
     ghostty
     cbonsai
+    cmatrix
     ripgrep
     direnv
+    tokei
     kitty
     unzip
     delta
     p7zip
+    yazi
     btop
     stow
     tmux
@@ -19,16 +23,13 @@
     bat
     fzf
     zsh
-    nnn
     fd
     gh
     jq
 
-    bunnyfetch
-    fastfetch
-    disfetch
-
     networkmanagerapplet
+    wpa_supplicant_gui
+
     xfce.ristretto
     inotify-tools
     brightnessctl
@@ -43,7 +44,6 @@
     thermald
     nautilus
     dunst
-    feh
     mpv
 
     inputs.zen-browser.packages."${system}".default
