@@ -18,6 +18,7 @@
     tmux
     wget
     tldr
+    glab
     git
     eza
     bat
