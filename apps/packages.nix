@@ -28,9 +28,8 @@
     gh
     jq
 
+    kdePackages.partitionmanager
     networkmanagerapplet
-    wpa_supplicant_gui
-
     xfce.ristretto
     inotify-tools
     brightnessctl
@@ -44,6 +43,7 @@
     pciutils
     thermald
     nautilus
+    parted
     dunst
     mpv
 

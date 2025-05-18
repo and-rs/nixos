@@ -21,6 +21,7 @@
 
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
   services.scx.enable = true;
+  zramSwap.enable = true;
 
   boot.blacklistedKernelModules = [ "nouveau" "sdhci_pci" ];
   boot.kernelParams = [
@@ -104,10 +105,10 @@
   };
 
   services.logind = {
-    powerKey = "suspend";
-    lidSwitch = "suspend";
     suspendKey = "suspend";
-    hibernateKey = "suspend";
+    powerKey = "hibernate";
+    hibernateKey = "hibernate";
+    lidSwitch = "suspend-then-hibernate";
   };
 
   hardware.graphics = {
