@@ -28,7 +28,6 @@
     gh
     jq
 
-    kdePackages.partitionmanager
     networkmanagerapplet
     xfce.ristretto
     inotify-tools
