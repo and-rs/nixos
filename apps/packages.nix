@@ -2,16 +2,19 @@
   environment.systemPackages = with pkgs; [
     imagemagick
     fastfetch
+    hyperfine
     ghostty
     cbonsai
     cmatrix
     ripgrep
+    zoxide
     direnv
     tokei
     kitty
     unzip
     delta
     p7zip
+    helix
     yazi
     btop
     stow
@@ -47,11 +50,14 @@
     mpv
 
     inputs.zen-browser.packages."${system}".default
+    aws-workspaces
     google-chrome
     obs-studio
     keepassxc
     openh264
+    quickemu
     vesktop
+    brave
     x264
   ];
 }

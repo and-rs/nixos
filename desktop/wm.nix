@@ -21,8 +21,10 @@
   programs.niri.enable = true;
 
   environment.sessionVariables = {
+    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     QT_ENABLE_HIGHDPI_SCALING = "1";
     QT_SCREEN_SCALE_FACTORS = "1";
+    QT_WAYLAND_FORCE_DPI = "140";
     QT_QPA_PLATFORM = "wayland";
     LIBVA_DRIVER_NAME = "iHD";
 

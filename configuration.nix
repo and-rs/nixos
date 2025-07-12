@@ -57,6 +57,7 @@
   time.timeZone = "America/Bogota";
   i18n.defaultLocale = "en_US.UTF-8";
 
+  time.hardwareClockInLocalTime = true;
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "es_CO.UTF-8";
     LC_IDENTIFICATION = "es_CO.UTF-8";
@@ -116,7 +117,6 @@
     extraPackages = with pkgs; [
       intel-media-driver
       intel-vaapi-driver
-      intel-media-sdk
       libvdpau-va-gl
       libva-utils
       vpl-gpu-rt

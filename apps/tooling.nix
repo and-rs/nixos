@@ -21,13 +21,14 @@
     stylua
     lua
 
+    python313Packages.tkinter
+    python313Packages.pip
     basedpyright
     virtualenv
-    python314
+    python313
     poetry
     black
     ruff
-    pdm
     uv
 
     go
@@ -42,6 +43,9 @@
     gcc
 
     zig-shell-completions
+
+    postgres-lsp
+    sleek
 
     hurl
     curl

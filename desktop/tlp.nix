@@ -1,6 +1,6 @@
 { ... }: {
   services.tlp = {
-    enable = true;
+    enable = false;
     settings = {
       CPU_MAX_PERF_ON_BAT = 30;
       RUNTIME_PM_ON_BAT = "auto";
