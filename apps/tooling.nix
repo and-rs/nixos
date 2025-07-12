@@ -50,7 +50,7 @@
     hurl
     curl
 
-    docker_27
+    docker_28
     docker-compose
   ];
 

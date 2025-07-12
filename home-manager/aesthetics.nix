@@ -8,7 +8,7 @@
     pkgs.input-fonts
     pkgs.ibm-plex
 
-    (pkgs.epapirus-icon-theme.override { color = "grey"; })
+    (pkgs.papirus-icon-theme.override { color = "grey"; })
     (pkgs.colloid-gtk-theme.override {
       colorVariants = [ "dark" ];
       themeVariants = [ "grey" ];
