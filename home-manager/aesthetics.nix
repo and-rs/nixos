@@ -6,6 +6,7 @@
     pkgs.nerd-fonts.symbols-only
     pkgs.material-symbols
     pkgs.input-fonts
+    pkgs.recursive
     pkgs.ibm-plex
 
     (pkgs.papirus-icon-theme.override { color = "grey"; })

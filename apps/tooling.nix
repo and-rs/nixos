@@ -42,13 +42,30 @@
     nil
     gcc
 
+    rustc
+    cargo
+    rustup
+    rustfmt
+
+    zls
+    zig
     zig-shell-completions
 
     postgres-lsp
     sleek
 
+    glsl_analyzer
     hurl
     curl
+
+    tinymist
+    typstyle
+    typst
+
+    qsv
+    millet
+    csvdiff
+    csvlens
 
     docker_28
     docker-compose

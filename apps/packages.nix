@@ -10,7 +10,6 @@
     zoxide
     direnv
     tokei
-    kitty
     unzip
     delta
     p7zip

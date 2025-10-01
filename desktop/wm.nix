@@ -35,7 +35,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    (rofi-wayland.override { plugins = [ rofi-calc ]; })
+    (rofi.override { plugins = [ rofi-calc ]; })
     kdePackages.xwaylandvideobridge
     xwayland-satellite
     wl-clipboard
