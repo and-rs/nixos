@@ -9,7 +9,9 @@
     pkgs.recursive
     pkgs.ibm-plex
 
-    (pkgs.papirus-icon-theme.override { color = "grey"; })
+    pkgs.papirus-icon-theme
+    pkgs.papirus-folders
+
     (pkgs.colloid-gtk-theme.override {
       colorVariants = [ "dark" ];
       themeVariants = [ "grey" ];
@@ -26,7 +28,7 @@
       size = 10;
     };
     theme = { name = "Colloid-Grey-Dark"; };
-    iconTheme = { name = "ePapirus-Dark"; };
+    iconTheme = { name = "Papirus-Dark"; };
   };
 
   home.pointerCursor = {

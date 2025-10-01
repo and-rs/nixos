@@ -1,8 +1,10 @@
 { pkgs, system, inputs, ... }: {
   environment.systemPackages = with pkgs; [
     imagemagick
+    efibootmgr
     fastfetch
     hyperfine
+    gnumake
     ghostty
     cbonsai
     cmatrix

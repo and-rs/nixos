@@ -6,8 +6,8 @@
     ./desktop/wm.nix
     ./desktop/keyd.nix
     ./desktop/tlp.nix
-    ./desktop/sddm.nix
     ./desktop/asus.nix
+    ./desktop/ly.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -33,21 +33,25 @@
     "rhgb"
   ];
 
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    grub = {
-      enable = true;
-      efiSupport = true;
-      device = "nodev";
-      useOSProber = true;
-      splashImage = null;
-      backgroundColor = null;
-      theme = pkgs.sleek-grub-theme.override {
-        withStyle = "dark";
-        withBanner = "";
-      };
-    };
-  };
+  boot.loader.systemd-boot.enable = true;
+  # boot.loader = {
+  #   efi = {
+  #     canTouchEfiVariables = true;
+  #     efiSysMountPoint = "/boot";
+  #   };
+  #   grub = {
+  #     enable = true;
+  #     efiSupport = true;
+  #     device = "nodev";
+  #     useOSProber = true;
+  #     splashImage = null;
+  #     backgroundColor = null;
+  #     theme = pkgs.sleek-grub-theme.override {
+  #       withStyle = "dark";
+  #       withBanner = "";
+  #     };
+  #   };
+  # };
 
   networking.hostName = "M16"; # Define your hostname.
   networking.networkmanager.enable = true;
@@ -105,11 +109,11 @@
     gnome.gnome-keyring.enable = true;
   };
 
-  services.logind = {
-    suspendKey = "suspend";
-    powerKey = "hibernate";
-    hibernateKey = "hibernate";
-    lidSwitch = "suspend-then-hibernate";
+  services.logind.settings.Login = {
+    HandleSuspendKey = "suspend";
+    HandlePowerKey = "hibernate";
+    HandleHibernateKey = "hibernate";
+    HandleLidSwitch = "suspend-then-hibernate";
   };
 
   hardware.graphics = {
