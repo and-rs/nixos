@@ -8,6 +8,9 @@
     pnpm-shell-completion
     nodePackages_latest.nodejs
 
+    tailwindcss_4
+    watchman
+
     prettierd
     typescript
     typescript-language-server

@@ -51,12 +51,10 @@
     mpv
 
     inputs.zen-browser.packages."${system}".default
-    aws-workspaces
     google-chrome
     obs-studio
     keepassxc
     openh264
-    quickemu
     vesktop
     brave
     x264

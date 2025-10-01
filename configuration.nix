@@ -8,6 +8,7 @@
     ./desktop/tlp.nix
     ./desktop/asus.nix
     ./desktop/ly.nix
+    ./desktop/windows.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
