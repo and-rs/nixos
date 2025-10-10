@@ -1,28 +1,31 @@
-{ config, pkgs, lib, ... }: {
+{ ... }: {
   services.displayManager.ly = {
     enable = true;
     settings = {
-      allow_empty_password = true;
-      animation = "none";
-      asterisk = "*";
-      auth_fails = 10;
-      bg = "0x07090D";
-      bigclock = "en";
-      bigclock_12hr = false;
-      bigclock_seconds = false;
-      blank_box = true;
-      border_fg = "0x07090D";
-      box_title = "null";
-      clear_password = true;
-      cmatrix_fg = "0x07090D";
-      cmatrix_head_col = "0xCACACA";
-      error_bg = "0x00000000";
-      error_fg = "0x01FF0000";
-      fg = "0x00FFFFFF";
+      animation = "colormix";
+      colormix_col1 = "0x0008";
+      colormix_col2 = "0x0008";
+      colormix_col3 = "0x0001";
+
       full_color = true;
-      hide_borders = true;
-      hide_version_string = true;
+      blank_box = true;
+      bg = "0x0008";
+      fg = "0x0001";
+      error_bg = "0x0008";
+      error_fg = "0x0002";
+
+      border_fg = "0x0101";
+      hide_borders = false;
+
+      margin_box_h = 2;
+      margin_box_v = 1;
+
+      # bigclock = "en";
+      # bigclock_12hr = false;
+      # bigclock_seconds = true;
+
       hide_key_hints = true;
+      hide_version_string = true;
     };
   };
 }

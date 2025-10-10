@@ -1,18 +1,19 @@
 { pkgs, inputs, ... }: {
   nixpkgs.config.input-fonts.acceptLicense = true;
-  fonts.fontconfig.enable = true;
 
-  home.packages = [
-    pkgs.nerd-fonts.symbols-only
-    pkgs.material-symbols
-    pkgs.input-fonts
-    pkgs.recursive
-    pkgs.ibm-plex
+  home.packages = with pkgs; [
+    nerd-fonts.symbols-only
+    material-symbols
 
-    pkgs.papirus-icon-theme
-    pkgs.papirus-folders
+    # ui fonts
+    input-fonts
+    hanken-grotesk
+    recursive
 
-    (pkgs.colloid-gtk-theme.override {
+    papirus-icon-theme
+    papirus-folders
+
+    (colloid-gtk-theme.override {
       colorVariants = [ "dark" ];
       themeVariants = [ "grey" ];
       tweaks = [ "black" ];
@@ -24,7 +25,7 @@
   gtk = {
     enable = true;
     font = {
-      name = "IBM Plex Sans";
+      name = "Hanken Grotesk";
       size = 10;
     };
     theme = { name = "Colloid-Grey-Dark"; };
@@ -49,8 +50,6 @@
     in {
       enable = true;
       theme = spicePkgs.themes.text;
-      # colorScheme = "Mono";
-
       enabledExtensions = with spicePkgs.extensions; [
         fullAppDisplay
         shuffle

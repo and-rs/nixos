@@ -1,7 +1,6 @@
 { pkgs, system, inputs, ... }: {
   environment.systemPackages = with pkgs; [
     imagemagick
-    efibootmgr
     fastfetch
     hyperfine
     gnumake
@@ -11,6 +10,7 @@
     ripgrep
     zoxide
     direnv
+    rclone
     tokei
     unzip
     delta
@@ -39,14 +39,18 @@
     appimage-run
     home-manager
     pavucontrol
+    efibootmgr
     alsa-utils
+    blueberry
     libnotify
     playerctl
+    vipsdisp
     powertop
     pciutils
     thermald
     nautilus
     parted
+    ffmpeg
     dunst
     mpv
 
@@ -54,6 +58,7 @@
     google-chrome
     obs-studio
     keepassxc
+    obsidian
     openh264
     vesktop
     brave

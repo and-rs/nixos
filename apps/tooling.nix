@@ -24,15 +24,19 @@
     stylua
     lua
 
-    python313Packages.tkinter
+    python313Packages.jinja2
+    python313Packages.pandas
     python313Packages.pip
     basedpyright
     virtualenv
     python313
-    poetry
+    pyrefly
+    djlint
     black
+    zuban
     ruff
     uv
+    ty
 
     go
     gopls

@@ -9,6 +9,27 @@
     ];
   };
 
+  nixpkgs.config.input-fonts.acceptLicense = true;
+
+  fonts = {
+    packages = with pkgs; [ input-fonts recursive hanken-grotesk ];
+    fontconfig = {
+      enable = true;
+      antialias = true;
+      subpixel.lcdfilter = "none";
+      hinting = {
+        enable = true;
+        autohint = true;
+        # style = "none";
+      };
+      defaultFonts = {
+        monospace = [ "Input Mono" ];
+        sansSerif = [ "Hanken Grotesk" ];
+        serif = [ "Hanken Grotesk" ];
+      };
+    };
+  };
+
   programs.dconf.profiles.user = {
     databases = [{
       lockAll = true;
@@ -21,10 +42,11 @@
   programs.niri.enable = true;
 
   environment.sessionVariables = {
+    QT_QPA_PLATFORMTHEME = "qt6ct";
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     QT_ENABLE_HIGHDPI_SCALING = "1";
     QT_SCREEN_SCALE_FACTORS = "1";
-    QT_WAYLAND_FORCE_DPI = "120";
+    QT_WAYLAND_FORCE_DPI = "116";
     QT_QPA_PLATFORM = "wayland";
     LIBVA_DRIVER_NAME = "iHD";
 
