@@ -9,6 +9,7 @@
     ];
   };
 
+  programs.hyprlock.enable = true;
   nixpkgs.config.input-fonts.acceptLicense = true;
 
   fonts = {
@@ -46,7 +47,7 @@
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     QT_ENABLE_HIGHDPI_SCALING = "1";
     QT_SCREEN_SCALE_FACTORS = "1";
-    QT_WAYLAND_FORCE_DPI = "116";
+    QT_WAYLAND_FORCE_DPI = "100";
     QT_QPA_PLATFORM = "wayland";
     LIBVA_DRIVER_NAME = "iHD";
 
@@ -58,9 +59,9 @@
 
   environment.systemPackages = with pkgs; [
     (rofi.override { plugins = [ rofi-calc ]; })
-    # kdePackages.xwaylandvideobridge
     xwayland-satellite
     wl-clipboard
+    swayidle
     xwayland
     waybar
     swww

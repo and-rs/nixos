@@ -3,12 +3,12 @@
     ./hardware-configuration.nix
     ./apps/tooling.nix
     ./apps/packages.nix
-    ./desktop/wm.nix
+    ./desktop/virt_manager.nix
+    ./desktop/environment.nix
     ./desktop/keyd.nix
-    ./desktop/tlp.nix
     ./desktop/asus.nix
+    ./desktop/tlp.nix
     ./desktop/ly.nix
-    ./desktop/windows.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -105,7 +105,6 @@
 
   services = {
     gvfs.enable = true;
-    # blueman.enable = true;
     tumbler.enable = true;
     openssh.enable = true;
     thermald.enable = true;
@@ -113,9 +112,8 @@
   };
 
   services.logind.settings.Login = {
+    HandlePowerKey = "suspend";
     HandleSuspendKey = "suspend";
-    HandlePowerKey = "hibernate";
-    HandleHibernateKey = "hibernate";
     HandleLidSwitch = "suspend-then-hibernate";
   };
 

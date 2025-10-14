@@ -28,6 +28,7 @@
     bat
     fzf
     zsh
+    bc
     fd
     gh
     jq
