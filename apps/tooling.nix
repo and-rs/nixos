@@ -24,12 +24,15 @@
     stylua
     lua
 
-    python313Packages.jinja2
-    python313Packages.pandas
+    # I don't really know what these are but I need for numpy
+    zlib
+    stdenv.cc.cc.lib
+
     python313Packages.pip
     basedpyright
     virtualenv
     python313
+    python312
     pyrefly
     djlint
     black
@@ -76,7 +79,14 @@
 
     docker_28
     docker-compose
+    tree-sitter
   ];
+
+  environment.sessionVariables = {
+    LD_LIBRARY_PATH = "${
+        pkgs.lib.makeLibraryPath [ pkgs.zlib pkgs.stdenv.cc.cc.lib ]
+      }:$LD_LIBRARY_PATH";
+  };
 
   programs.neovim = {
     enable = true;

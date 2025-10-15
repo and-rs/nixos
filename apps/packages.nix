@@ -1,5 +1,7 @@
 { pkgs, system, inputs, ... }: {
   environment.systemPackages = with pkgs; [
+    lxappearance
+
     imagemagick
     fastfetch
     hyperfine

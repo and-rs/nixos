@@ -32,17 +32,6 @@
     iconTheme = { name = "Papirus-Dark"; };
   };
 
-  home.pointerCursor = {
-    package = pkgs.apple-cursor;
-    gtk.enable = true;
-    name = "macOS";
-    size = 24;
-    x11 = {
-      enable = true;
-      defaultCursor = "macOS";
-    };
-  };
-
   qt = { enable = true; };
 
   programs.spicetify =
