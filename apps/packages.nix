@@ -47,13 +47,11 @@
     blueberry
     libnotify
     playerctl
-    vipsdisp
     powertop
     pciutils
     thermald
     nautilus
     parted
-    refind
     ffmpeg
     dunst
     mpv

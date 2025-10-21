@@ -5,7 +5,7 @@
     ./apps/packages.nix
     ./desktop/virt_manager.nix
     ./desktop/environment.nix
-    ./desktop/keyd.nix
+    ./desktop/xremap.nix
     ./desktop/asus.nix
     ./desktop/tlp.nix
     ./desktop/ly.nix

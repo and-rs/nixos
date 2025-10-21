@@ -7,6 +7,7 @@
 
     # For cachyOS kernel
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    xremap.url = "github:xremap/nix-flake";
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
@@ -24,12 +25,16 @@
     };
   };
 
-  outputs = { self, nixpkgs, spicetify-nix, chaotic, ... }@inputs:
+  outputs = { self, nixpkgs, spicetify-nix, chaotic, xremap, ... }@inputs:
     let system = "x86_64-linux";
     in {
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs system spicetify-nix; };
-        modules = [ ./configuration.nix chaotic.nixosModules.default ];
+        modules = [
+          ./configuration.nix
+          xremap.nixosModules.default
+          chaotic.nixosModules.default
+        ];
       };
     };
 }

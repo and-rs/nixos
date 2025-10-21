@@ -48,6 +48,7 @@
     shellcheck
     beautysh
 
+    yaml-language-server
     nixfmt-classic
     nil
     gcc
