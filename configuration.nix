@@ -35,7 +35,14 @@
     "rhgb"
   ];
 
-  boot.loader.systemd-boot.enable = true;
+  boot.loader = {
+    systemd-boot = {
+      enable = true;
+      windows = { "11-home".efiDeviceHandle = "HD1b"; };
+    };
+    efi.canTouchEfiVariables = false;
+  };
+
   # boot.loader = {
   #   efi = {
   #     canTouchEfiVariables = true;

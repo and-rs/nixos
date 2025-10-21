@@ -53,6 +53,7 @@
     thermald
     nautilus
     parted
+    refind
     ffmpeg
     dunst
     mpv
@@ -64,7 +65,6 @@
     obsidian
     openh264
     vesktop
-    brave
     x264
   ];
 }
