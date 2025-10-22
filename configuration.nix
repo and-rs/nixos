@@ -5,7 +5,7 @@
     ./apps/packages.nix
     ./desktop/virt_manager.nix
     ./desktop/environment.nix
-    ./desktop/xremap.nix
+    # ./desktop/xremap.nix
     ./desktop/asus.nix
     ./desktop/tlp.nix
     ./desktop/ly.nix
@@ -22,7 +22,11 @@
 
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
   services.scx.enable = true;
+
   zramSwap.enable = true;
+  boot.resumeDevice = "/dev/disk/by-uuid/5a12d8bd-2ab0-4e3b-80fa-57b0a9874513";
+  swapDevices =
+    [{ device = "/dev/disk/by-uuid/5a12d8bd-2ab0-4e3b-80fa-57b0a9874513"; }];
 
   boot.blacklistedKernelModules = [ "nouveau" "sdhci" "sdhci_pci" ];
   boot.kernelParams = [
@@ -98,7 +102,6 @@
     isNormalUser = true;
     description = "and-rs";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ steam-run ];
   };
 
   programs = {
