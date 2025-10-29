@@ -11,24 +11,12 @@
 
   programs.hyprlock.enable = true;
   nixpkgs.config.input-fonts.acceptLicense = true;
-
-  fonts = {
-    packages = with pkgs; [ input-fonts recursive hanken-grotesk ];
-    fontconfig = {
-      enable = true;
-      antialias = true;
-      subpixel.lcdfilter = "none";
-      hinting = {
-        enable = true;
-        autohint = true;
-        # style = "none";
-      };
-      defaultFonts = {
-        monospace = [ "Input Mono" ];
-        sansSerif = [ "Hanken Grotesk" ];
-        serif = [ "Hanken Grotesk" ];
-      };
-    };
+  programs.niri.enable = true;
+  environment.sessionVariables = {
+    XDG_CURRENT_DESKTOP = "niri";
+    XDG_SESSION_TYPE = "wayland";
+    LIBVA_DRIVER_NAME = "iHD";
+    NIXOS_OZONE_WL = "1";
   };
 
   programs.dconf.profiles.user = {
@@ -40,20 +28,12 @@
     }];
   };
 
-  programs.niri.enable = true;
-
-  environment.sessionVariables = {
-    XDG_CURRENT_DESKTOP = "niri";
-    XDG_SESSION_TYPE = "wayland";
-    LIBVA_DRIVER_NAME = "iHD";
-    NIXOS_OZONE_WL = "1";
-  };
-
   environment.systemPackages = with pkgs; [
     (rofi.override { plugins = [ rofi-calc ]; })
     xwayland-satellite
     wl-clipboard
-    swayidle
+    quickshell
+    hypridle
     xwayland
     waybar
     swww

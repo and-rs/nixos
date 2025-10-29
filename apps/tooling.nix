@@ -3,6 +3,7 @@
     bun
     deno
     biome
+    nodejs_22
     rustywind
     corepack_latest
     pnpm-shell-completion
@@ -19,14 +20,17 @@
     vscode-langservers-extracted
     tailwindcss-language-server
 
-    luajitPackages.luarocks
-    lua-language-server
-    stylua
     lua
+    stylua
+    lua-language-server
+    luajitPackages.luarocks
 
     # I don't really know what these are but I need for numpy
     zlib
+    libcxx.dev
     stdenv.cc.cc.lib
+    stdenv.cc
+    stdenv
 
     python313Packages.pip
     basedpyright
@@ -44,15 +48,11 @@
     go
     gopls
 
-    bash-language-server
-    shellcheck
     beautysh
+    shellcheck
+    bash-language-server
 
-    yaml-language-server
-    nixfmt-classic
-    nil
     gcc
-
     rustc
     cargo
     rustup
@@ -65,7 +65,6 @@
     postgres-lsp
     sleek
 
-    glsl_analyzer
     hurl
     curl
 
@@ -74,16 +73,36 @@
     typst
 
     qsv
-    millet
+    miller
     csvdiff
     csvlens
 
     docker_28
     docker-compose
+
+    just
+    cmake
+    ninja
+    gnumake
+    pkg-config
+    kdePackages.qt6ct
+    kdePackages.qtbase
+    kdePackages.qttools
+    kdePackages.qtdeclarative
+
+    nil
     tree-sitter
+    glsl_analyzer
+    nixfmt-classic
+    yaml-language-server
+    kdePackages.qtdeclarative
   ];
 
   environment.sessionVariables = {
+    CC = "${pkgs.stdenv.cc}/bin/gcc";
+    AR = "${pkgs.stdenv.cc.bintools}/bin/ar";
+    CFLAGS = "-O2 -D_GNU_SOURCE";
+    CXXFLAGS = "-O2 -D_GNU_SOURCE";
     LD_LIBRARY_PATH = "${
         pkgs.lib.makeLibraryPath [ pkgs.zlib pkgs.stdenv.cc.cc.lib ]
       }:$LD_LIBRARY_PATH";

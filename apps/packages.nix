@@ -1,11 +1,9 @@
 { pkgs, system, inputs, ... }: {
   environment.systemPackages = with pkgs; [
-    lxappearance
-
+    # terminal
     imagemagick
     fastfetch
     hyperfine
-    gnumake
     ghostty
     cbonsai
     cmatrix
@@ -18,7 +16,6 @@
     delta
     p7zip
     helix
-    yazi
     btop
     stow
     tmux
@@ -35,6 +32,7 @@
     gh
     jq
 
+    # desktop
     networkmanagerapplet
     xfce.ristretto
     inotify-tools
@@ -56,13 +54,15 @@
     dunst
     mpv
 
+    # apps
     inputs.zen-browser.packages."${system}".default
     google-chrome
-    obs-studio
     keepassxc
     obsidian
-    openh264
     vesktop
+
+    obs-studio
+    openh264
     x264
   ];
 }

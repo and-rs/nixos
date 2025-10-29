@@ -3,9 +3,11 @@
     ./hardware-configuration.nix
     ./apps/tooling.nix
     ./apps/packages.nix
+
     ./desktop/virt_manager.nix
     ./desktop/environment.nix
-    # ./desktop/xremap.nix
+    ./desktop/xremap.nix
+    ./desktop/fonts.nix
     ./desktop/asus.nix
     ./desktop/tlp.nix
     ./desktop/ly.nix
@@ -20,13 +22,8 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_cachyos;
   services.scx.enable = true;
-
   zramSwap.enable = true;
-  boot.resumeDevice = "/dev/disk/by-uuid/5a12d8bd-2ab0-4e3b-80fa-57b0a9874513";
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/5a12d8bd-2ab0-4e3b-80fa-57b0a9874513"; }];
 
   boot.blacklistedKernelModules = [ "nouveau" "sdhci" "sdhci_pci" ];
   boot.kernelParams = [
@@ -46,25 +43,6 @@
     };
     efi.canTouchEfiVariables = false;
   };
-
-  # boot.loader = {
-  #   efi = {
-  #     canTouchEfiVariables = true;
-  #     efiSysMountPoint = "/boot";
-  #   };
-  #   grub = {
-  #     enable = true;
-  #     efiSupport = true;
-  #     device = "nodev";
-  #     useOSProber = true;
-  #     splashImage = null;
-  #     backgroundColor = null;
-  #     theme = pkgs.sleek-grub-theme.override {
-  #       withStyle = "dark";
-  #       withBanner = "";
-  #     };
-  #   };
-  # };
 
   networking.hostName = "M16"; # Define your hostname.
   networking.networkmanager.enable = true;
@@ -151,5 +129,5 @@
     };
   };
 
-  system.stateVersion = "24.11"; # do not change at all
+  system.stateVersion = "25.05"; # do not change at all
 }
