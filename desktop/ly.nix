@@ -2,10 +2,6 @@
   services.displayManager.ly = {
     enable = true;
     settings = {
-      # bigclock = "en";
-      # bigclock_12hr = false;
-      # bigclock_seconds = true;
-
       animation = "colormix";
       colormix_col1 = "0x0008";
       colormix_col2 = "0x0008";

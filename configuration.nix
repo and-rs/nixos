@@ -1,26 +1,25 @@
 { pkgs, inputs, ... }: {
   imports = [
     ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.home-manager
+
     ./apps/tooling.nix
     ./apps/packages.nix
 
-    ./desktop/virt_manager.nix
+    ./desktop/directories.nix
     ./desktop/environment.nix
+    ./desktop/libvirt.nix
     ./desktop/xremap.nix
     ./desktop/fonts.nix
     ./desktop/asus.nix
     ./desktop/tlp.nix
     ./desktop/ly.nix
-    inputs.home-manager.nixosModules.home-manager
   ];
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = { and-rs = import ./home-manager/home.nix; };
   };
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nixpkgs.config.allowUnfree = true;
 
   services.scx.enable = true;
   zramSwap.enable = true;
@@ -97,12 +96,11 @@
     openssh.enable = true;
     thermald.enable = true;
     gnome.gnome-keyring.enable = true;
-  };
-
-  services.logind.settings.Login = {
-    HandlePowerKey = "suspend";
-    HandleSuspendKey = "suspend";
-    HandleLidSwitch = "suspend-then-hibernate";
+    logind.settings.Login = {
+      HandlePowerKey = "suspend";
+      HandleSuspendKey = "suspend";
+      HandleLidSwitch = "suspend-then-hibernate";
+    };
   };
 
   hardware.graphics = {

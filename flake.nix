@@ -32,6 +32,7 @@
         specialArgs = { inherit inputs system spicetify-nix; };
         modules = [
           ./configuration.nix
+          ./settings.nix
           xremap.nixosModules.default
           chaotic.nixosModules.default
         ];

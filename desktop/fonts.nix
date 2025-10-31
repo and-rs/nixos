@@ -1,4 +1,6 @@
 { pkgs, ... }: {
+  nixpkgs.config.input-fonts.acceptLicense = true;
+
   fonts = {
     packages = with pkgs; [ input-fonts recursive hanken-grotesk ];
     fontconfig = {

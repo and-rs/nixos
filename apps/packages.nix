@@ -16,6 +16,7 @@
     delta
     p7zip
     helix
+    yazi
     btop
     stow
     tmux
@@ -51,6 +52,7 @@
     nautilus
     parted
     ffmpeg
+    satty
     dunst
     mpv
 

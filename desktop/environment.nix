@@ -10,7 +10,6 @@
   };
 
   programs.hyprlock.enable = true;
-  nixpkgs.config.input-fonts.acceptLicense = true;
   programs.niri.enable = true;
   environment.sessionVariables = {
     XDG_CURRENT_DESKTOP = "niri";
