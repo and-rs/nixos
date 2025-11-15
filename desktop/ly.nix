@@ -3,18 +3,18 @@
     enable = true;
     settings = {
       animation = "colormix";
-      colormix_col1 = "0x0008";
-      colormix_col2 = "0x0008";
-      colormix_col3 = "0x0001";
+      colormix_col1 = "0x00ffffff";
+      colormix_col2 = "0x00000000";
+      colormix_col3 = "0x00000000";
 
       full_color = true;
       blank_box = true;
-      bg = "0x0008";
-      fg = "0x0001";
-      error_bg = "0x0008";
-      error_fg = "0x0002";
+      bg = "0x00000000";
+      fg = "0x00ffffff";
+      error_bg = "0x001b1e25";
+      error_fg = "0x00ffc0b9";
 
-      border_fg = "0x0101";
+      border_fg = "0x00ffffff";
       hide_borders = false;
 
       margin_box_h = 2;

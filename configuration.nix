@@ -21,6 +21,7 @@
     users = { and-rs = import ./home-manager/home.nix; };
   };
 
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
   services.scx.enable = true;
   zramSwap.enable = true;
 
@@ -78,7 +79,7 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "and-rs";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
   programs = {

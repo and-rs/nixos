@@ -16,6 +16,7 @@
     delta
     p7zip
     helix
+    file
     yazi
     btop
     stow
@@ -61,9 +62,12 @@
     google-chrome
     keepassxc
     obsidian
+    winboat
     vesktop
+    spotify
 
     obs-studio
+    obs-cmd
     openh264
     x264
   ];

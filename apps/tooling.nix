@@ -62,9 +62,6 @@
     zig
     zig-shell-completions
 
-    postgres-lsp
-    sleek
-
     hurl
     curl
 
@@ -91,11 +88,11 @@
     kdePackages.qtdeclarative
 
     nil
+    sleek
     tree-sitter
     glsl_analyzer
     nixfmt-classic
     yaml-language-server
-    kdePackages.qtdeclarative
   ];
 
   environment.sessionVariables = {
@@ -113,6 +110,7 @@
     defaultEditor = true;
   };
 
+  users.extraGroups.docker.members = [ "and-rs" ];
   virtualisation.docker = {
     rootless = {
       enable = true;
