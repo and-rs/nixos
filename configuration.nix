@@ -1,7 +1,8 @@
 { pkgs, inputs, ... }: {
   imports = [
-    ./hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
+    ./hardware-configuration.nix
+    ./networking/hosts.nix
 
     ./apps/tooling.nix
     ./apps/packages.nix
@@ -44,8 +45,6 @@
     efi.canTouchEfiVariables = false;
   };
 
-  networking.hostName = "M16"; # Define your hostname.
-  networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
 

@@ -11,6 +11,7 @@
     zoxide
     direnv
     rclone
+    broot
     tokei
     unzip
     delta
