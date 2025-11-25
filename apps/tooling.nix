@@ -25,26 +25,6 @@
     lua-language-server
     luajitPackages.luarocks
 
-    # I don't really know what these are but I need for numpy
-    zlib
-    libcxx.dev
-    stdenv.cc.cc.lib
-    stdenv.cc
-    stdenv
-
-    python313Packages.pip
-    basedpyright
-    virtualenv
-    python313
-    python312
-    pyrefly
-    djlint
-    black
-    zuban
-    ruff
-    uv
-    ty
-
     go
     gopls
 
@@ -94,16 +74,6 @@
     nixfmt-classic
     yaml-language-server
   ];
-
-  environment.sessionVariables = {
-    CC = "${pkgs.stdenv.cc}/bin/gcc";
-    AR = "${pkgs.stdenv.cc.bintools}/bin/ar";
-    CFLAGS = "-O2 -D_GNU_SOURCE";
-    CXXFLAGS = "-O2 -D_GNU_SOURCE";
-    LD_LIBRARY_PATH = "${
-        pkgs.lib.makeLibraryPath [ pkgs.zlib pkgs.stdenv.cc.cc.lib ]
-      }:$LD_LIBRARY_PATH";
-  };
 
   programs.neovim = {
     enable = true;

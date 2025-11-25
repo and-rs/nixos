@@ -6,6 +6,7 @@
 
     ./apps/tooling.nix
     ./apps/packages.nix
+    ./apps/python.nix
 
     ./desktop/directories.nix
     ./desktop/environment.nix
@@ -45,6 +46,8 @@
     efi.canTouchEfiVariables = false;
   };
 
+  networking.hostName = "M16"; # Define your hostname.
+  networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
 
