@@ -48,6 +48,7 @@
     blueberry
     libnotify
     playerctl
+    xorg.xrdb
     powertop
     pciutils
     thermald

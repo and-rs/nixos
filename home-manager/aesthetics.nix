@@ -20,6 +20,8 @@
     })
   ];
 
+  xresources.extraConfig = "Xft.dpi: 196";
+
   home.sessionVariables.GTK_THEME = "Colloid-Grey-Dark";
 
   gtk = {

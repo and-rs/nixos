@@ -2,7 +2,7 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./hardware-configuration.nix
-    ./networking/hosts.nix
+    ./networking/blocklist.nix
 
     ./apps/tooling.nix
     ./apps/packages.nix
