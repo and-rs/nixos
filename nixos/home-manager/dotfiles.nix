@@ -17,8 +17,7 @@ in {
 
       if [ ! -d "${neovimPath}/.git" ]; then
         ${pkgs.git}/bin/git clone ${neovimRepo} ${neovimPath}
-        cd ${neovimPath}
-        ${pkgs.stow}/bin/stow -t ${home} .
+        ln -s ${neovimPath} $HOME/.config
       fi
     '
   '';

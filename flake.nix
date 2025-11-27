@@ -50,7 +50,5 @@
         system = darwinSystem;
         modules = [ ./darwin/configuration.nix ];
       };
-
-      # darwinPackages = self.darwinConfigurations.M1.pkgs;
     };
 }
