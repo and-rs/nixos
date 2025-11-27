@@ -1,0 +1,30 @@
+{ pkgs, ... }: {
+  environment.systemPackages = with pkgs; [
+    imagemagick
+    fastfetch
+    hyperfine
+    cbonsai
+    cmatrix
+    ripgrep
+    zoxide
+    direnv
+    tokei
+    unzip
+    delta
+    p7zip
+    helix
+    yazi
+    btop
+    stow
+    tmux
+    wget
+    git
+    eza
+    bat
+    fzf
+    zsh
+    fd
+    gh
+    jq
+  ];
+}

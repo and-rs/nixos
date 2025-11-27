@@ -3,14 +3,10 @@
     bun
     deno
     biome
-    nodejs_22
     rustywind
     corepack_latest
     pnpm-shell-completion
     nodePackages_latest.nodejs
-
-    tailwindcss_4
-    watchman
 
     prettierd
     typescript
@@ -35,6 +31,7 @@
     gcc
     rustc
     cargo
+    clippy
     rustup
     rustfmt
 
@@ -54,18 +51,11 @@
     csvdiff
     csvlens
 
-    docker_28
-    docker-compose
-
     just
     cmake
     ninja
     gnumake
     pkg-config
-    kdePackages.qt6ct
-    kdePackages.qtbase
-    kdePackages.qttools
-    kdePackages.qtdeclarative
 
     nil
     sleek
@@ -74,17 +64,4 @@
     nixfmt-classic
     yaml-language-server
   ];
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
-
-  users.extraGroups.docker.members = [ "and-rs" ];
-  virtualisation.docker = {
-    rootless = {
-      enable = true;
-      setSocketVariable = true;
-    };
-  };
 }

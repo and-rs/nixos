@@ -4,9 +4,14 @@
     ./hardware-configuration.nix
     ./networking/blocklist.nix
 
-    ./apps/tooling.nix
+    # shared packages
+    ../modules/terminal.nix
+    ../modules/tooling.nix
+    ../modules/python.nix
+
+    ./apps/terminal-linux.nix
+    ./apps/tooling-linux.nix
     ./apps/packages.nix
-    ./apps/python.nix
 
     ./desktop/directories.nix
     ./desktop/environment.nix

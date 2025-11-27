@@ -1,40 +1,5 @@
-{ pkgs, system, inputs, ... }: {
+{ pkgs, inputs, ... }: {
   environment.systemPackages = with pkgs; [
-    # terminal
-    imagemagick
-    fastfetch
-    hyperfine
-    ghostty
-    cbonsai
-    cmatrix
-    ripgrep
-    zoxide
-    direnv
-    rclone
-    broot
-    tokei
-    unzip
-    delta
-    p7zip
-    helix
-    file
-    yazi
-    btop
-    stow
-    tmux
-    wget
-    tldr
-    glab
-    git
-    eza
-    bat
-    fzf
-    zsh
-    bc
-    fd
-    gh
-    jq
-
     # desktop
     networkmanagerapplet
     xfce.ristretto
@@ -60,7 +25,7 @@
     mpv
 
     # apps
-    inputs.zen-browser.packages."${system}".default
+    inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
     google-chrome
     keepassxc
     obsidian
