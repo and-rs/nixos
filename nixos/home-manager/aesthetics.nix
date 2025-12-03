@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, ... }: {
   nixpkgs.config.input-fonts.acceptLicense = true;
 
   home.packages = with pkgs; [
@@ -21,7 +21,6 @@
   ];
 
   xresources.extraConfig = "Xft.dpi: 196";
-
   home.sessionVariables.GTK_THEME = "Colloid-Grey-Dark";
 
   gtk = {
@@ -35,18 +34,4 @@
   };
 
   qt = { enable = true; };
-
-  programs.spicetify = let
-    spicePkgs =
-      inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-  in {
-    enable = false;
-    theme = spicePkgs.themes.catppuccin;
-    colorScheme = "frappe";
-    enabledExtensions = with spicePkgs.extensions; [
-      fullAppDisplay
-      shuffle
-      hidePodcasts
-    ];
-  };
 }

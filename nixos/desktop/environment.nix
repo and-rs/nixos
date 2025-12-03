@@ -27,8 +27,17 @@
     }];
   };
 
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+  };
+
   environment.systemPackages = with pkgs; [
     (rofi.override { plugins = [ rofi-calc ]; })
+    libqalculate # required for rofi-calc
+
     xwayland-satellite
     wl-clipboard
     quickshell

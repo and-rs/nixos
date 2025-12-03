@@ -1,8 +1,8 @@
 { pkgs, ... }: {
   imports = [
-    ../modules/terminal.nix
-    ../modules/tooling.nix
-    ../modules/python.nix
+    ../common/terminal.nix
+    ../common/tooling.nix
+    ../common/python.nix
     ./apps/terminal-macos.nix
   ];
 

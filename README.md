@@ -2,8 +2,8 @@
 
 ## Structure
 
-1. `./modules`
-   - Shared modules between the two hosts, with the exact same tooling and terminal packages.
+1. `./common`
+   - Shared common between the two hosts, with the exact same tooling and terminal packages.
 
 2. `./darwin`
    - Super simple nix-darwin setup for reproducible packages.

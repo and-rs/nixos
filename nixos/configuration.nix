@@ -5,9 +5,9 @@
     ./networking/blocklist.nix
 
     # shared packages
-    ../modules/terminal.nix
-    ../modules/tooling.nix
-    ../modules/python.nix
+    ../common/terminal.nix
+    ../common/tooling.nix
+    ../common/python.nix
 
     ./apps/terminal-linux.nix
     ./apps/tooling-linux.nix
