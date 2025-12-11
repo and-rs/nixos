@@ -24,6 +24,8 @@
     go
     gopls
 
+    hurl
+    curl
     beautysh
     shellcheck
     bash-language-server
@@ -38,9 +40,6 @@
     zls
     zig
     zig-shell-completions
-
-    hurl
-    curl
 
     tinymist
     typstyle

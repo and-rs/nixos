@@ -11,12 +11,9 @@ let
     } "$out/share/icons/Posy's Cursor Black (Scalable)"
   '';
 in {
+  home.packages = with pkgs; [ posy-cursors ];
   home.pointerCursor = {
     gtk.enable = true;
-    # x11 = {
-    #   enable = true;
-    #   defaultCursor = "Posy's Cursor Black (Scalable)";
-    # };
     name = "Posy's Cursor Black (Scalable)";
     size = 24;
     package = posysCursor;

@@ -1,7 +1,13 @@
 { pkgs, lib, config, ... }:
 let
   myPython = pkgs.python313.buildEnv.override {
-    extraLibs = with pkgs.python313Packages; [ tkinter pip virtualenv uv ];
+    extraLibs = with pkgs.python313Packages; [
+      tkinter
+      pip
+      virtualenv
+      uv
+      openpyxl
+    ];
     ignoreCollisions = true;
   };
 in {

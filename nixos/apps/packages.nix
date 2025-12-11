@@ -33,6 +33,7 @@
     vesktop
     spotify
 
+    tradingview
     obs-studio
     obs-cmd
     openh264

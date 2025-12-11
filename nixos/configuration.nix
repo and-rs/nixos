@@ -32,17 +32,6 @@
   services.scx.enable = true;
   zramSwap.enable = true;
 
-  boot.blacklistedKernelModules = [ "nouveau" "sdhci" "sdhci_pci" ];
-  boot.kernelParams = [
-    "modprobe.blacklist=sdhci"
-    "modprobe.blacklist=sdhci_pci"
-    "rd.driver.blacklist=nouveau"
-    "modprobe.blacklist=nouveau"
-    "i915.force_probe=46a6"
-    "quite"
-    "rhgb"
-  ];
-
   boot.loader = {
     systemd-boot = {
       enable = true;
@@ -109,18 +98,6 @@
       HandleSuspendKey = "suspend";
       HandleLidSwitch = "suspend-then-hibernate";
     };
-  };
-
-  hardware.graphics = {
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver
-      intel-vaapi-driver
-      vaapi-intel-hybrid
-      libvdpau-va-gl
-      libva-utils
-      vpl-gpu-rt
-    ];
   };
 
   xdg.mime = {
