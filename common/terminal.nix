@@ -8,6 +8,7 @@
     ripgrep
     zoxide
     direnv
+    slides
     tokei
     unzip
     delta
