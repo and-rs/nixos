@@ -13,9 +13,9 @@ let
 in {
   home.packages = with pkgs; [ posy-cursors ];
   home.pointerCursor = {
-    gtk.enable = true;
-    name = "Posy's Cursor Black (Scalable)";
-    size = 24;
+    name = "'Posy's Cursor Black (Scalable)'";
     package = posysCursor;
+    gtk.enable = true;
+    size = 20;
   };
 }

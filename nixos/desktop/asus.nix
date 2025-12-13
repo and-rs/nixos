@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }: {
+{ pkgs, config, ... }: {
 
   hardware.graphics = {
     enable = true;
@@ -12,12 +12,12 @@
   };
 
   hardware.nvidia = {
-    open = true;
+    open = false;
     nvidiaSettings = true;
     modesetting.enable = true;
+    dynamicBoost.enable = true;
     powerManagement.enable = true;
     powerManagement.finegrained = true;
-    dynamicBoost.enable = lib.mkDefault true;
     package = config.boot.kernelPackages.nvidiaPackages.production;
 
     prime = {
@@ -34,8 +34,8 @@
   boot.kernelParams = [ "i915.force_probe=46a6" "quiet" ];
 
   services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
-  systemd.services.nvidia-powerd.enable = false;
   systemd.services.supergfxd.path = [ pkgs.pciutils ];
+  systemd.services.nvidia-powerd.enable = false;
 
   services = {
     supergfxd.enable = true;
@@ -45,5 +45,10 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ asusctl supergfxctl ];
+  environment.systemPackages = with pkgs; [
+    asusctl
+    supergfxctl
+    nvtopPackages.intel
+    nvtopPackages.nvidia
+  ];
 }

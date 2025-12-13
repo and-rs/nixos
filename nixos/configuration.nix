@@ -1,13 +1,8 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, cachyosOverlay, ... }: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./hardware-configuration.nix
     ./networking/blocklist.nix
-
-    # shared packages
-    ../common/terminal.nix
-    ../common/tooling.nix
-    ../common/python.nix
 
     ./apps/terminal-linux.nix
     ./apps/tooling-linux.nix
@@ -28,20 +23,28 @@
     users = { and-rs = import ./home-manager/home.nix; };
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_cachyos;
-  services.scx.enable = true;
+  # necessary wiring for the flake resposible for this kernel
+  nixpkgs.overlays = [ cachyosOverlay ];
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto;
+
   zramSwap.enable = true;
 
   boot.loader = {
     systemd-boot = {
       enable = true;
       windows = { "11-home".efiDeviceHandle = "HD1b"; };
+      consoleMode = "max";
     };
     efi.canTouchEfiVariables = false;
   };
 
   networking.hostName = "M16"; # Define your hostname.
   networking.networkmanager.enable = true;
+  networking.firewall = {
+    enable = true;
+    allowedUDPPorts = [ 2300 ];
+  };
+
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
 
@@ -66,8 +69,8 @@
   services.pipewire = {
     enable = true;
     alsa.enable = true;
-    alsa.support32Bit = true;
     pulse.enable = true;
+    alsa.support32Bit = true;
     wireplumber.enable = true;
   };
 

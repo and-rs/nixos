@@ -1,5 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   environment.systemPackages = with pkgs; [
+    inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default
     imagemagick
     fastfetch
     hyperfine
@@ -14,6 +15,7 @@
     delta
     p7zip
     helix
+    kitty
     yazi
     btop
     stow

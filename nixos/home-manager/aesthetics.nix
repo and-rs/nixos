@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   nixpkgs.config.input-fonts.acceptLicense = true;
 
   home.packages = with pkgs; [
@@ -31,6 +31,18 @@
     };
     theme = { name = "Colloid-Grey-Dark"; };
     iconTheme = { name = "Papirus-Dark"; };
+  };
+
+  programs.spicetify = let
+    spicePkgs =
+      inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+  in {
+    enable = false;
+    enabledExtensions = with spicePkgs.extensions; [
+      fullAppDisplay
+      hidePodcasts
+      shuffle
+    ];
   };
 
   qt = { enable = true; };

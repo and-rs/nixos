@@ -9,6 +9,7 @@
     ];
   };
 
+  services.hypridle.enable = true;
   programs.hyprlock.enable = true;
   programs.niri.enable = true;
   environment.sessionVariables = {
@@ -41,9 +42,7 @@
     xwayland-satellite
     wl-clipboard
     quickshell
-    hypridle
     xwayland
-    waybar
     swww
   ];
 }

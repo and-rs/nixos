@@ -3,10 +3,9 @@
     bun
     deno
     biome
+    corepack
     rustywind
-    corepack_latest
     pnpm-shell-completion
-    nodePackages_latest.nodejs
 
     prettierd
     typescript

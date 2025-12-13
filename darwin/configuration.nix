@@ -1,10 +1,5 @@
 { pkgs, ... }: {
-  imports = [
-    ../common/terminal.nix
-    ../common/tooling.nix
-    ../common/python.nix
-    ./apps/terminal-macos.nix
-  ];
+  imports = [ ./apps/terminal-macos.nix ];
 
   programs.direnv = {
     package = pkgs.direnv;
@@ -15,7 +10,6 @@
   };
 
   nix.package = pkgs.nix;
-  nix.settings = { experimental-features = "nix-command flakes"; };
   environment.darwinConfig = "$HOME/Vault/personal/nixos/flake.nix";
 
   system.stateVersion = 4;
