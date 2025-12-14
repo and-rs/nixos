@@ -7,7 +7,7 @@
 
     xremap.url = "github:xremap/nix-flake";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    opencode.url = "github:aodhanhayter/opencode-flake";
+    opencode.url = "github:sst/opencode";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
 

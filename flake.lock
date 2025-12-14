@@ -655,11 +655,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1756288264,
-        "narHash": "sha256-Om8adB1lfkU7D33VpR+/haZ2gI5r3Q+ZbIPzE5sYnwE=",
+        "lastModified": 1765425892,
+        "narHash": "sha256-jlQpSkg2sK6IJVzTQBDyRxQZgKADC2HKMRfGCSgNMHo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ddd1826f294a0ee5fdc198ab72c8306a0ea73aa9",
+        "rev": "5d6bdbddb4695a62f0d00a3620b37a15275a5093",
         "type": "github"
       },
       "original": {
@@ -770,16 +770,16 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1762050027,
-        "narHash": "sha256-V+O37OzawdXcddXNOQBCbdO3ifzxMJo6g8U8MSeG2bE=",
-        "owner": "aodhanhayter",
-        "repo": "opencode-flake",
-        "rev": "dbf80731ff6ccab5c0cc02dd5fe82f82178095a7",
+        "lastModified": 1765679319,
+        "narHash": "sha256-soYI/pOIqarR9Ye18ZWfgP5gLKKvMaNCE0PZqZvEMo8=",
+        "owner": "sst",
+        "repo": "opencode",
+        "rev": "ed1eacfce043b32815a74e270c920a4d7f72e167",
         "type": "github"
       },
       "original": {
-        "owner": "aodhanhayter",
-        "repo": "opencode-flake",
+        "owner": "sst",
+        "repo": "opencode",
         "type": "github"
       }
     },
