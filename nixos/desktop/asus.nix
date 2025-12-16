@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: {
+{ pkgs, ... }: {
 
   hardware.graphics = {
     enable = true;
@@ -18,7 +18,6 @@
     dynamicBoost.enable = true;
     powerManagement.enable = true;
     powerManagement.finegrained = true;
-    package = config.boot.kernelPackages.nvidiaPackages.production;
 
     prime = {
       intelBusId = "PCI:0:2:0";
@@ -35,7 +34,7 @@
 
   services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
   systemd.services.supergfxd.path = [ pkgs.pciutils ];
-  systemd.services.nvidia-powerd.enable = false;
+  systemd.services.nvidia-powerd.enable = true;
 
   services = {
     supergfxd.enable = true;

@@ -26,14 +26,13 @@
 
     # apps
     inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
-    google-chrome
+    helium-browser
     keepassxc
     obsidian
     winboat
     vesktop
     spotify
 
-    tradingview
     obs-studio
     obs-cmd
     openh264

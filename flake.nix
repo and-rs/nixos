@@ -5,9 +5,9 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
+    opencode.url = "github:sst/opencode";
     xremap.url = "github:xremap/nix-flake";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    opencode.url = "github:sst/opencode";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
 
@@ -27,6 +27,10 @@
     let
       linuxSystem = "x86_64-linux";
       darwinSystem = "aarch64-darwin";
+      
+      customPackagesOverlay = final: prev: {
+        helium-browser = final.callPackage ./nixos/apps/helium.nix { };
+      };
     in {
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
         system = linuxSystem;
@@ -39,6 +43,7 @@
           ./common/default.nix
           ./nixos/configuration.nix
           xremap.nixosModules.default
+          { nixpkgs.overlays = [ customPackagesOverlay ]; }
         ];
       };
 

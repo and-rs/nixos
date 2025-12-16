@@ -40,6 +40,7 @@
     zig
     zig-shell-completions
 
+    marksman
     tinymist
     typstyle
     typst

@@ -11,7 +11,9 @@
 
   services.hypridle.enable = true;
   programs.hyprlock.enable = true;
+  services.upower.enable = true;
   programs.niri.enable = true;
+
   environment.sessionVariables = {
     XDG_CURRENT_DESKTOP = "niri";
     XDG_SESSION_TYPE = "wayland";
@@ -43,6 +45,8 @@
     wl-clipboard
     quickshell
     xwayland
+    hypridle
+    upower
     swww
   ];
 }

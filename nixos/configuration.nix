@@ -25,8 +25,8 @@
 
   # necessary wiring for the flake resposible for this kernel
   nixpkgs.overlays = [ cachyosOverlay ];
-  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto;
 
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto;
   zramSwap.enable = true;
 
   boot.loader = {
@@ -100,18 +100,6 @@
       HandlePowerKey = "suspend";
       HandleSuspendKey = "suspend";
       HandleLidSwitch = "suspend-then-hibernate";
-    };
-  };
-
-  xdg.mime = {
-    enable = true;
-    defaultApplications = {
-      "text/html" = "zen-beta.desktop";
-      "inode/directory" = "nautilus.desktop";
-      "x-scheme-handler/http" = "zen-beta.desktop";
-      "x-scheme-handler/https" = "zen-beta.desktop";
-      "x-scheme-handler/about" = "zen-beta.desktop";
-      "x-scheme-handler/unknown" = "zen-beta.desktop";
     };
   };
 
