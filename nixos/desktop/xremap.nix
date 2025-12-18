@@ -30,7 +30,8 @@ in {
 
     config.keymap = [{
       name = "emacs_macos";
-      application.not = [ "com.mitchellh.ghostty" ".virt-manager-wrapped" ];
+      application.not =
+        [ "com.mitchellh.ghostty" ".virt-manager-wrapped" "steam_app_813780" ];
       remap = {
         "C-b" = { with_mark = "left"; };
         "C-f" = { with_mark = "right"; };
