@@ -9,7 +9,6 @@
     ];
   };
 
-  services.hypridle.enable = true;
   programs.hyprlock.enable = true;
   services.upower.enable = true;
   programs.niri.enable = true;
@@ -43,10 +42,12 @@
 
     xwayland-satellite
     wl-clipboard
+    wf-recorder
     quickshell
     xwayland
     hypridle
     upower
+    slurp
     swww
   ];
 }

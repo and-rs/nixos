@@ -9,7 +9,6 @@
     xremap.url = "github:xremap/nix-flake";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -23,21 +22,18 @@
   };
 
   outputs = { self, nixpkgs, stable, xremap, zen-browser, spicetify-nix
-    , home-manager, nix-darwin, nix-cachyos-kernel, ... }@inputs:
+    , home-manager, nix-darwin, ... }@inputs:
     let
       linuxSystem = "x86_64-linux";
       darwinSystem = "aarch64-darwin";
-      
+
       customPackagesOverlay = final: prev: {
         helium-browser = final.callPackage ./nixos/apps/helium.nix { };
       };
     in {
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
         system = linuxSystem;
-        specialArgs = {
-          inherit inputs linuxSystem spicetify-nix;
-          cachyosOverlay = nix-cachyos-kernel.overlays.default;
-        };
+        specialArgs = { inherit inputs linuxSystem spicetify-nix; };
 
         modules = [
           ./common/default.nix

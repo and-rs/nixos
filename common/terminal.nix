@@ -21,6 +21,7 @@
     stow
     tmux
     wget
+    nmap
     git
     eza
     bat

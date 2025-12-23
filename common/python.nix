@@ -4,6 +4,9 @@ let
     extraLibs = with pkgs.python313Packages; [
       uv
       pip
+      numpy
+      pandas
+      polars
       tkinter
       openpyxl
       virtualenv
@@ -27,6 +30,7 @@ in {
       pkgs.ruff
       pkgs.tcl
       pkgs.tk
+      pkgs.ty
     ];
   };
 }

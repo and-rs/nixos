@@ -1,8 +1,9 @@
-{ pkgs, inputs, cachyosOverlay, ... }: {
+{ pkgs, inputs, ... }: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./hardware-configuration.nix
     ./networking/blocklist.nix
+    ./networking/networkd.nix
 
     ./apps/terminal-linux.nix
     ./apps/tooling-linux.nix
@@ -12,6 +13,7 @@
     ./desktop/environment.nix
     ./desktop/libvirt.nix
     ./desktop/xremap.nix
+    ./desktop/nvidia.nix
     ./desktop/fonts.nix
     ./desktop/asus.nix
     ./desktop/tlp.nix
@@ -23,10 +25,6 @@
     users = { and-rs = import ./home-manager/home.nix; };
   };
 
-  # necessary wiring for the flake resposible for this kernel
-  nixpkgs.overlays = [ cachyosOverlay ];
-
-  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto;
   zramSwap.enable = true;
 
   boot.loader = {
@@ -36,13 +34,6 @@
       consoleMode = "max";
     };
     efi.canTouchEfiVariables = false;
-  };
-
-  networking.hostName = "M16"; # Define your hostname.
-  networking.networkmanager.enable = true;
-  networking.firewall = {
-    enable = true;
-    allowedUDPPorts = [ 2300 ];
   };
 
   hardware.bluetooth.enable = true;
@@ -78,13 +69,12 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "and-rs";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "wheel" "docker" ];
   };
 
   programs = {
     zsh.enable = true;
     dconf.enable = true;
-    nm-applet.enable = true;
     noisetorch.enable = true;
     gnupg.agent.enable = true;
     gnupg.agent.enableSSHSupport = true;

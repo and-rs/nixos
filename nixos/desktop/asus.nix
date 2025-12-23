@@ -1,4 +1,41 @@
 { pkgs, ... }: {
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="usb", ATTR{power/wakeup}="disabled"
+  '';
+  systemd.services.disable-usb-wakeup = {
+    description = "Disable USB wakeup";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart =
+        "/bin/sh -c 'echo XHCI > /proc/acpi/wakeup 2>/dev/null || true'";
+    };
+  };
+
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+  boot.extraModprobeConfig = ''
+    blacklist spd5118
+  '';
+  boot.blacklistedKernelModules = [ "sdhci" "sdhci_pci" "spd5118" ];
+  boot.kernelParams = [
+    "i915.force_probe=46a6"
+    "acpi.debug_layer=0"
+    "acpi.debug_level=0"
+    "pcie_port_pm=off"
+    "clocksource=tsc"
+    "tsc=reliable"
+    "iommu=soft"
+    "quiet"
+  ];
+
+  systemd.services.supergfxd.path = [ pkgs.pciutils ];
+  services.supergfxd.enable = true;
+
+  environment.systemPackages = with pkgs; [ asusctl ];
+  services.asusd = {
+    enable = true;
+    enableUserService = true;
+  };
 
   hardware.graphics = {
     enable = true;
@@ -10,44 +47,4 @@
       vpl-gpu-rt
     ];
   };
-
-  hardware.nvidia = {
-    open = false;
-    nvidiaSettings = true;
-    modesetting.enable = true;
-    dynamicBoost.enable = true;
-    powerManagement.enable = true;
-    powerManagement.finegrained = true;
-
-    prime = {
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
-    prime.offload = {
-      enable = true;
-      enableOffloadCmd = true;
-    };
-  };
-
-  boot.blacklistedKernelModules = [ "nouveau" "sdhci" "sdhci_pci" ];
-  boot.kernelParams = [ "i915.force_probe=46a6" "quiet" ];
-
-  services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
-  systemd.services.supergfxd.path = [ pkgs.pciutils ];
-  systemd.services.nvidia-powerd.enable = true;
-
-  services = {
-    supergfxd.enable = true;
-    asusd = {
-      enable = true;
-      enableUserService = true;
-    };
-  };
-
-  environment.systemPackages = with pkgs; [
-    asusctl
-    supergfxctl
-    nvtopPackages.intel
-    nvtopPackages.nvidia
-  ];
 }

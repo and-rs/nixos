@@ -29,15 +29,6 @@
       "${config.internal.pythonWithTk}/${config.internal.pythonWithTk.sitePackages}";
     TCL_LIBRARY = "${pkgs.tcl}/lib/tcl${pkgs.tcl.version}";
     TK_LIBRARY = "${pkgs.tk}/lib/tk${pkgs.tk.version}";
-
-    LD_LIBRARY_PATH = "${
-        pkgs.lib.makeLibraryPath [
-          pkgs.stdenv.cc.cc.lib
-          pkgs.zlib
-          pkgs.tcl
-          pkgs.tk
-        ]
-      }:$LD_LIBRARY_PATH";
   };
 
   programs.neovim = {

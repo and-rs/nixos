@@ -1,7 +1,8 @@
 { pkgs, inputs, ... }: {
+  services.flatpak.enable = true;
+
   environment.systemPackages = with pkgs; [
     # desktop
-    networkmanagerapplet
     xfce.ristretto
     inotify-tools
     brightnessctl
@@ -28,6 +29,7 @@
     inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
     helium-browser
     keepassxc
+    hubstaff # fuck this shit
     obsidian
     winboat
     vesktop
