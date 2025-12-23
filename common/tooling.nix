@@ -33,8 +33,8 @@
     rustc
     cargo
     clippy
-    rustup
     rustfmt
+    rust-analyzer
 
     zls
     zig
