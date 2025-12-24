@@ -45,6 +45,7 @@
 
       darwinConfigurations.M1 = nix-darwin.lib.darwinSystem {
         system = darwinSystem;
+        specialArgs = { inherit inputs; };
         modules = [ ./darwin/configuration.nix ./common/default.nix ];
       };
     };
