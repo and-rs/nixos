@@ -2,7 +2,6 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./hardware-configuration.nix
-    ./networking/blocklist.nix
     ./networking/networkd.nix
 
     ./apps/terminal-linux.nix
