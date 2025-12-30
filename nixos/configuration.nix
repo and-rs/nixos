@@ -11,7 +11,6 @@
 
     ./desktop/directories.nix
     ./desktop/environment.nix
-    ./desktop/libvirt.nix
     ./desktop/xremap.nix
     ./desktop/nvidia.nix
     ./desktop/fonts.nix
@@ -88,8 +87,8 @@
     gnome.gnome-keyring.enable = true;
     logind.settings.Login = {
       HandlePowerKey = "suspend";
+      HandleLidSwitch = "suspend";
       HandleSuspendKey = "suspend";
-      HandleLidSwitch = "suspend-then-hibernate";
     };
   };
 

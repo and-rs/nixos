@@ -14,11 +14,14 @@
     blueberry
     libnotify
     playerctl
+    xsettingsd
+    xorg.xprop
     xorg.xrdb
     powertop
     pciutils
     thermald
     nautilus
+    nftables
     parted
     ffmpeg
     satty
@@ -36,8 +39,8 @@
     spotify
 
     obs-studio
-    obs-cmd
     openh264
+    obs-cmd
     x264
   ];
 }

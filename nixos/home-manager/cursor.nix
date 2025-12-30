@@ -11,7 +11,7 @@ let
     } "$out/share/icons/Posy's Cursor Black (Scalable)"
   '';
 in {
-  home.packages = with pkgs; [ posy-cursors ];
+  home.packages = with pkgs; [ apple-cursor ];
   home.pointerCursor = {
     name = "'Posy's Cursor Black (Scalable)'";
     package = posysCursor;

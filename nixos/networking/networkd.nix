@@ -29,4 +29,14 @@
       allowedUDPPorts = [ 2300 ];
     };
   };
+
+  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
+  networking.firewall.trustedInterfaces = [ "virbr0" ];
+
+  # winboat network fixes
+  systemd.tmpfiles.rules = [ "d /etc/nftables.d 0755 root root" ];
+  environment.etc."nftables.d/dns-nat.conf".text = ''
+    add rule ip natfix postrouting ip protocol udp udp dport 53 masquerade
+    add rule ip natfix postrouting ip protocol tcp tcp dport 53 masquerade
+  '';
 }

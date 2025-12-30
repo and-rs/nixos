@@ -13,7 +13,7 @@ let
     name = "helium";
     icon = "helium";
     type = "Application";
-    exec = "helium-browser %u";
+    exec = "env TZ=America/Bogota helium-browser %u";
     desktopName = "Helium Browser";
     categories = [ "Network" "WebBrowser" ];
     comment = "A fast and lightweight web browser";

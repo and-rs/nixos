@@ -29,6 +29,7 @@
 
       customPackagesOverlay = final: prev: {
         helium-browser = final.callPackage ./nixos/apps/helium.nix { };
+        docker-compose = stable.legacyPackages.${linuxSystem}.docker-compose;
       };
     in {
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
