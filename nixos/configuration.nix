@@ -28,7 +28,6 @@
   boot.loader = {
     systemd-boot = {
       enable = true;
-      windows = { "11-home".efiDeviceHandle = "HD1b"; };
       consoleMode = "max";
     };
     efi.canTouchEfiVariables = false;

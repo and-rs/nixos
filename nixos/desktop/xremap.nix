@@ -45,6 +45,7 @@ in {
         "Super-C-b" = { with_mark = "C-left"; };
         "Super-C-f" = { with_mark = "C-right"; };
         "Super-backspace" = [ "C-backspace" { set_mark = false; } ];
+        "A_L-backspace" = [ "Shift-home" "C-x" { set_mark = false; } ];
         "A_L-a" = "C-a";
         "A_L-b" = "C-b";
         "A_L-c" = "C-c";

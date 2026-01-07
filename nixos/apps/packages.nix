@@ -14,8 +14,6 @@
     blueberry
     libnotify
     playerctl
-    xsettingsd
-    xorg.xprop
     xorg.xrdb
     powertop
     pciutils
@@ -26,6 +24,7 @@
     ffmpeg
     satty
     dunst
+    dig
     mpv
 
     # apps
@@ -37,6 +36,8 @@
     winboat
     vesktop
     spotify
+
+    cabextract
 
     obs-studio
     openh264

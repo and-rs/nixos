@@ -24,10 +24,14 @@
     wireless.iwd.enable = true;
     nameservers = [ "127.0.0.1" ]; # dnsmasq setup
     networkmanager.enable = false; # disable in favor if networkd
-    firewall.trustedInterfaces = [ "virbr0" ];
     firewall = {
       enable = true;
-      allowedUDPPorts = [ 2300 ];
+      allowedTCPPorts = [ 27036 27037 47624 ];
+      allowedUDPPorts = [ 27031 27036 4380 27000 27015 ];
+      allowedUDPPortRanges = [{
+        from = 60000;
+        to = 61000;
+      }];
     };
   };
 
