@@ -1,9 +1,11 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     bun
     deno
     biome
     corepack
+    nodejs_25
     rustywind
     pnpm-shell-completion
 
@@ -56,11 +58,12 @@
     gnumake
     pkg-config
 
+    buf
     nil
     sleek
+    nixfmt
     tree-sitter
     glsl_analyzer
-    nixfmt-classic
     yaml-language-server
   ];
 }

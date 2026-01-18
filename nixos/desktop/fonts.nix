@@ -1,8 +1,15 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   nixpkgs.config.input-fonts.acceptLicense = true;
 
   fonts = {
-    packages = with pkgs; [ input-fonts recursive hanken-grotesk ];
+    packages = with pkgs; [
+      hanken-grotesk # UI
+      adwaita-fonts
+      input-fonts
+      commit-mono
+      recursive
+    ];
     fontconfig = {
       enable = true;
       antialias = true;

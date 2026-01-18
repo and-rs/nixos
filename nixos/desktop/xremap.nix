@@ -30,8 +30,13 @@ in {
 
     config.keymap = [{
       name = "emacs_macos";
-      application.not =
-        [ "com.mitchellh.ghostty" "xfreerdp" "steam_app_813780" ];
+      application.not = [
+        "com.mitchellh.ghostty"
+        "steam_app_813780"
+        "xfreerdp"
+        "neovide"
+        "kitty"
+      ];
       remap = {
         "C-b" = { with_mark = "left"; };
         "C-f" = { with_mark = "right"; };

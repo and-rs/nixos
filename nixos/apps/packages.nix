@@ -3,7 +3,6 @@
 
   environment.systemPackages = with pkgs; [
     # desktop
-    xfce.ristretto
     inotify-tools
     brightnessctl
     appimage-run
@@ -11,6 +10,7 @@
     pavucontrol
     efibootmgr
     alsa-utils
+    ristretto
     blueberry
     libnotify
     playerctl

@@ -21,6 +21,7 @@
     fastfetch
     hyperfine
     cbonsai
+    neovide
     cmatrix
     ripgrep
     zoxide
