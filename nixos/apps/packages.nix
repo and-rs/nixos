@@ -1,8 +1,21 @@
-{ pkgs, inputs, ... }: {
-  services.flatpak.enable = true;
+{ pkgs, inputs, ... }:
+let
+  apps = with pkgs; [
+    obs-studio
+    obs-cmd
+    inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
+    helium-browser
+    keepassxc
+    obsidian
+    hubstaff
+    winboat
+    vesktop
+    zathura
+    spotify
+    loupe
+  ];
 
-  environment.systemPackages = with pkgs; [
-    # desktop
+  system = with pkgs; [
     inotify-tools
     brightnessctl
     appimage-run
@@ -10,38 +23,29 @@
     pavucontrol
     efibootmgr
     alsa-utils
-    ristretto
-    blueberry
+    cabextract
     libnotify
+    blueberry
     playerctl
     xorg.xrdb
     powertop
-    pciutils
     thermald
-    nautilus
+    pciutils
     nftables
     parted
-    ffmpeg
-    satty
     dunst
-    dig
+    satty
     mpv
+    dig
+  ];
 
-    # apps
-    inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
-    helium-browser
-    keepassxc
-    hubstaff # fuck this shit
-    obsidian
-    winboat
-    vesktop
-    spotify
-
-    cabextract
-
-    obs-studio
+  codecs = with pkgs; [
     openh264
-    obs-cmd
+    ffmpeg
     x264
   ];
+in
+{
+  services.flatpak.enable = true;
+  environment.systemPackages = apps ++ codecs ++ system;
 }

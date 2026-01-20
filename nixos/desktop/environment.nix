@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
@@ -9,9 +10,18 @@
     ];
   };
 
-  programs.hyprlock.enable = true;
   services.upower.enable = true;
-  programs.niri.enable = true;
+  programs = {
+    niri.useNautilus = true;
+    hyprlock.enable = true;
+    niri.enable = true;
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
+    };
+  };
 
   environment.sessionVariables = {
     XDG_CURRENT_DESKTOP = "niri";
@@ -21,19 +31,16 @@
   };
 
   programs.dconf.profiles.user = {
-    databases = [{
-      lockAll = true;
-      settings = {
-        "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
-      };
-    }];
-  };
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
+    databases = [
+      {
+        lockAll = true;
+        settings = {
+          "org/gnome/desktop/interface" = {
+            color-scheme = "prefer-dark";
+          };
+        };
+      }
+    ];
   };
 
   environment.systemPackages = with pkgs; [

@@ -1,7 +1,8 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, ... }:
+{
   # yt-dlp setup to override my network block
   environment.systemPackages = with pkgs; [
-    (pkgs.writeShellScriptBin "yt-dlp-bypass" ''
+    (pkgs.writeShellScriptBin "yt-dlp" ''
       set -e
       REAL_RESOLV=$(${pkgs.coreutils}/bin/readlink -f /etc/resolv.conf)
       DNS_FILE=$(mktemp)
@@ -38,6 +39,7 @@
     tmux
     wget
     nmap
+    tldr
     git
     eza
     bat
