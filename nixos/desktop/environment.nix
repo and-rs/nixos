@@ -53,6 +53,7 @@
     quickshell
     xwayland
     hypridle
+    nautilus
     upower
     slurp
     swww
