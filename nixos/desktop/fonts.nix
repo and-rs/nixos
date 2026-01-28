@@ -8,7 +8,9 @@
       adwaita-fonts
       input-fonts
       commit-mono
+      monaspace
       recursive
+      lucide
     ];
     fontconfig = {
       enable = true;

@@ -1,4 +1,5 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, ... }:
+{
   nixpkgs.config.input-fonts.acceptLicense = true;
 
   home.packages = with pkgs; [
@@ -14,7 +15,7 @@
     papirus-folders
 
     (colloid-gtk-theme.override {
-      colorVariants = [ "dark" ];
+      colorVariants = [ "light" ];
       themeVariants = [ "grey" ];
       tweaks = [ "black" ];
     })
@@ -29,21 +30,28 @@
       name = "Hanken Grotesk";
       size = 10;
     };
-    theme = { name = "Colloid-Grey-Dark"; };
-    iconTheme = { name = "Papirus-Dark"; };
+    theme = {
+      name = "Colloid-Grey-Dark";
+    };
+    iconTheme = {
+      name = "Papirus-Dark";
+    };
   };
 
-  programs.spicetify = let
-    spicePkgs =
-      inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-  in {
-    enable = false;
-    enabledExtensions = with spicePkgs.extensions; [
-      fullAppDisplay
-      hidePodcasts
-      shuffle
-    ];
-  };
+  programs.spicetify =
+    let
+      spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+    in
+    {
+      enable = false;
+      enabledExtensions = with spicePkgs.extensions; [
+        fullAppDisplay
+        hidePodcasts
+        shuffle
+      ];
+    };
 
-  qt = { enable = true; };
+  qt = {
+    enable = true;
+  };
 }

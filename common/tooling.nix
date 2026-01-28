@@ -38,10 +38,6 @@
     rustfmt
     rust-analyzer
 
-    zls
-    zig
-    zig-shell-completions
-
     marksman
     tinymist
     typstyle
@@ -65,5 +61,8 @@
     tree-sitter
     glsl_analyzer
     yaml-language-server
+
+    # I use zig tooling from source
+    zig-shell-completions
   ];
 }

@@ -13,7 +13,8 @@ let
       systemctl --user start xremap
     fi
   '';
-in {
+in
+{
   users.users.and-rs.extraGroups = [ "input" ];
 
   services.xremap = {
@@ -23,54 +24,101 @@ in {
     userName = "and-rs";
     serviceMode = "user";
 
-    config.modmap = [{
-      name = "caps_ctrl";
-      remap = { "CapsLock" = "Ctrl_L"; };
-    }];
+    config.modmap = [
+      {
+        name = "caps_ctrl";
+        remap = {
+          "capslock" = "ctrl_l";
+        };
+      }
+    ];
 
-    config.keymap = [{
-      name = "emacs_macos";
-      application.not = [
-        "com.mitchellh.ghostty"
-        "steam_app_813780"
-        "xfreerdp"
-        "neovide"
-        "kitty"
-      ];
-      remap = {
-        "C-b" = { with_mark = "left"; };
-        "C-f" = { with_mark = "right"; };
-        "C-p" = { with_mark = "up"; };
-        "C-n" = { with_mark = "down"; };
-        "C-a" = { with_mark = "home"; };
-        "C-e" = { with_mark = "end"; };
-        "C-d" = [ "delete" { set_mark = false; } ];
-        "C-k" = [ "Shift-end" "C-x" { set_mark = false; } ];
-        "C-u" = [ "Shift-home" "C-x" { set_mark = false; } ];
-        "Super-C-b" = { with_mark = "C-left"; };
-        "Super-C-f" = { with_mark = "C-right"; };
-        "Super-backspace" = [ "C-backspace" { set_mark = false; } ];
-        "A_L-backspace" = [ "Shift-home" "C-x" { set_mark = false; } ];
-        "A_L-a" = "C-a";
-        "A_L-b" = "C-b";
-        "A_L-c" = "C-c";
-        "A_L-d" = "C-d";
-        "A_L-e" = "C-e";
-        "A_L-f" = "C-f";
-        "A_L-i" = "C-l";
-        "A_L-m" = "C-m";
-        "A_L-n" = "C-n";
-        "A_L-o" = "C-o";
-        "A_L-p" = "C-p";
-        "A_L-r" = "C-r";
-        "A_L-t" = "C-t";
-        "A_L-v" = "C-v";
-        "A_L-w" = "C-w";
-        "A_L-x" = "C-x";
-        "A_L-y" = "C-y";
-        "A_L-z" = "C-z";
-      };
-    }];
+    config.keymap = [
+      {
+        name = "wheres_my_tilde";
+        remap = {
+          "alt-semicolon" = "grave";
+        };
+      }
+      {
+        name = "emacs_macos";
+        application.not = [
+          "com.mitchellh.ghostty"
+          "steam_app_813780"
+          "Alacritty"
+          "xfreerdp"
+          "neovide"
+          "kitty"
+        ];
+        remap = {
+          "ctrl-b" = {
+            with_mark = "left";
+          };
+          "ctrl-f" = {
+            with_mark = "right";
+          };
+          "ctrl-p" = {
+            with_mark = "up";
+          };
+          "ctrl-n" = {
+            with_mark = "down";
+          };
+          "ctrl-a" = {
+            with_mark = "home";
+          };
+          "ctrl-e" = {
+            with_mark = "end";
+          };
+          "ctrl-d" = [
+            "delete"
+            { set_mark = false; }
+          ];
+          "ctrl-k" = [
+            "shift-end"
+            "ctrl-x"
+            { set_mark = false; }
+          ];
+          "ctrl-u" = [
+            "shift-home"
+            "ctrl-x"
+            { set_mark = false; }
+          ];
+          "super-ctrl-b" = {
+            with_mark = "ctrl-left";
+          };
+          "super-ctrl-f" = {
+            with_mark = "ctrl-right";
+          };
+          "super-backspace" = [
+            "ctrl-backspace"
+            { set_mark = false; }
+          ];
+          "alt_l-backspace" = [
+            "shift-home"
+            "ctrl-x"
+            { set_mark = false; }
+          ];
+          "alt_l-a" = "ctrl-a";
+          "alt_l-b" = "ctrl-b";
+          "alt_l-c" = "ctrl-c";
+          "alt_l-d" = "ctrl-d";
+          "alt_l-e" = "ctrl-e";
+          "alt_l-f" = "ctrl-f";
+          "alt_l-i" = "ctrl-l";
+          "alt_l-m" = "ctrl-m";
+          "alt_l-n" = "ctrl-n";
+          "alt_l-o" = "ctrl-o";
+          "alt_l-p" = "ctrl-p";
+          "alt_l-r" = "ctrl-r";
+          "alt_l-t" = "ctrl-t";
+          "alt_l-v" = "ctrl-v";
+          "alt_l-w" = "ctrl-w";
+          "alt_l-x" = "ctrl-x";
+          "alt_l-y" = "ctrl-y";
+          "alt_l-z" = "ctrl-z";
+        };
+      }
+    ];
   };
 
   systemd.user.services.xremap-niri-starter = {

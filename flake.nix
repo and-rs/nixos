@@ -21,8 +21,18 @@
     };
   };
 
-  outputs = { self, nixpkgs, stable, xremap, zen-browser, spicetify-nix
-    , home-manager, nix-darwin, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      stable,
+      xremap,
+      zen-browser,
+      spicetify-nix,
+      home-manager,
+      nix-darwin,
+      ...
+    }@inputs:
     let
       linuxSystem = "x86_64-linux";
       darwinSystem = "aarch64-darwin";
@@ -31,7 +41,8 @@
         helium-browser = final.callPackage ./nixos/apps/helium.nix { };
         docker-compose = stable.legacyPackages.${linuxSystem}.docker-compose;
       };
-    in {
+    in
+    {
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
         system = linuxSystem;
         specialArgs = { inherit inputs linuxSystem spicetify-nix; };
@@ -47,7 +58,10 @@
       darwinConfigurations.M1 = nix-darwin.lib.darwinSystem {
         system = darwinSystem;
         specialArgs = { inherit inputs; };
-        modules = [ ./darwin/configuration.nix ./common/default.nix ];
+        modules = [
+          ./darwin/configuration.nix
+          ./common/default.nix
+        ];
       };
     };
 }

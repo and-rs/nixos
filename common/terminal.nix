@@ -21,6 +21,7 @@
     imagemagick
     fastfetch
     hyperfine
+    alacritty
     cbonsai
     neovide
     cmatrix

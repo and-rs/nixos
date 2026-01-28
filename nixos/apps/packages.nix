@@ -33,7 +33,6 @@ let
     pciutils
     nftables
     parted
-    dunst
     satty
     mpv
     dig
