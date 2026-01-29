@@ -40,6 +40,19 @@
       customPackagesOverlay = final: prev: {
         helium-browser = final.callPackage ./nixos/apps/helium.nix { };
         docker-compose = stable.legacyPackages.${linuxSystem}.docker-compose;
+
+        phosphor-custom = final.callPackage ./common/fonts/phosphor-custom.nix {
+          fontsPath = ./fonts/phosphor-icons;
+        };
+        lucide-custom = final.callPackage ./common/fonts/lucide-custom.nix {
+          fontsPath = ./fonts/lucide-icons;
+        };
+        input-custom = final.callPackage ./common/fonts/input-custom.nix {
+          fontsPath = ./fonts/input-font;
+        };
+        commit-custom = final.callPackage ./common/fonts/commit-custom.nix {
+          fontsPath = ./fonts/commit-font;
+        };
       };
     in
     {

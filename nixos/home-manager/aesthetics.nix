@@ -1,13 +1,10 @@
 { pkgs, inputs, ... }:
 {
-  nixpkgs.config.input-fonts.acceptLicense = true;
-
   home.packages = with pkgs; [
     nerd-fonts.symbols-only
     material-symbols
 
     # ui fonts
-    input-fonts
     hanken-grotesk
     recursive
 
@@ -15,7 +12,7 @@
     papirus-folders
 
     (colloid-gtk-theme.override {
-      colorVariants = [ "light" ];
+      colorVariants = [ "dark" ];
       themeVariants = [ "grey" ];
       tweaks = [ "black" ];
     })

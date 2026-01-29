@@ -1,16 +1,17 @@
 { pkgs, ... }:
 {
-  nixpkgs.config.input-fonts.acceptLicense = true;
-
   fonts = {
     packages = with pkgs; [
       hanken-grotesk # UI
       adwaita-fonts
-      input-fonts
-      commit-mono
+
+      phosphor-custom
+      lucide-custom
+      commit-custom
+      input-custom
+
       monaspace
       recursive
-      lucide
     ];
     fontconfig = {
       enable = true;
