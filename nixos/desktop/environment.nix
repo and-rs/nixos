@@ -56,6 +56,7 @@
     nautilus
     upower
     slurp
+    grim
     swww
   ];
 }

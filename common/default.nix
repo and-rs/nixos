@@ -5,6 +5,7 @@
     ../common/python.nix
   ];
 
+  programs.nix-ld.enable = true;
   nix.optimise.automatic = true;
   nix.settings.warn-dirty = false;
   nix.settings.experimental-features = [

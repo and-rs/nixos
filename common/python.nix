@@ -1,7 +1,12 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
-  myPython = pkgs.python313.buildEnv.override {
-    extraLibs = with pkgs.python313Packages; [
+  myPython = pkgs.python314.buildEnv.override {
+    extraLibs = with pkgs.python314Packages; [
       uv
       pip
       numpy
@@ -13,7 +18,8 @@ let
     ];
     ignoreCollisions = true;
   };
-in {
+in
+{
   options.internal.pythonWithTk = lib.mkOption {
     type = lib.types.package;
     description = "Shared Python environment with Tkinter";

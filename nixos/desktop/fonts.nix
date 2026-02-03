@@ -23,7 +23,7 @@
         style = "full";
       };
       defaultFonts = {
-        monospace = [ "Input Mono" ];
+        monospace = [ "CommitMono" ];
         sansSerif = [ "Hanken Grotesk" ];
         serif = [ "Hanken Grotesk" ];
       };

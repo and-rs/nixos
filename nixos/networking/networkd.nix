@@ -1,8 +1,9 @@
-{ ... }: {
+{ ... }:
+{
   services = {
     tailscale.enable = true;
     resolved.enable = true;
-    resolved.dnssec = "false";
+    resolved.settings.Resolve.DNSSEC = false;
 
     dnsmasq = {
       enable = true;
@@ -26,12 +27,24 @@
     networkmanager.enable = false; # disable in favor if networkd
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 27036 27037 47624 ];
-      allowedUDPPorts = [ 27031 27036 4380 27000 27015 ];
-      allowedUDPPortRanges = [{
-        from = 60000;
-        to = 61000;
-      }];
+      allowedTCPPorts = [
+        27036
+        27037
+        47624
+      ];
+      allowedUDPPorts = [
+        27031
+        27036
+        4380
+        27000
+        27015
+      ];
+      allowedUDPPortRanges = [
+        {
+          from = 60000;
+          to = 61000;
+        }
+      ];
     };
   };
 
@@ -57,7 +70,9 @@
         dhcpV4Config.UseDNS = false;
         dhcpV6Config.UseDNS = false;
       };
-      "50-tailscale" = { matchConfig.Name = "tailscale0"; };
+      "50-tailscale" = {
+        matchConfig.Name = "tailscale0";
+      };
     };
   };
 
