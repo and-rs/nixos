@@ -6,11 +6,11 @@
 }:
 let
   pname = "helium-browser";
-  version = "0.8.2.1";
+  version = "0.8.4.1";
 
   src = fetchurl {
     url = "https://github.com/imputnet/helium-linux/releases/download/${version}/helium-${version}-x86_64.AppImage";
-    hash = "sha256-abNHp4WaR2MqidG42TErJZBR1PcUVtRpBYFiKCmadW8=";
+    hash = "sha256-y4KzR+pkBUuyVU+ALrzdY0n2rnTB7lTN2ZmVSzag5vE=";
   };
 
   desktopItem = makeDesktopItem {
