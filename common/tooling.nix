@@ -9,11 +9,10 @@
     rustywind
     pnpm-shell-completion
 
-    prettierd
+    vtsls
     typescript
     typescript-language-server
     nodePackages_latest.eslint
-    nodePackages_latest.prettier
     vscode-langservers-extracted
     tailwindcss-language-server
 

@@ -35,6 +35,13 @@ in
 
     config.keymap = [
       {
+        name = "better_chrome_search";
+        application.only = [ "helium" ];
+        remap = {
+          "alt_l-i" = "ctrl-shift-a";
+        };
+      }
+      {
         name = "wheres_my_tilde";
         remap = {
           "alt-semicolon" = "grave";
@@ -104,7 +111,6 @@ in
           "alt_l-d" = "ctrl-d";
           "alt_l-e" = "ctrl-e";
           "alt_l-f" = "ctrl-f";
-          "alt_l-i" = "ctrl-l";
           "alt_l-m" = "ctrl-m";
           "alt_l-n" = "ctrl-n";
           "alt_l-o" = "ctrl-o";
@@ -116,6 +122,7 @@ in
           "alt_l-x" = "ctrl-x";
           "alt_l-y" = "ctrl-y";
           "alt_l-z" = "ctrl-z";
+          # "alt_l-i" = "ctrl-l";
         };
       }
     ];
