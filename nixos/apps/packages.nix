@@ -1,18 +1,18 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 let
   apps = with pkgs; [
     obs-studio
     obs-cmd
-    inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
+
     helium-browser
+    firefox
+
     keepassxc
     obsidian
-    hubstaff
     winboat
     vesktop
     zathura
     spotify
-    loupe
   ];
 
   system = with pkgs; [
@@ -23,7 +23,6 @@ let
     pavucontrol
     efibootmgr
     alsa-utils
-    cabextract
     libnotify
     blueberry
     playerctl
@@ -45,6 +44,5 @@ let
   ];
 in
 {
-  services.flatpak.enable = true;
   environment.systemPackages = apps ++ codecs ++ system;
 }

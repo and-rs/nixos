@@ -39,6 +39,7 @@ in
         application.only = [ "helium" ];
         remap = {
           "alt_l-i" = "ctrl-shift-a";
+          "alt_l-shift-i" = "ctrl-l";
         };
       }
       {
@@ -122,7 +123,6 @@ in
           "alt_l-x" = "ctrl-x";
           "alt_l-y" = "ctrl-y";
           "alt_l-z" = "ctrl-z";
-          # "alt_l-i" = "ctrl-l";
         };
       }
     ];

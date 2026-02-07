@@ -1,5 +1,18 @@
 { pkgs, ... }:
+let
+  disableDBus =
+    pkg:
+    pkg.overrideAttrs (old: {
+      postInstall = (old.postInstall or "") + ''
+        for file in $out/share/applications/*.desktop; do
+          substituteInPlace "$file" --replace "DBusActivatable=true" "DBusActivatable=false"
+        done
+      '';
+    });
+in
 {
+  services.dbus.implementation = "broker";
+
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
@@ -44,6 +57,9 @@
   };
 
   environment.systemPackages = with pkgs; [
+    (disableDBus pkgs.nautilus) # file mngr
+    (disableDBus pkgs.loupe) # img viewer
+
     (rofi.override { plugins = [ rofi-calc ]; })
     libqalculate # required for rofi-calc
 
@@ -53,7 +69,6 @@
     quickshell
     xwayland
     hypridle
-    nautilus
     upower
     slurp
     grim

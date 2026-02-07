@@ -11,7 +11,6 @@
 
     vtsls
     typescript
-    typescript-language-server
     nodePackages_latest.eslint
     vscode-langservers-extracted
     tailwindcss-language-server
@@ -57,6 +56,7 @@
     nil
     sleek
     nixfmt
+    kdlfmt
     tree-sitter
     glsl_analyzer
     yaml-language-server
