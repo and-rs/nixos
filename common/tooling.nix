@@ -57,8 +57,11 @@
     sleek
     nixfmt
     kdlfmt
+    ast-grep
     tree-sitter
     glsl_analyzer
+
+    yamlfmt
     yaml-language-server
 
     # I use zig tooling from source

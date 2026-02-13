@@ -17,7 +17,11 @@
         -- ${pkgs.yt-dlp}/bin/yt-dlp "$@"
     '')
 
-    inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default
+    yek
+    argc
+    aichat
+
+    # inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default
     imagemagick
     fastfetch
     hyperfine

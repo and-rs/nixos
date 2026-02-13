@@ -45,7 +45,7 @@ in
       {
         name = "wheres_my_tilde";
         remap = {
-          "alt-semicolon" = "grave";
+          "alt-apostrophe" = "grave";
         };
       }
       {

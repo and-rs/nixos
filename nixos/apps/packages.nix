@@ -7,6 +7,8 @@ let
     helium-browser
     firefox
 
+    prismlauncher
+    picocrypt-cli
     keepassxc
     obsidian
     winboat
@@ -26,13 +28,13 @@ let
     libnotify
     blueberry
     playerctl
-    xorg.xrdb
     powertop
     thermald
     pciutils
     nftables
     parted
     satty
+    xrdb
     mpv
     dig
   ];

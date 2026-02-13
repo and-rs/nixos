@@ -38,6 +38,7 @@
       darwinSystem = "aarch64-darwin";
 
       customPackagesOverlay = final: prev: {
+        ly = stable.legacyPackages.${linuxSystem}.ly;
         helium-browser = final.callPackage ./nixos/apps/helium.nix { };
         docker-compose = stable.legacyPackages.${linuxSystem}.docker-compose;
 

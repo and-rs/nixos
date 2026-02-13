@@ -1,6 +1,13 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="usb", ATTR{power/wakeup}="disabled"
+  '';
+
+  environment.etc."libinput/local-overrides.quirks".text = ''
+    [Asus Keyboard DWT Fix]
+    MatchName=Asus Keyboard
+    AttrKeyboardIntegration=internal
   '';
 
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
@@ -10,7 +17,11 @@
     options usbcore autosuspend=-1
   '';
 
-  boot.blacklistedKernelModules = [ "sdhci" "sdhci_pci" "spd5118" ];
+  boot.blacklistedKernelModules = [
+    "sdhci"
+    "sdhci_pci"
+    "spd5118"
+  ];
   boot.kernelParams = [
     "usbcore.autosuspend=-1"
     "i915.force_probe=46a6"
