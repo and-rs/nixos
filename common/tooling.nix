@@ -25,16 +25,18 @@
 
     hurl
     curl
+    shfmt
     beautysh
     shellcheck
+    zshellcheck
     bash-language-server
 
     gcc
-    rustc
-    cargo
-    clippy
-    rustfmt
-    rust-analyzer
+    # rustc
+    # cargo
+    # clippy
+    # rustfmt
+    # rust-analyzer
 
     marksman
     tinymist

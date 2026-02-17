@@ -37,9 +37,10 @@
       linuxSystem = "x86_64-linux";
       darwinSystem = "aarch64-darwin";
 
-      customPackagesOverlay = final: prev: {
+      packagesOverlayNixos = final: prev: {
         ly = stable.legacyPackages.${linuxSystem}.ly;
         helium-browser = final.callPackage ./nixos/apps/helium.nix { };
+        zshellcheck = final.callPackage ./nixos/apps/zshellcheck.nix { };
         docker-compose = stable.legacyPackages.${linuxSystem}.docker-compose;
 
         phosphor-custom = final.callPackage ./common/fonts/phosphor-custom.nix {
@@ -65,7 +66,7 @@
           ./common/default.nix
           ./nixos/configuration.nix
           xremap.nixosModules.default
-          { nixpkgs.overlays = [ customPackagesOverlay ]; }
+          { nixpkgs.overlays = [ packagesOverlayNixos ]; }
         ];
       };
 

@@ -37,6 +37,8 @@ in
       pkgs.tcl
       pkgs.tk
       pkgs.ty
+
+      pkgs.duckdb
     ];
   };
 }
