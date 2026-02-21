@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
   # yt-dlp setup to override my network block
   environment.systemPackages = with pkgs; [
@@ -21,6 +21,21 @@
     argc
     aichat
 
+    fzf
+    tmux
+    direnv
+    zoxide
+    oh-my-posh
+
+    fish
+    fish-lsp
+
+    nufmt
+    nushell
+
+    age
+    grit
+
     # inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default
     imagemagick
     fastfetch
@@ -30,9 +45,9 @@
     neovide
     cmatrix
     ripgrep
-    zoxide
-    direnv
     slides
+    dotbot
+    broot
     tokei
     unzip
     delta
@@ -40,16 +55,12 @@
     kitty
     yazi
     btop
-    stow
-    tmux
     wget
     nmap
     tldr
     git
     eza
     bat
-    fzf
-    zsh
     fd
     gh
     jq

@@ -1,9 +1,6 @@
 { pkgs, ... }:
 let
   apps = with pkgs; [
-    obs-studio
-    obs-cmd
-
     helium-browser
     firefox
 
@@ -46,5 +43,18 @@ let
   ];
 in
 {
+  programs.obs-studio = {
+    enable = true;
+    package = pkgs.obs-studio.override {
+      cudaSupport = true;
+    };
+    plugins = [
+      pkgs.obs-studio-plugins.wlrobs
+      pkgs.obs-studio-plugins.obs-gstreamer
+      pkgs.obs-studio-plugins.obs-vkcapture
+      pkgs.obs-studio-plugins.obs-pipewire-audio-capture
+      pkgs.obs-backgroundremoval # for the newer overlay
+    ];
+  };
   environment.systemPackages = apps ++ codecs ++ system;
 }

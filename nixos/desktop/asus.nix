@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="usb", ATTR{power/wakeup}="disabled"
@@ -11,12 +11,19 @@
   '';
 
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+
+  # for virtual OBS camera
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    v4l2loopback
+  ];
+  boot.kernelModules = [ "v4l2loopback" ];
+
   boot.extraModprobeConfig = ''
     blacklist spd5118
     options snd_usb_audio implicit_fb=0
     options usbcore autosuspend=-1
+    options v4l2loopback devices=1 video_nr=1 card_label="Asus Camera" exclusive_caps=1
   '';
-
   boot.blacklistedKernelModules = [
     "sdhci"
     "sdhci_pci"

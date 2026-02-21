@@ -5,6 +5,11 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
+    nufmt = {
+      url = "github:nushell/nufmt";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     opencode.url = "github:sst/opencode";
     xremap.url = "github:xremap/nix-flake";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
@@ -24,9 +29,10 @@
   outputs =
     {
       self,
-      nixpkgs,
-      stable,
+      nufmt,
       xremap,
+      stable,
+      nixpkgs,
       zen-browser,
       spicetify-nix,
       home-manager,
@@ -39,8 +45,14 @@
 
       packagesOverlayNixos = final: prev: {
         ly = stable.legacyPackages.${linuxSystem}.ly;
+        obs-backgroundremoval = final.callPackage ./common/apps/obs-backgroundremoval.nix { };
+        nufmt = nufmt.packages.${final.stdenv.hostPlatform.system}.default.overrideAttrs (old: {
+          patches = [ ];
+          doCheck = false;
+        });
+
         helium-browser = final.callPackage ./nixos/apps/helium.nix { };
-        zshellcheck = final.callPackage ./nixos/apps/zshellcheck.nix { };
+        zshellcheck = final.callPackage ./common/apps/zshellcheck.nix { };
         docker-compose = stable.legacyPackages.${linuxSystem}.docker-compose;
 
         phosphor-custom = final.callPackage ./common/fonts/phosphor-custom.nix {
@@ -76,6 +88,7 @@
         modules = [
           ./darwin/configuration.nix
           ./common/default.nix
+          { nixpkgs.overlays = [ packagesOverlayNixos ]; }
         ];
       };
     };
