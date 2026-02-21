@@ -6,13 +6,12 @@ let
 
   neovimPath = "${home}/Vault/personal/nvim";
   dotfilesPath = "${home}/Vault/personal/dotfiles";
-in {
+in
+{
   home.activation.dotfiles-setup = ''
     ${pkgs.bash}/bin/bash -c '
       if [ ! -d "${dotfilesPath}/.git" ]; then
         ${pkgs.git}/bin/git clone ${dotfilesRepo} ${dotfilesPath}
-        cd ${dotfilesPath}
-        ${pkgs.stow}/bin/stow -t ${home} .
       fi
 
       if [ ! -d "${neovimPath}/.git" ]; then
