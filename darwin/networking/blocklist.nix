@@ -10,8 +10,19 @@ let
   dnsmasqWrapper = pkgs.writeShellScript "dnsmasq-wrapper" ''
     exec ${pkgs.dnsmasq}/bin/dnsmasq -k -C ${dnsmasqConf}
   '';
-in {
+in
+{
   environment.systemPackages = [ pkgs.dnsmasq ];
+
+  networking.dns = [
+    "127.0.0.1"
+  ];
+
+  networking.knownNetworkServices = [
+    "Wi-Fi"
+    "Thunderbolt Ethernet"
+    "USB 10/100/1000 LAN"
+  ];
 
   launchd.daemons.dnsmasq = {
     script = "${dnsmasqWrapper}";

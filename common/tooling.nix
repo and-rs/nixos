@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     bun
     deno
@@ -28,7 +27,6 @@
     shfmt
     beautysh
     shellcheck
-    zshellcheck
     bash-language-server
 
     gcc

@@ -7,6 +7,7 @@
     ./apps/terminal-linux.nix
     ./apps/tooling-linux.nix
     ./apps/packages.nix
+    ./apps/yt-dlp.nix
 
     ./desktop/directories.nix
     ./desktop/environment.nix
@@ -17,6 +18,8 @@
     ./desktop/tlp.nix
     ./desktop/ly.nix
   ];
+
+  programs.nix-ld.enable = true;
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };

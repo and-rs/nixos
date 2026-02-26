@@ -26,33 +26,24 @@
     };
   };
 
-  outputs =
-    {
-      self,
-      nufmt,
-      xremap,
-      stable,
-      nixpkgs,
-      zen-browser,
-      spicetify-nix,
-      home-manager,
-      nix-darwin,
-      ...
-    }@inputs:
+  outputs = { self, nufmt, xremap, stable, nixpkgs, zen-browser, spicetify-nix
+    , home-manager, nix-darwin, ... }@inputs:
     let
       linuxSystem = "x86_64-linux";
       darwinSystem = "aarch64-darwin";
 
       packagesOverlayNixos = final: prev: {
         ly = stable.legacyPackages.${linuxSystem}.ly;
-        obs-backgroundremoval = final.callPackage ./common/apps/obs-backgroundremoval.nix { };
-        nufmt = nufmt.packages.${final.stdenv.hostPlatform.system}.default.overrideAttrs (old: {
-          patches = [ ];
-          doCheck = false;
-        });
+        obs-backgroundremoval =
+          final.callPackage ./common/apps/obs-backgroundremoval.nix { };
+        nufmt =
+          nufmt.packages.${final.stdenv.hostPlatform.system}.default.overrideAttrs
+          (old: {
+            patches = [ ];
+            doCheck = false;
+          });
 
         helium-browser = final.callPackage ./nixos/apps/helium.nix { };
-        zshellcheck = final.callPackage ./common/apps/zshellcheck.nix { };
         docker-compose = stable.legacyPackages.${linuxSystem}.docker-compose;
 
         phosphor-custom = final.callPackage ./common/fonts/phosphor-custom.nix {
@@ -68,8 +59,7 @@
           fontsPath = ./fonts/commit-font;
         };
       };
-    in
-    {
+    in {
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
         system = linuxSystem;
         specialArgs = { inherit inputs linuxSystem spicetify-nix; };
