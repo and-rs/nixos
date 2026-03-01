@@ -35,19 +35,6 @@
     };
   };
 
-  programs.spicetify =
-    let
-      spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-    in
-    {
-      enable = false;
-      enabledExtensions = with spicePkgs.extensions; [
-        fullAppDisplay
-        hidePodcasts
-        shuffle
-      ];
-    };
-
   qt = {
     enable = true;
   };

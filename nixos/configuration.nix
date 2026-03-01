@@ -1,4 +1,5 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, ... }:
+{
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./hardware-configuration.nix
@@ -18,15 +19,17 @@
     ./desktop/tlp.nix
     ./desktop/ly.nix
   ];
-
   programs.nix-ld.enable = true;
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
-    users = { and-rs = import ./home-manager/home.nix; };
+    users = {
+      and-rs = import ./home-manager/home.nix;
+    };
   };
 
   zramSwap.enable = true;
+  zramSwap.memoryPercent = 50;
 
   boot.loader = {
     systemd-boot = {
@@ -69,7 +72,10 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "and-rs";
-    extraGroups = [ "wheel" "docker" ];
+    extraGroups = [
+      "wheel"
+      "docker"
+    ];
   };
 
   programs = {

@@ -53,8 +53,9 @@ in
       pkgs.obs-studio-plugins.obs-gstreamer
       pkgs.obs-studio-plugins.obs-vkcapture
       pkgs.obs-studio-plugins.obs-pipewire-audio-capture
-      pkgs.obs-backgroundremoval # for the newer overlay
+      pkgs.obs-backgroundremoval
     ];
   };
+
   environment.systemPackages = apps ++ codecs ++ system;
 }

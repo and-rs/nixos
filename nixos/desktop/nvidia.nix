@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  # never comment these lines
+  # NEVER COMMENT THESE LINES
   # nouveau should always be blacklisted
   # nvidia-powerd should always be disabled with or without nvidia support
   systemd.services.nvidia-powerd.enable = false;
@@ -15,7 +15,7 @@
     options nouveau modeset=0
   '';
 
-  # disabling the nvidia gpu
+  # DISABLING THE NVIDIA GPU
   # services.supergfxd.enable = false;
   # services.udev.extraRules = ''
   #   # Remove NVIDIA USB xHCI Host Controller devices, if present

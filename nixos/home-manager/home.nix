@@ -1,9 +1,9 @@
-{ inputs, ... }: {
+{ inputs, ... }:
+{
   imports = [
     ./cursor.nix
     ./dotfiles.nix
     ./aesthetics.nix
-    inputs.spicetify-nix.homeManagerModules.default
   ];
 
   programs.home-manager.enable = true;

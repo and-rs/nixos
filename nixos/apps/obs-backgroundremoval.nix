@@ -4,23 +4,23 @@
   fetchFromGitHub,
   cmake,
   ninja,
+  pkg-config,
   obs-studio,
   onnxruntime,
   opencv,
   qt6,
-  pkg-config,
   curl,
 }:
 
 stdenv.mkDerivation rec {
   pname = "obs-backgroundremoval";
-  version = "1.3.6";
+  version = "1.3.7";
 
   src = fetchFromGitHub {
-    owner = "occ-ai";
+    owner = "royshil";
     repo = "obs-backgroundremoval";
     rev = version;
-    hash = "sha256-2BVcOH7wh1ibHZmaTMmRph/jYchHcCbq8mn9wo4LQOU=";
+    hash = "sha256-bl0KixfBnBeyidZ4+RJhX4TDy33l9awo0wISMr7XUwk=";
   };
 
   nativeBuildInputs = [
@@ -28,24 +28,16 @@ stdenv.mkDerivation rec {
     ninja
     pkg-config
   ];
+
   buildInputs = [
-    obs-studio
     onnxruntime
-    opencv.cxxdev
+    obs-studio
     qt6.qtbase
-    curl
+    curl.dev
+    opencv
   ];
 
   dontWrapQtApps = true;
-
-  cmakeFlags = [
-    "-DCMAKE_MODULE_PATH:PATH=${src}/cmake"
-    "-DUSE_CUDA=ON"
-    "-DENABLE_OPENCL=ON"
-    "-DUSE_SYSTEM_CURL=ON"
-    "-DUSE_SYSTEM_OPENCV=ON"
-    "-DUSE_SYSTEM_ONNXRUNTIME=ON"
-  ];
 
   meta = {
     description = "OBS plugin to replace the background in portrait images and video";

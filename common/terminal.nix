@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     yek
     argc
@@ -10,14 +11,13 @@
     zoxide
     oh-my-posh
 
-    fish
-    fish-lsp
-
     nufmt
     nushell
 
     age
     grit
+    sqlite
+    sqldiff
 
     imagemagick
     fastfetch
