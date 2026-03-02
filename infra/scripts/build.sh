@@ -52,7 +52,7 @@ chmod 400 /root/cache-key.pem
 TARGET="#nixosConfigurations.default.config.system.build.toplevel"
 
 echo "Evaluating flake..."
-nix build "$REPO_URL$TARGET" --no-link --max-jobs 4 --cores 8
+nix build "$REPO_URL$TARGET" --no-link --max-jobs 2 --cores 8
 
 echo "Pushing cache..."
 nix copy "$REPO_URL$TARGET" \

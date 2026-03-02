@@ -24,7 +24,7 @@ resource "aws_security_group" "nix_builder" {
 
 resource "aws_instance" "nix_builder" {
   ami                                  = data.aws_ami.nixos.id
-  instance_type                        = "m6a.8xlarge"
+  instance_type                        = "m6a.4xlarge"
   instance_initiated_shutdown_behavior = "terminate"
   iam_instance_profile                 = aws_iam_instance_profile.nix_builder.name
   vpc_security_group_ids               = [aws_security_group.nix_builder.id]
