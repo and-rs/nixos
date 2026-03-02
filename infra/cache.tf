@@ -3,11 +3,6 @@ resource "aws_s3_bucket" "nix_cache" {
   lifecycle { prevent_destroy = true }
 }
 
-resource "aws_s3_bucket_versioning" "nix_cache" {
-  bucket = aws_s3_bucket.nix_cache.id
-  versioning_configuration { status = "Enabled" }
-}
-
 resource "aws_s3_bucket_public_access_block" "nix_cache" {
   bucket                  = aws_s3_bucket.nix_cache.id
   block_public_acls       = true
