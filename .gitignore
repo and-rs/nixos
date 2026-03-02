@@ -1,4 +1,5 @@
 .direnv
+result
 
 ### Terraform
 # Local .terraform directories
