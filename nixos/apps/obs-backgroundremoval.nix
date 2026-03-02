@@ -10,8 +10,18 @@
   opencv,
   qt6,
   curl,
+  cudaPackages,
 }:
 
+let
+  onnxruntimeWithTensorRT = (onnxruntime.override { cudaSupport = true; }).overrideAttrs (old: {
+    buildInputs = old.buildInputs ++ [ cudaPackages.tensorrt ];
+    cmakeFlags = old.cmakeFlags ++ [
+      (lib.cmakeBool "onnxruntime_USE_TENSORRT" true)
+      (lib.cmakeBool "onnxruntime_USE_TENSORRT_BUILTIN_PARSER" true)
+    ];
+  });
+in
 stdenv.mkDerivation rec {
   pname = "obs-backgroundremoval";
   version = "1.3.7";
@@ -30,11 +40,12 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs = [
-    onnxruntime
+    onnxruntimeWithTensorRT
     obs-studio
     qt6.qtbase
     curl.dev
     opencv
+    cudaPackages.tensorrt
   ];
 
   dontWrapQtApps = true;

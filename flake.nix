@@ -41,22 +41,12 @@
       linuxSystem = "x86_64-linux";
       darwinSystem = "aarch64-darwin";
 
-      packagesOverlayNixos = final: prev: {
-        ly = stable.legacyPackages.${linuxSystem}.ly;
-        corepack = stable.legacyPackages.${linuxSystem}.corepack;
-
+      packagesOverlayShared = final: prev: {
+        corepack = stable.legacyPackages.${final.stdenv.hostPlatform.system}.corepack;
         nufmt = nufmt.packages.${final.stdenv.hostPlatform.system}.default.overrideAttrs (old: {
           patches = [ ];
           doCheck = false;
         });
-
-        helium-browser = final.callPackage ./nixos/apps/helium.nix { };
-        docker-compose = stable.legacyPackages.${linuxSystem}.docker-compose;
-
-        obs-backgroundremoval = final.callPackage ./nixos/apps/obs-backgroundremoval.nix {
-          onnxruntime = final.onnxruntime.override { cudaSupport = true; };
-        };
-
         phosphor-custom = final.callPackage ./common/fonts/phosphor-custom.nix {
           fontsPath = ./fonts/phosphor-icons;
         };
@@ -69,6 +59,13 @@
         commit-custom = final.callPackage ./common/fonts/commit-custom.nix {
           fontsPath = ./fonts/commit-font;
         };
+      };
+
+      packagesOverlayNixos = final: prev: {
+        ly = stable.legacyPackages.${linuxSystem}.ly;
+        docker-compose = stable.legacyPackages.${linuxSystem}.docker-compose;
+        helium-browser = final.callPackage ./nixos/apps/helium.nix { };
+        obs-backgroundremoval = final.callPackage ./nixos/apps/obs-backgroundremoval.nix { };
       };
       mkDevShell =
         system:
@@ -113,7 +110,12 @@
           ./common/default.nix
           ./nixos/configuration.nix
           xremap.nixosModules.default
-          { nixpkgs.overlays = [ packagesOverlayNixos ]; }
+          {
+            nixpkgs.overlays = [
+              packagesOverlayShared
+              packagesOverlayNixos
+            ];
+          }
         ];
       };
 
@@ -123,7 +125,7 @@
         modules = [
           ./darwin/configuration.nix
           ./common/default.nix
-          { nixpkgs.overlays = [ packagesOverlayNixos ]; }
+          { nixpkgs.overlays = [ packagesOverlayShared ]; }
         ];
       };
     };
