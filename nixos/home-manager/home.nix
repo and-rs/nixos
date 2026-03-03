@@ -1,12 +1,12 @@
-{ ... }:
+{ inputs, ... }:
 {
   imports = [
+    inputs.agenix.homeManagerModules.default
     ./cursor.nix
+    ./hetzner.nix
     ./dotfiles.nix
     ./aesthetics.nix
   ];
-
-  programs.home-manager.enable = true;
 
   nixpkgs = {
     config = {

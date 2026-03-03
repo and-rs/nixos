@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    rclone
+    inputs.agenix.packages."${stdenv.hostPlatform.system}".default
     file
     glab
     bc

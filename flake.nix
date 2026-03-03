@@ -5,6 +5,11 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nufmt = {
       url = "github:nushell/nufmt";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,6 +36,7 @@
       self,
       nufmt,
       xremap,
+      agenix,
       stable,
       nixpkgs,
       nix-darwin,

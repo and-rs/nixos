@@ -12,7 +12,6 @@
 
     ./desktop/directories.nix
     ./desktop/environment.nix
-    ./desktop/hetzner.nix
     ./desktop/xremap.nix
     ./desktop/nvidia.nix
     ./desktop/fonts.nix

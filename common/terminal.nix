@@ -13,6 +13,7 @@
 
     nufmt
     nushell
+    carapace
 
     age
     grit
