@@ -1,6 +1,10 @@
-{ pkgs, ... }: {
-  imports =
-    [ ./apps/terminal-macos.nix ./apps/yt-dlp.nix ./networking/blocklist.nix ];
+{ pkgs, ... }:
+{
+  imports = [
+    ./apps/terminal-macos.nix
+    ./apps/yt-dlp.nix
+    ./networking/blocklist.nix
+  ];
 
   programs.direnv = {
     package = pkgs.direnv;

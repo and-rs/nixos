@@ -48,6 +48,7 @@
       darwinSystem = "aarch64-darwin";
 
       packagesOverlayShared = final: prev: {
+        yt-dlp = stable.legacyPackages.${final.stdenv.hostPlatform.system}.yt-dlp;
         corepack = stable.legacyPackages.${final.stdenv.hostPlatform.system}.corepack;
         nufmt = nufmt.packages.${final.stdenv.hostPlatform.system}.default.overrideAttrs (old: {
           patches = [ ];

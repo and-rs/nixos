@@ -11,10 +11,10 @@
     "flakes"
   ];
   nixpkgs.config.allowUnfree = true;
+  nix.optimise.automatic = true;
 
   nix.settings = {
     download-buffer-size = 1 * 1024 * 1024 * 1024;
-    auto-optimise-store = true;
 
     substituters = [
       "https://cache.nixos.org"
