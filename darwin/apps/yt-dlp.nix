@@ -14,8 +14,7 @@
         sleep 0.1
       done
 
-      exec ${pkgs.yt-dlp}/bin/yt-dlp \
-        --proxy "http://127.0.0.1:$port" "$@"
+      ${pkgs.yt-dlp}/bin/yt-dlp --proxy "http://127.0.0.1:$port" "$@"
     '')
   ];
 }
