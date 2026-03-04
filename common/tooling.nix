@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     bun
     deno
@@ -63,6 +64,14 @@
 
     yamlfmt
     yaml-language-server
+
+    opam
+    ocaml
+    dune_3
+    ocamlPackages.merlin
+    ocamlPackages.findlib
+    ocamlPackages.ocaml-lsp
+    ocamlPackages.ocamlformat
 
     # I use zig tooling from source
     zig-shell-completions
