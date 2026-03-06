@@ -1,7 +1,7 @@
 { ... }:
 {
   services = {
-    tailscale.enable = true;
+    # tailscale.enable = true;
     resolved.enable = true;
     resolved.settings.Resolve.DNSSEC = false;
 
@@ -70,9 +70,9 @@
         dhcpV4Config.UseDNS = false;
         dhcpV6Config.UseDNS = false;
       };
-      "50-tailscale" = {
-        matchConfig.Name = "tailscale0";
-      };
+      # "50-tailscale" = {
+      #   matchConfig.Name = "tailscale0";
+      # };
     };
   };
 

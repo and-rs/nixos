@@ -35,7 +35,7 @@
       Type = "notify";
       Environment = [ "PATH=/run/wrappers/bin:/run/current-system/sw/bin" ];
       ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p %h/Mounts/Hetzner";
-      ExecStart = "${pkgs.rclone}/bin/rclone mount --vfs-cache-mode=full --dir-cache-time=72h --vfs-read-chunk-size=16M --vfs-read-chunk-size-limit=2G hetzner: %h/Mounts/Hetzner";
+      ExecStart = "${pkgs.rclone}/bin/rclone mount --vfs-cache-mode=full --dir-cache-time=72h --vfs-read-chunk-size=16M --vfs-read-chunk-size-limit=2G --timeout=15s --contimeout=10s --low-level-retries=1 --retries=1 hetzner: %h/Mounts/Hetzner";
       ExecStop = "/run/wrappers/bin/fusermount3 -u %h/Mounts/Hetzner";
       Restart = "on-failure";
       RestartSec = "10s";
