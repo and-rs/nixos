@@ -3,7 +3,9 @@
   environment.systemPackages = with pkgs; [
     yek
     argc
+    glow
     aichat
+    smartcat
 
     fzf
     tmux
