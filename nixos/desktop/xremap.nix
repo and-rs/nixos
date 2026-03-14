@@ -24,108 +24,105 @@ in
     userName = "and-rs";
     serviceMode = "user";
 
-    config.modmap = [
-      {
-        name = "caps_ctrl";
-        remap = {
-          "capslock" = "ctrl_l";
-        };
-      }
-    ];
+    config = {
+      keypress_delay_ms = 5;
 
-    config.keymap = [
-      {
-        name = "better_chrome_search";
-        application.only = [ "helium" ];
-        remap = {
-          "alt_l-i" = "ctrl-shift-a";
-          "alt_l-shift-i" = "ctrl-l";
-        };
-      }
-      {
-        name = "wheres_my_tilde";
-        remap = {
-          "alt-apostrophe" = "grave";
-        };
-      }
-      {
-        name = "emacs_macos";
-        application.not = [
-          "com.mitchellh.ghostty"
-          "steam_app_813780"
-          "Alacritty"
-          "xfreerdp"
-          "neovide"
-          "kitty"
-        ];
-        remap = {
-          "ctrl-b" = {
-            with_mark = "left";
+      modmap = [
+        {
+          name = "caps_ctrl";
+          remap = {
+            "capslock" = "ctrl_l";
           };
-          "ctrl-f" = {
-            with_mark = "right";
+        }
+      ];
+
+      keymap = [
+        {
+          name = "post_select_all_backspace";
+          mode = [ "post_select_all" ];
+          remap = {
+            "alt_l-backspace" = [
+              "backspace"
+              { set_mode = "default"; }
+            ];
+            "backspace" = [
+              "backspace"
+              { set_mode = "default"; }
+            ];
           };
-          "ctrl-p" = {
-            with_mark = "up";
+        }
+        {
+          name = "better_chrome_search";
+          application.only = [ "helium" ];
+          remap = {
+            "alt_l-i" = "ctrl-shift-a";
+            "alt_l-shift-i" = "ctrl-l";
           };
-          "ctrl-n" = {
-            with_mark = "down";
+        }
+        {
+          name = "wheres_my_tilde";
+          remap = {
+            "alt-apostrophe" = "grave";
           };
-          "ctrl-a" = {
-            with_mark = "home";
-          };
-          "ctrl-e" = {
-            with_mark = "end";
-          };
-          "ctrl-d" = [
-            "delete"
-            { set_mark = false; }
+        }
+        {
+          name = "emacs_macos";
+          application.not = [
+            "com.mitchellh.ghostty"
+            "steam_app_813780"
+            "org.pwmt.zathura"
+            "Alacritty"
+            "xfreerdp"
+            "neovide"
+            "kitty"
           ];
-          "ctrl-k" = [
-            "shift-end"
-            "ctrl-x"
-            { set_mark = false; }
-          ];
-          "ctrl-u" = [
-            "shift-home"
-            "ctrl-x"
-            { set_mark = false; }
-          ];
-          "super-ctrl-b" = {
-            with_mark = "ctrl-left";
+          remap = {
+            "ctrl-b" = "left";
+            "ctrl-f" = "right";
+            "ctrl-p" = "up";
+            "ctrl-n" = "down";
+            "ctrl-a" = "home";
+            "ctrl-e" = "end";
+            "ctrl-d" = "delete";
+            "super-ctrl-b" = "ctrl-left";
+            "super-ctrl-f" = "ctrl-right";
+            "super-backspace" = [ "ctrl-backspace" ];
+            "ctrl-k" = [
+              "shift-end"
+              "ctrl-x"
+            ];
+            "ctrl-u" = [
+              "shift-home"
+              "ctrl-x"
+            ];
+            "alt_l-backspace" = [
+              "shift-home"
+              "ctrl-x"
+            ];
+            "alt_l-a" = [
+              "ctrl-a"
+              { set_mode = "post_select_all"; }
+            ];
+            "alt_l-b" = "ctrl-b";
+            "alt_l-c" = "ctrl-c";
+            "alt_l-d" = "ctrl-d";
+            "alt_l-e" = "ctrl-e";
+            "alt_l-f" = "ctrl-f";
+            "alt_l-m" = "ctrl-m";
+            "alt_l-n" = "ctrl-n";
+            "alt_l-o" = "ctrl-o";
+            "alt_l-p" = "ctrl-p";
+            "alt_l-r" = "ctrl-r";
+            "alt_l-t" = "ctrl-t";
+            "alt_l-v" = "ctrl-v";
+            "alt_l-w" = "ctrl-w";
+            "alt_l-x" = "ctrl-x";
+            "alt_l-y" = "ctrl-y";
+            "alt_l-z" = "ctrl-z";
           };
-          "super-ctrl-f" = {
-            with_mark = "ctrl-right";
-          };
-          "super-backspace" = [
-            "ctrl-backspace"
-            { set_mark = false; }
-          ];
-          "alt_l-backspace" = [
-            "shift-home"
-            "ctrl-x"
-            { set_mark = false; }
-          ];
-          "alt_l-a" = "ctrl-a";
-          "alt_l-b" = "ctrl-b";
-          "alt_l-c" = "ctrl-c";
-          "alt_l-d" = "ctrl-d";
-          "alt_l-e" = "ctrl-e";
-          "alt_l-f" = "ctrl-f";
-          "alt_l-m" = "ctrl-m";
-          "alt_l-n" = "ctrl-n";
-          "alt_l-o" = "ctrl-o";
-          "alt_l-p" = "ctrl-p";
-          "alt_l-r" = "ctrl-r";
-          "alt_l-t" = "ctrl-t";
-          "alt_l-v" = "ctrl-v";
-          "alt_l-w" = "ctrl-w";
-          "alt_l-x" = "ctrl-x";
-          "alt_l-y" = "ctrl-y";
-          "alt_l-z" = "ctrl-z";
-        };
-      }
-    ];
+        }
+      ];
+    };
   };
 
   systemd.user.services.xremap-niri-starter = {

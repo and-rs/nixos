@@ -5,7 +5,6 @@
     argc
     glow
     aichat
-    smartcat
 
     fzf
     tmux
