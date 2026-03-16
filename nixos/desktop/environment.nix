@@ -5,21 +5,32 @@ let
     pkg.overrideAttrs (old: {
       postInstall = (old.postInstall or "") + ''
         for file in $out/share/applications/*.desktop; do
-          substituteInPlace "$file" --replace "DBusActivatable=true" "DBusActivatable=false"
+          substituteInPlace "$file" \
+            --replace "DBusActivatable=true" "DBusActivatable=false"
         done
       '';
     });
 in
 {
   services.dbus.implementation = "broker";
+  services.gnome.tinysparql.enable = true;
+  services.gnome.localsearch.enable = true;
 
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
+    config = {
+      niri = {
+        default = [
+          "gnome"
+          "gtk"
+        ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+      };
+    };
     extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-wlr
       pkgs.xdg-desktop-portal-gnome
+      pkgs.xdg-desktop-portal-gtk
     ];
   };
 
@@ -57,11 +68,11 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    (disableDBus pkgs.nautilus) # file mngr
-    (disableDBus pkgs.loupe) # img viewer
+    (disableDBus pkgs.nautilus)
+    (disableDBus pkgs.loupe)
 
     (rofi.override { plugins = [ rofi-calc ]; })
-    libqalculate # required for rofi-calc
+    libqalculate
 
     xwayland-satellite
     wl-clipboard

@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 {
   services.udev.extraRules = ''
-    ACTION=="add", SUBSYSTEM=="usb", ATTR{power/wakeup}="disabled"
+    ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", TEST=="power/wakeup", ATTR{power/wakeup}="disabled"
   '';
 
   environment.etc."libinput/local-overrides.quirks".text = ''
@@ -24,11 +24,13 @@
     options usbcore autosuspend=-1
     options v4l2loopback devices=1 video_nr=1 card_label="Asus Camera" exclusive_caps=1
   '';
+
   boot.blacklistedKernelModules = [
     "sdhci"
     "sdhci_pci"
     "spd5118"
   ];
+
   boot.kernelParams = [
     "usbcore.autosuspend=-1"
     "i915.force_probe=46a6"
@@ -38,10 +40,7 @@
   ];
 
   environment.systemPackages = with pkgs; [ asusctl ];
-  services.asusd = {
-    enable = true;
-  };
-
+  services.asusd.enable = true;
   users.groups.power = { };
 
   hardware.graphics = {
