@@ -5,7 +5,6 @@
     deno
     biome
     corepack
-    nodejs_25
     rustywind
     pnpm-shell-completion
 

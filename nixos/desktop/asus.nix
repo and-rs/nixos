@@ -10,7 +10,7 @@
     AttrKeyboardIntegration=internal
   '';
 
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_testing;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
 
   # for virtual OBS camera
   boot.extraModulePackages = with config.boot.kernelPackages; [
@@ -40,7 +40,6 @@
   environment.systemPackages = with pkgs; [ asusctl ];
   services.asusd = {
     enable = true;
-    enableUserService = true;
   };
 
   users.groups.power = { };

@@ -2,6 +2,8 @@
   description = "and-rs flake (NixOS + nix-darwin)";
 
   inputs = {
+    obs-rev.url = "github:nixos/nixpkgs/2fc6539b481e1d2569f25f8799236694180c0993";
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
@@ -72,7 +74,14 @@
         ly = stable.legacyPackages.${linuxSystem}.ly;
         docker-compose = stable.legacyPackages.${linuxSystem}.docker-compose;
         helium-browser = final.callPackage ./nixos/apps/helium.nix { };
-        obs-backgroundremoval = final.callPackage ./nixos/apps/obs-backgroundremoval.nix { };
+        obs-backgroundremoval =
+          let
+            pkgsPinned = import inputs.obs-rev {
+              system = final.stdenv.hostPlatform.system;
+              config.allowUnfree = true;
+            };
+          in
+          pkgsPinned.callPackage ./nixos/apps/obs-backgroundremoval.nix { };
       };
       mkDevShell =
         system:

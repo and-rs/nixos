@@ -23,12 +23,12 @@ let
     efibootmgr
     alsa-utils
     libnotify
-    blueberry
     playerctl
     powertop
     thermald
     pciutils
     nftables
+    blueman
     parted
     satty
     xrdb

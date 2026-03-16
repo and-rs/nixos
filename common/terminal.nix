@@ -4,6 +4,7 @@
     yek
     argc
     glow
+    mdcat
     aichat
 
     fzf
