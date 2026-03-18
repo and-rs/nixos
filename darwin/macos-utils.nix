@@ -7,5 +7,6 @@
     ffmpeg
     neovim
     aerospace
+    karabiner-elements
   ];
 }

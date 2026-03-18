@@ -1,5 +1,6 @@
 {
   imports = [
+    ../common/yt-dlp.nix
     ../common/terminal.nix
     ../common/tooling.nix
     ../common/python.nix

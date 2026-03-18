@@ -1,9 +1,8 @@
 { pkgs, ... }:
 {
   imports = [
-    ./apps/terminal-macos.nix
-    ./apps/yt-dlp.nix
-    ./networking/blocklist.nix
+    ./macos-utils.nix
+    ./blocklist.nix
   ];
 
   programs.direnv = {
