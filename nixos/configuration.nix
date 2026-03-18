@@ -5,8 +5,7 @@
     ./hardware-configuration.nix
     ./networking/networkd.nix
 
-    ./apps/terminal-linux.nix
-    ./apps/tooling-linux.nix
+    ./apps/nixos-utils.nix.nix
     ./apps/packages.nix
     ./apps/yt-dlp.nix
 

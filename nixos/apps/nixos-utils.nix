@@ -1,7 +1,12 @@
 { pkgs, config, ... }:
 {
   environment.systemPackages = with pkgs; [
+    # terminal
+    inputs.agenix.packages."${stdenv.hostPlatform.system}".default
     tailwindcss_4
+    file
+    glab
+    bc
 
     kdePackages.qt6ct
     kdePackages.qtbase
