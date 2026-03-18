@@ -6,6 +6,7 @@
     glow
     mdcat
     aichat
+    vscode
 
     fzf
     tmux
