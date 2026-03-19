@@ -16,8 +16,13 @@
   nix.package = pkgs.nix;
   environment.darwinConfig = "$HOME/Vault/personal/nixos/flake.nix";
 
-  nixpkgs.config.allowBroken = true; # grit is marked as broken in darwin
+  nixpkgs = {
+    config.allowBroken = true; # grit is marked as broken in darwin
+    hostPlatform = "aarch64-darwin";
+  };
 
-  system.stateVersion = 4;
-  nixpkgs.hostPlatform = "aarch64-darwin";
+  system = {
+    stateVersion = 4;
+    primaryUser = "and-rs";
+  };
 }
