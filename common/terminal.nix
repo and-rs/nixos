@@ -1,12 +1,13 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    inputs.agenix.packages."${stdenv.hostPlatform.system}".default
+
     yek
     argc
     glow
     mdcat
     aichat
-    vscode
 
     fzf
     tmux

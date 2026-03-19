@@ -13,6 +13,11 @@
     };
   };
 
+  users.users.and-rs = {
+    name = "and-rs";
+    home = "/Users/index/";
+  };
+
   nix.package = pkgs.nix;
   environment.darwinConfig = "$HOME/Vault/personal/nixos/flake.nix";
 

@@ -1,7 +1,6 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
   imports = [
-    inputs.home-manager.nixosModules.home-manager
     ./hardware-configuration.nix
     ./networking/networkd.nix
 
@@ -18,13 +17,6 @@
     ./desktop/ly.nix
   ];
   programs.nix-ld.enable = true;
-
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      and-rs = import ./home-manager/home.nix;
-    };
-  };
 
   zramSwap.enable = true;
   zramSwap.memoryPercent = 50;

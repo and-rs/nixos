@@ -1,13 +1,11 @@
 {
   pkgs,
   config,
-  inputs,
   ...
 }:
 {
   environment.systemPackages = with pkgs; [
     # terminal
-    inputs.agenix.packages."${stdenv.hostPlatform.system}".default
     tailwindcss_4
     file
     glab

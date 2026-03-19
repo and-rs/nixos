@@ -126,11 +126,21 @@
           ./common/default.nix
           ./nixos/configuration.nix
           xremap.nixosModules.default
+          home-manager.nixosModules.home-manager
           {
             nixpkgs.overlays = [
               packagesOverlayShared
               packagesOverlayNixos
             ];
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              isLinux = true;
+            };
+            home-manager.users.and-rs = {
+              imports = [ ./common/home-manager/home.nix ];
+            };
           }
         ];
       };
@@ -142,6 +152,18 @@
           ./darwin/configuration.nix
           ./common/default.nix
           { nixpkgs.overlays = [ packagesOverlayShared ]; }
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              isLinux = false;
+            };
+            home-manager.users.and-rs = {
+              imports = [ ./common/home-manager/home.nix ];
+            };
+          }
         ];
       };
     };
