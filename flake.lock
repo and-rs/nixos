@@ -198,11 +198,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1773600369,
-        "narHash": "sha256-i1lgBXcJpuyUlnCV1zNIBDF25u7i0JLOlyJeetXMzgg=",
+        "lastModified": 1774407688,
+        "narHash": "sha256-iD4bgqC8yApIQv7Wpl66KHC7gkSd8oyrHonChEhnAtc=",
         "owner": "nushell",
         "repo": "nufmt",
-        "rev": "8aae843303e6e5dd4c43fb3de145f67fd01e30d2",
+        "rev": "5d87e5f29b128d52b7644474671bb4ddae617ad0",
         "type": "github"
       },
       "original": {
