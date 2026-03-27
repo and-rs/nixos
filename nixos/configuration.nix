@@ -32,6 +32,13 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
 
+  security.pki.certificates = [ ];
+
+  environment.variables = {
+    SSL_CERT_FILE = "/etc/ssl/certs/ca-certificates.crt";
+    CURL_CA_BUNDLE = "/etc/ssl/certs/ca-certificates.crt";
+  };
+
   time.timeZone = "America/Bogota";
   i18n.defaultLocale = "en_US.UTF-8";
 
