@@ -29,13 +29,6 @@
     shellcheck
     bash-language-server
 
-    gcc
-    # rustc
-    # cargo
-    # clippy
-    # rustfmt
-    # rust-analyzer
-
     marksman
     tinymist
     typstyle
@@ -46,11 +39,13 @@
     csvdiff
     csvlens
 
+    gcc
     just
     cmake
     ninja
     gnumake
     pkg-config
+    rustup
 
     buf
     nil
@@ -65,14 +60,8 @@
     yaml-language-server
 
     opam
-    ocaml
     dune_3
-    ocamlPackages.merlin
-    ocamlPackages.findlib
-    ocamlPackages.ocaml-lsp
-    ocamlPackages.ocamlformat
 
-    # I use zig tooling from source
     zig-shell-completions
   ];
 }

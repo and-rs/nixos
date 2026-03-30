@@ -2,10 +2,9 @@
 {
   environment.systemPackages = with pkgs; [
     inputs.agenix.packages."${stdenv.hostPlatform.system}".default
+    bob-nvim
 
     yek
-    argc
-    glow
     mdcat
     aichat
 
@@ -17,6 +16,7 @@
 
     nufmt
     nushell
+    topiary
     carapace
 
     age
