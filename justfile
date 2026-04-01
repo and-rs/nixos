@@ -21,6 +21,21 @@ gc:
   sudo nix-collect-garbage --delete-old
   sudo nix-store --gc
 
+font-encrypt src name:
+  #!/usr/bin/env bash
+  set -euo pipefail
+  mkdir -p secrets/fonts
+  tmp="$(mktemp --suffix=.tar.gz)"
+  trap 'rm -f "$tmp"' EXIT
+  tar -C "$(dirname "{{src}}")" -czf "$tmp" "$(basename "{{src}}")"
+  keys_expr='builtins.concatStringsSep "\n" ((import ./secrets/secrets.nix)."fonts/{{name}}.tar.gz.age".publicKeys)'
+  keys="$(nix eval --impure --raw --expr "$keys_expr")"
+  recipients=()
+  while IFS= read -r k; do
+    [ -n "$k" ] && recipients+=("-r" "$k")
+  done <<< "$keys"
+  age "${recipients[@]}" -o "secrets/fonts/{{name}}.tar.gz.age" "$tmp"
+
 # --- Infrastructure ---
 
 plan:

@@ -5,11 +5,6 @@
       hanken-grotesk # UI
       adwaita-fonts
 
-      phosphor-custom
-      lucide-custom
-      commit-custom
-      input-custom
-
       monaspace
       recursive
     ];

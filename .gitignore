@@ -1,3 +1,6 @@
+font-files/
+secrets/fonts/*.tar.gz
+
 .direnv
 result
 
