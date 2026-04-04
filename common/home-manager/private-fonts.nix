@@ -43,7 +43,7 @@ let
     };
   };
 
-  extractCommands = lib.concatStringsSep "\n" (
+  linuxExtractCommands = lib.concatStringsSep "\n" (
     lib.mapAttrsToList (name: spec: ''
       rm -rf "${fontRoot}/${spec.installDir}"
       mkdir -p "${fontRoot}/${spec.installDir}"
@@ -51,6 +51,26 @@ let
         -xzf "${(lib.getAttr name config.age.secrets).path}" \
         -C "${fontRoot}/${spec.installDir}" \
         --strip-components=1
+    '') archives
+  );
+
+  darwinExtractCommands = lib.concatStringsSep "\n" (
+    lib.mapAttrsToList (_: spec: ''
+      archive_path="$tmp_dir/${spec.installDir}.tar.gz"
+      rm -rf "${fontRoot}/${spec.installDir}"
+      mkdir -p "${fontRoot}/${spec.installDir}"
+      ${pkgs.age}/bin/age \
+        --decrypt \
+        --identity "${config.home.homeDirectory}/.ssh/agenix-darwin" \
+        --output "$archive_path" \
+        "${spec.file}"
+      ${pkgs.gnutar}/bin/tar \
+        --extract \
+        --file "$archive_path" \
+        --directory "${fontRoot}/${spec.installDir}" \
+        --strip-components=1 \
+        --use-compress-program="${pkgs.gzip}/bin/gzip"
+      rm -f "$archive_path"
     '') archives
   );
 in
@@ -65,8 +85,11 @@ in
 
   home.activation = lib.mkIf (!isLinux) {
     extractPrivateFonts = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      set -euo pipefail
       mkdir -p "${fontRoot}"
-      ${extractCommands}
+      tmp_dir="$(mktemp -d)"
+      trap 'rm -rf "$tmp_dir"' EXIT
+      ${darwinExtractCommands}
     '';
   };
 
@@ -85,7 +108,7 @@ in
       ExecStart = pkgs.writeShellScript "extract-fonts" ''
         set -euo pipefail
         mkdir -p "${fontRoot}"
-        ${extractCommands}
+        ${linuxExtractCommands}
         ${pkgs.fontconfig}/bin/fc-cache -f "${fontRoot}"
       '';
       RemainAfterExit = true;
