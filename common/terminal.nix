@@ -9,6 +9,7 @@
     aichat
 
     fzf
+    skim
     tmux
     direnv
     zoxide
