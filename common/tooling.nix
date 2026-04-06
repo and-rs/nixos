@@ -59,9 +59,6 @@
     yamlfmt
     yaml-language-server
 
-    opam
-    dune_3
-
     zig-shell-completions
   ];
 }
