@@ -8,5 +8,6 @@
     ffmpeg
     neovim
     aerospace
+    ncurses
   ];
 }

@@ -6,18 +6,33 @@
 }:
 let
   inherit (pkgs.stdenv) isLinux isDarwin;
+
   mountPoint = "${config.home.homeDirectory}/Mounts/Hetzner";
+  secretPath = config.age.secrets.hetzner.path;
+
+  rcloneFlags = [
+    "--vfs-cache-mode=writes"
+    "--vfs-write-back=1s"
+    "--dir-cache-time=10s"
+    "--attr-timeout=1s"
+    "--vfs-read-chunk-size=16M"
+    "--vfs-read-chunk-size-limit=2G"
+    "--timeout=5s"
+    "--contimeout=10s"
+    "--low-level-retries=1"
+    "--retries=1"
+  ];
+
+  rcloneArgs = builtins.concatStringsSep " " rcloneFlags;
 
   darwinStartScript = pkgs.writeShellScript "rclone-hetzner-start" ''
     set -euo pipefail
 
-    SECRET_PATH="${config.age.secrets.hetzner.path}"
-
-    if [ ! -f "$SECRET_PATH" ]; then
+    if [ ! -f "${secretPath}" ]; then
       exit 1
     fi
 
-    RAW_PASS=$(${pkgs.coreutils}/bin/cat "$SECRET_PATH" | ${pkgs.coreutils}/bin/tr -d '\r\n')
+    RAW_PASS=$(${pkgs.coreutils}/bin/cat "${secretPath}" | ${pkgs.coreutils}/bin/tr -d '\r\n')
 
     export RCLONE_CONFIG_HETZNER_TYPE="webdav"
     export RCLONE_CONFIG_HETZNER_URL="https://u555854.your-storagebox.de"
@@ -27,16 +42,7 @@ let
 
     ${pkgs.coreutils}/bin/mkdir -p "${mountPoint}"
 
-    exec ${pkgs.rclone}/bin/rclone mount \
-      --vfs-cache-mode=full \
-      --dir-cache-time=72h \
-      --vfs-read-chunk-size=16M \
-      --vfs-read-chunk-size-limit=2G \
-      --timeout=15s \
-      --contimeout=10s \
-      --low-level-retries=1 \
-      --retries=1 \
-      hetzner: "${mountPoint}"
+    exec ${pkgs.rclone}/bin/rclone mount hetzner: "${mountPoint}" ${rcloneArgs}
   '';
 in
 {
@@ -77,7 +83,7 @@ in
       Type = "notify";
       Environment = [ "PATH=/run/wrappers/bin:/run/current-system/sw/bin" ];
       ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p ${mountPoint}";
-      ExecStart = "${pkgs.rclone}/bin/rclone mount --vfs-cache-mode=full --dir-cache-time=72h --vfs-read-chunk-size=16M --vfs-read-chunk-size-limit=2G --timeout=15s --contimeout=10s --low-level-retries=1 --retries=1 hetzner: ${mountPoint}";
+      ExecStart = "${pkgs.rclone}/bin/rclone mount hetzner: ${mountPoint} ${rcloneArgs}";
       ExecStop = "/run/wrappers/bin/fusermount3 -u ${mountPoint}";
       Restart = "on-failure";
       RestartSec = "10s";
