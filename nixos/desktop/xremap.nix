@@ -72,25 +72,23 @@ in
             "org.pwmt.zathura"
             "Alacritty"
             "xfreerdp"
+            "launcher"
             "neovide"
             "kitty"
           ];
           remap = {
-            "ctrl-b" = "left";
-            "ctrl-f" = "right";
-            "ctrl-p" = "up";
-            "ctrl-n" = "down";
-            "ctrl-a" = "home";
-            "ctrl-e" = "end";
-            "ctrl-d" = "delete";
-            "super-ctrl-b" = "ctrl-left";
-            "super-ctrl-f" = "ctrl-right";
-            "super-backspace" = [ "ctrl-backspace" ];
-            "ctrl-k" = [
+            "ctrl_l-b" = "left";
+            "ctrl_l-f" = "right";
+            "ctrl_l-p" = "up";
+            "ctrl_l-n" = "down";
+            "ctrl_l-a" = "home";
+            "ctrl_l-e" = "end";
+            "ctrl_l-d" = "delete";
+            "ctrl_l-k" = [
               "shift-end"
               "ctrl-x"
             ];
-            "ctrl-u" = [
+            "ctrl_l-u" = [
               "shift-home"
               "ctrl-x"
             ];
@@ -98,6 +96,9 @@ in
               "shift-home"
               "ctrl-x"
             ];
+            "super-ctrl-b" = "ctrl-left";
+            "super-ctrl-f" = "ctrl-right";
+            "super-backspace" = [ "ctrl-backspace" ];
             "alt_l-a" = [
               "ctrl-a"
               { set_mode = "post_select_all"; }

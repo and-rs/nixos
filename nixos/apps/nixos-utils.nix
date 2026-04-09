@@ -10,6 +10,7 @@
     ghostty
     file
     glab
+    dex
     bc
 
     kdePackages.qt6ct
