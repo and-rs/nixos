@@ -83,6 +83,6 @@ in
     upower
     slurp
     grim
-    swww
+    awww
   ];
 }

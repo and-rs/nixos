@@ -8,7 +8,7 @@
   '';
 
   services.supergfxd.enable = false;
-  environment.systemPackages = with pkgs; [ nvtopPackages.nvidia ];
+  # environment.systemPackages = with pkgs; [ nvtopPackages.nvidia ];
 
   services.xserver.videoDrivers = [
     "modesetting"

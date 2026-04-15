@@ -10,7 +10,6 @@
 
     vtsls
     typescript
-    nodePackages_latest.eslint
     vscode-langservers-extracted
     tailwindcss-language-server
 
