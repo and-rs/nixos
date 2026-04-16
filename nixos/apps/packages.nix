@@ -30,6 +30,7 @@ let
     nftables
     blueman
     parted
+    sbctl
     satty
     xrdb
     mpv

@@ -22,9 +22,27 @@
   zramSwap.memoryPercent = 50;
 
   boot.loader = {
-    systemd-boot = {
+    systemd-boot.enable = false;
+    limine = {
       enable = true;
-      consoleMode = "max";
+      efiSupport = true;
+      secureBoot.enable = true;
+      style = {
+        wallpapers = [ ];
+        wallpaperStyle = "centered";
+        interface = {
+          branding = "Code Manufacturer";
+        };
+        backdrop = "00000000";
+        graphicalTerminal = {
+          background = "00000000";
+          foreground = "ffffffff";
+          brightBackground = "00000000";
+          brightForeground = "ffffffff";
+          brightPalette = "1b1e25;ffc0b9;b3f6c0;fce094;a6dbff;ffcaff;8cf8f7;eef1f8";
+          palette = "1b1e25;ffc0b9;b3f6c0;fce094;a6dbff;ffcaff;8cf8f7;eef1f8";
+        };
+      };
     };
     efi.canTouchEfiVariables = false;
   };
