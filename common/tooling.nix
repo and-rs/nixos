@@ -58,6 +58,8 @@
     yamlfmt
     yaml-language-server
 
+    zig
+    zls
     zig-shell-completions
   ];
 }
