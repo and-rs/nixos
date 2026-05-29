@@ -41,52 +41,59 @@
 
           pkgs.nushell
           pkgs.topiary
-
-          pkgs.bun
-          pkgs.delta
-          pkgs.ripgrep
-          pkgs.fzf
-          pkgs.bat
-          pkgs.tree-sitter
-          pkgs.yazi
-          pkgs.dotbot
-          pkgs.clang
-          pkgs.zoxide
-          pkgs.oh-my-posh
           pkgs.carapace
-          pkgs.yaml-language-server
-
-          pkgs.bob-nvim
-          pkgs.lua-language-server
+          pkgs.oh-my-posh
 
           pkgs.gh
+          pkgs.tig
+          pkgs.delta
+          pkgs.jujutsu
+          pkgs.difftastic
+
           pkgs.fd
+          pkgs.bun
+          pkgs.fzf
+          pkgs.bat
+          pkgs.btop
+          pkgs.grit
+          pkgs.yazi
+          pkgs.clang
+          pkgs.zoxide
+          pkgs.dotbot
+          pkgs.ripgrep
+          pkgs.bob-nvim
+          pkgs.tree-sitter
 
           pkgs.snowflake-cli
           pkgs.terraform
 
-          pkgs.google-chrome
           pkgs.awww
           pkgs.niri
+          pkgs.grim
+          pkgs.satty
+          pkgs.xremap
+          pkgs.hypridle
+          customQuickshell
+          pkgs.google-chrome
           pkgs.xwayland-satellite
+          pkgs.kdePackages.qtdeclarative
           pkgs.xdg-desktop-portal-gnome
           pkgs.xdg-desktop-portal-gtk
           pkgs.xdg-desktop-portal
 
-          pkgs.alacritty
+          pkgs.kitty
           pkgs.ghostty
-
-          pkgs.kdePackages.qtdeclarative
-          customQuickshell
-          pkgs.xremap
-          pkgs.btop
-          pkgs.hypridle
+          pkgs.alacritty
 
           pkgs.zig
           pkgs.zls
 
+          pkgs.lua-language-server
+          pkgs.yaml-language-server
+
           pkgs.uv
           pkgs.ty
+          pkgs.ruff
           pkgs.shfmt
 
           (pkgs.nixgl.nixGLCommon pkgs.nixgl.nixGLMesa)
