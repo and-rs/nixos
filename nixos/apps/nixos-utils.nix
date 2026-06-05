@@ -20,7 +20,7 @@
 
     # needed for winboat
     freerdp
-    docker_28
+    docker_29
     docker-compose
 
     libcxx.dev

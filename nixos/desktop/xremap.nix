@@ -86,15 +86,15 @@ in
             "ctrl_l-d" = "delete";
             "ctrl_l-k" = [
               "shift-end"
-              "ctrl-x"
+              "delete"
             ];
             "ctrl_l-u" = [
               "shift-home"
-              "ctrl-x"
+              "delete"
             ];
             "alt_l-backspace" = [
               "shift-home"
-              "ctrl-x"
+              "delete"
             ];
             "super-ctrl-b" = "ctrl-left";
             "super-ctrl-f" = "ctrl-right";

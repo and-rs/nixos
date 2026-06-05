@@ -47,6 +47,13 @@ in
     };
   };
 
+  security.pam.services.quickshell = {
+    unixAuth = true;
+    text = ''
+      auth include login
+    '';
+  };
+
   environment.sessionVariables = {
     XDG_CURRENT_DESKTOP = "niri";
     XDG_SESSION_TYPE = "wayland";
