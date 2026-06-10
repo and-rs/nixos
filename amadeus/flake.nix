@@ -47,13 +47,13 @@
           pkgs.gh
           pkgs.tig
           pkgs.delta
+          pkgs.lazygit
           pkgs.jujutsu
           pkgs.difftastic
 
           pkgs.fd
           pkgs.bun
           pkgs.fzf
-          pkgs.bat
           pkgs.btop
           pkgs.grit
           pkgs.yazi
@@ -90,11 +90,13 @@
 
           pkgs.lua-language-server
           pkgs.yaml-language-server
+          pkgs.deno
 
           pkgs.uv
           pkgs.ty
           pkgs.ruff
           pkgs.shfmt
+          pkgs.sqlfluff
 
           (pkgs.nixgl.nixGLCommon pkgs.nixgl.nixGLMesa)
         ];
