@@ -21,6 +21,17 @@ gc:
   sudo nix-collect-garbage --delete-old
   sudo nix-store --gc
 
+install-amadeus:
+  #!/usr/bin/env bash
+  set -euo pipefail
+  sudo nix profile remove 0 >/dev/null 2>&1 || true
+  sudo nix profile install .#amadeus --impure
+
+upgrade-amadeus:
+  #!/usr/bin/env bash
+  set -euo pipefail
+  sudo nix profile upgrade 0 --impure
+
 font-encrypt src name:
   #!/usr/bin/env bash
   set -euo pipefail

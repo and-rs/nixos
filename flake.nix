@@ -3,30 +3,28 @@
 
   inputs = {
     obs-rev.url = "github:nixos/nixpkgs/2fc6539b481e1d2569f25f8799236694180c0993";
-
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     stable.url = "github:nixos/nixpkgs/nixos-25.11";
-
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     nufmt = {
       url = "github:nushell/nufmt";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     xremap = {
       url = "github:xremap/nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    nixgl = {
+      url = "github:nix-community/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,6 +40,7 @@
       stable,
       nixpkgs,
       nix-darwin,
+      nixgl,
       home-manager,
       ...
     }@inputs:
@@ -71,45 +70,35 @@
           in
           pkgsPinned.callPackage ./nixos/apps/obs-backgroundremoval.nix { };
       };
+
       mkDevShell =
         system:
-        let
+        import ./devshell.nix {
           pkgs = import nixpkgs {
             inherit system;
             config.allowUnfree = true;
           };
-        in
-        pkgs.mkShell {
-          packages = with pkgs; [
-            ssm-session-manager-plugin
-            terraform
-            awscli2
-            just
-          ];
-          shellHook = ''
-            export REGION="us-west-2"
-            export REPO_URL="github:and-rs/nixed"
-
-            export TF_VAR_repo_url="$REPO_URL"
-            export TF_VAR_target_region="$REGION"
-
-            export AWS_DEFAULT_REGION="$REGION"
-            export AWS_REGION="$REGION"
-            aws configure set profile.nix-dev.region "$REGION"
-            aws configure set profile.nix-dev.credential_process \
-              "aws configure export-credentials --profile default --format process"
-            export AWS_PROFILE="nix-dev"
-          '';
         };
     in
     {
       devShells.${linuxSystem}.default = mkDevShell linuxSystem;
       devShells.${darwinSystem}.default = mkDevShell darwinSystem;
 
+      packages.${linuxSystem}.amadeus = import ./amadeus/default.nix {
+        inherit inputs;
+        pkgs = import nixpkgs {
+          system = linuxSystem;
+          config.allowUnfree = true;
+          overlays = [
+            nixgl.overlay
+            packagesOverlayShared
+          ];
+        };
+      };
+
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
         system = linuxSystem;
         specialArgs = { inherit inputs linuxSystem; };
-
         modules = [
           ./common/default.nix
           ./nixos/configuration.nix

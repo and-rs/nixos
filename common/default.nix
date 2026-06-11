@@ -1,10 +1,13 @@
+{ pkgs, inputs, ... }:
 {
   imports = [
-    ../common/yt-dlp.nix
-    ../common/terminal.nix
-    ../common/tooling.nix
-    ../common/python.nix
+    ./yt-dlp.nix
+    ./python.nix
   ];
+
+  environment.systemPackages =
+    (import ./terminal.nix { inherit pkgs inputs; })
+    ++ (import ./tooling.nix { inherit pkgs; });
 
   nix.settings.warn-dirty = false;
   nix.settings.experimental-features = [
