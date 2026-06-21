@@ -36,6 +36,7 @@ in
 
   services.upower.enable = true;
   programs = {
+    dconf.enable = true;
     niri.useNautilus = true;
     hyprlock.enable = true;
     niri.enable = true;
@@ -59,19 +60,6 @@ in
     XDG_SESSION_TYPE = "wayland";
     LIBVA_DRIVER_NAME = "iHD";
     NIXOS_OZONE_WL = "1";
-  };
-
-  programs.dconf.profiles.user = {
-    databases = [
-      {
-        lockAll = true;
-        settings = {
-          "org/gnome/desktop/interface" = {
-            color-scheme = "prefer-dark";
-          };
-        };
-      }
-    ];
   };
 
   environment.systemPackages = with pkgs; [

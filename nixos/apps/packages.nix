@@ -19,7 +19,7 @@ let
     brightnessctl
     appimage-run
     home-manager
-    pavucontrol
+    pwvucontrol
     efibootmgr
     alsa-utils
     libnotify
@@ -28,7 +28,6 @@ let
     thermald
     pciutils
     nftables
-    blueman
     parted
     sbctl
     satty
