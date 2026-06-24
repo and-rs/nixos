@@ -17,6 +17,7 @@ pkgs.symlinkJoin {
     (pkgs.rofi.override { plugins = [ pkgs.rofi-calc ]; })
 
     pkgs.jujutsu
+    pkgs.podman
     pkgs.terraform
     pkgs.snowflake-cli
 
@@ -33,6 +34,7 @@ pkgs.symlinkJoin {
     pkgs.xdg-desktop-portal-gnome
     pkgs.xdg-desktop-portal-gtk
     pkgs.xdg-desktop-portal
+    pkgs.recursive
 
     pkgs.uv
     pkgs.ty
