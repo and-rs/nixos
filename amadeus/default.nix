@@ -27,6 +27,7 @@ pkgs.symlinkJoin {
     pkgs.satty
     pkgs.xremap
     pkgs.hypridle
+    pkgs.pwvucontrol
     customQuickshell
     hostIntegratedGoogleChrome
     pkgs.xwayland-satellite
