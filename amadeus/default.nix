@@ -27,6 +27,7 @@ pkgs.symlinkJoin {
     pkgs.satty
     pkgs.xremap
     pkgs.hypridle
+    pkgs.playerctl
     pkgs.pwvucontrol
     customQuickshell
     hostIntegratedGoogleChrome
