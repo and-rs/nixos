@@ -38,6 +38,7 @@
     CFLAGS = "-O2 -D_GNU_SOURCE";
 
     PYTHONPATH = "${config.internal.pythonWithTk}/${config.internal.pythonWithTk.sitePackages}";
+
     TCL_LIBRARY = "${pkgs.tcl}/lib/tcl${pkgs.tcl.version}";
     TK_LIBRARY = "${pkgs.tk}/lib/tk${pkgs.tk.version}";
   };

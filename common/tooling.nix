@@ -7,6 +7,7 @@ with pkgs;
   corepack
   rustywind
   pnpm-shell-completion
+  railway
 
   vtsls
   typescript
