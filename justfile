@@ -3,34 +3,42 @@
 check-auth:
   aws sts get-caller-identity
 
-switch-nixos-cache:
-  sudo nixos-rebuild switch --flake .#default \
-    --option extra-substituters "https://nixed-build-cache-bucket.s3.us-west-2.amazonaws.com" \
-    --option extra-trusted-public-keys "and-rs-nix-cache:iWAJpETVyVBzuZ4nNKQtSnWv3upzjobkgw/1IGnFu4A="
-
-switch-nixos:
-  sudo nixos-rebuild switch --flake .#default
-
-boot-nixos:
-  sudo nixos-rebuild boot --flake .#default
-
-switch-darwin:
-  sudo darwin-rebuild switch --flake .#M1
-
 gc:
   sudo nix-collect-garbage --delete-old
   sudo nix-store --gc
 
-install-amadeus:
+# --- nixos ---
+
+nixos-switch-cache:
+  sudo nixos-rebuild switch --flake .#default \
+    --option extra-substituters "https://nixed-build-cache-bucket.s3.us-west-2.amazonaws.com" \
+    --option extra-trusted-public-keys "and-rs-nix-cache:iWAJpETVyVBzuZ4nNKQtSnWv3upzjobkgw/1IGnFu4A="
+
+nixos-switch:
+  sudo nixos-rebuild switch --flake .#default
+
+nixos-boot:
+  sudo nixos-rebuild boot --flake .#default
+
+# --- darwin ---
+
+switch-darwin:
+  sudo darwin-rebuild switch --flake .#M1
+
+# --- amadeus ---
+
+amadeus-install:
   #!/usr/bin/env bash
   set -euo pipefail
   sudo nix profile remove 0 >/dev/null 2>&1 || true
   sudo nix profile install .#amadeus --impure
 
-upgrade-amadeus:
+amadeus-upgrade:
   #!/usr/bin/env bash
   set -euo pipefail
   sudo nix profile upgrade 0 --impure
+
+# --- font ---
 
 font-encrypt src name:
   #!/usr/bin/env bash
