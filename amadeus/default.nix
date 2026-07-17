@@ -21,6 +21,10 @@ pkgs.symlinkJoin {
     pkgs.terraform
     pkgs.snowflake-cli
 
+    pkgs.slurp
+    pkgs.ffmpeg
+    pkgs.wf-recorder
+
     pkgs.awww
     pkgs.niri
     pkgs.grim
