@@ -24,6 +24,7 @@ pkgs.symlinkJoin {
     pkgs.slurp
     pkgs.ffmpeg
     pkgs.wf-recorder
+    pkgs.mpv
 
     pkgs.awww
     pkgs.niri
