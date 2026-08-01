@@ -5,8 +5,7 @@ with pkgs;
   bob-nvim
 
   yek
-  mdcat
-  aichat
+  opencode
 
   fzf
   skim

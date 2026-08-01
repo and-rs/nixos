@@ -8,7 +8,6 @@ let
     picocrypt-cli
     keepassxc
     obsidian
-    winboat
     vesktop
     zathura
     spotify
@@ -28,6 +27,7 @@ let
     thermald
     pciutils
     nftables
+    geeqie
     parted
     sbctl
     satty
