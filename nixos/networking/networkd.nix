@@ -3,7 +3,9 @@
   services = {
     # tailscale.enable = true;
     resolved.enable = true;
-    resolved.settings.Resolve.DNSSEC = false;
+    resolved.settings.Resolve = {
+      DNSSEC = false;
+    };
 
     dnsmasq = {
       enable = true;
@@ -74,6 +76,11 @@
       #   matchConfig.Name = "tailscale0";
       # };
     };
+  };
+
+  systemd.services = {
+    systemd-networkd.environment.SYSTEMD_LOG_LEVEL = "debug";
+    systemd-resolved.environment.SYSTEMD_LOG_LEVEL = "debug";
   };
 
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;

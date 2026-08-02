@@ -1,0 +1,127 @@
+{
+  lib,
+  stdenv,
+  stdenvNoCC,
+  rustPlatform,
+  cargo,
+  git,
+  cacert,
+  fetchFromGitHub,
+  systemd,
+  coreutils,
+  gnugrep,
+  pkg-config,
+  fontconfig,
+  libGL,
+  libinput,
+  libxkbcommon,
+  libgbm,
+  seatd,
+  wayland,
+  udevCheckHook,
+}:
+
+let
+  version = "6.3.11";
+  src = fetchFromGitHub {
+    owner = "OpenGamingCollective";
+    repo = "asusctl";
+    tag = version;
+    hash = "sha256-g/AZuXbAMrq9mIUCpm2oNhFClNcP3OjqbrL3zr+lJS8=";
+  };
+
+  sourceWithLock = stdenvNoCC.mkDerivation {
+    pname = "asusctl-source";
+    inherit version src;
+    buildPhase = ''
+      export PATH=${cargo}/bin:${git}/bin:$PATH
+      export CARGO_HOME=$TMPDIR/cargo
+      export CARGO_NET_GIT_FETCH_WITH_CLI=true
+      export GIT_SSL_CAINFO=${cacert}/etc/ssl/certs/ca-bundle.crt
+      export SSL_CERT_FILE=${cacert}/etc/ssl/certs/ca-bundle.crt
+      export CARGO_HTTP_CAINFO=${cacert}/etc/ssl/certs/ca-bundle.crt
+      cargo generate-lockfile
+    '';
+    installPhase = ''
+      cp -r . $out
+      rm -rf $out/.cargo $out/.cargo-husky
+    '';
+    outputHashMode = "recursive";
+    outputHash = "sha256-XZcjMONjKwuruJN2x5w7NbptwiKtn0UYOeCMfgXXV3o=";
+  };
+in
+rustPlatform.buildRustPackage {
+  pname = "asusctl";
+  inherit version;
+  src = sourceWithLock;
+  cargoHash = "sha256-6M5ErhW82DeG25QI4MCTKhi+chqtpLYrOZ03UbFb8lo=";
+
+  postPatch = ''
+    substituteInPlace data/asusd.service \
+      --replace-fail /usr/bin/asusd $out/bin/asusd \
+      --replace-fail /bin/sleep ${lib.getExe' coreutils "sleep"}
+    substituteInPlace data/asus-shutdown.service \
+      --replace-fail /usr/bin/asus-shutdown $out/bin/asus-shutdown
+    substituteInPlace Makefile \
+      --replace-fail /usr/bin/grep ${lib.getExe gnugrep}
+  '';
+
+  nativeBuildInputs = [
+    pkg-config
+    rustPlatform.bindgenHook
+    udevCheckHook
+  ];
+
+  buildInputs = [
+    fontconfig
+    libGL
+    libinput
+    libxkbcommon
+    libgbm
+    seatd
+    systemd
+    wayland
+  ];
+
+  cargoBuildFlags = [
+    "--package"
+    "asusctl"
+    "--package"
+    "asusd"
+    "--package"
+    "asus-shutdown"
+  ];
+
+  env.RUSTFLAGS = toString (
+    map (arg: "-C link-arg=${arg}") [
+      "-Wl,--push-state,--no-as-needed"
+      "-lEGL"
+      "-lfontconfig"
+      "-lwayland-client"
+      "-Wl,--pop-state"
+    ]
+  );
+
+  postInstall = ''
+    install -Dm755 target/${stdenv.hostPlatform.rust.cargoShortTarget}/release/asusctl -t $out/bin
+    install -Dm755 target/${stdenv.hostPlatform.rust.cargoShortTarget}/release/asusd -t $out/bin
+    install -Dm755 target/${stdenv.hostPlatform.rust.cargoShortTarget}/release/asus-shutdown -t $out/bin
+    install -Dm644 data/asusd.rules $out/lib/udev/rules.d/99-asusd.rules
+    install -Dm644 rog-aura/data/aura_support.ron $out/share/asusd/aura_support.ron
+    install -Dm644 data/asusd.conf $out/share/dbus-1/system.d/asusd.conf
+    install -Dm644 data/asusd.service $out/lib/systemd/system/asusd.service
+    install -Dm644 data/asus-shutdown.service $out/lib/systemd/system/asus-shutdown.service
+    install -Dm644 LICENSE $out/share/asusctl/LICENSE
+    cp -r rog-anime/data/anime $out/share/asusd/
+  '';
+
+  doCheck = false;
+  doInstallCheck = true;
+
+  meta = {
+    description = "ASUS laptop control daemon and CLI";
+    homepage = "https://github.com/OpenGamingCollective/asusctl";
+    license = lib.licenses.mpl20;
+    platforms = [ "x86_64-linux" ];
+  };
+}

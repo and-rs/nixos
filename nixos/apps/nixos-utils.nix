@@ -43,11 +43,6 @@
     TK_LIBRARY = "${pkgs.tk}/lib/tk${pkgs.tk.version}";
   };
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
-
   users.extraGroups.docker.members = [ "and-rs" ];
   virtualisation.docker = {
     rootless = {

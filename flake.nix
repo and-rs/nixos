@@ -61,6 +61,7 @@
         ly = stable.legacyPackages.${linuxSystem}.ly;
         docker-compose = stable.legacyPackages.${linuxSystem}.docker-compose;
         helium-browser = final.callPackage ./nixos/apps/helium.nix { };
+        asusctl = final.callPackage ./nixos/apps/asusctl.nix { };
         obs-backgroundremoval =
           let
             pkgsPinned = import inputs.obs-rev {

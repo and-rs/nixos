@@ -6,7 +6,6 @@
   environment.systemPackages = with pkgs; [
     rclone
     ffmpeg
-    neovim
     aerospace
     ncurses
   ];
