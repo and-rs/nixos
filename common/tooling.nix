@@ -8,6 +8,7 @@ with pkgs;
   rustywind
   pnpm-shell-completion
   railway
+  xmlstarlet
 
   vtsls
   typescript

@@ -17,8 +17,14 @@ pkgs.symlinkJoin {
     (pkgs.rofi.override { plugins = [ pkgs.rofi-calc ]; })
 
     pkgs.jujutsu
+    pkgs.podman
     pkgs.terraform
     pkgs.snowflake-cli
+
+    pkgs.slurp
+    pkgs.ffmpeg
+    pkgs.wf-recorder
+    pkgs.mpv
 
     pkgs.awww
     pkgs.niri
@@ -26,6 +32,8 @@ pkgs.symlinkJoin {
     pkgs.satty
     pkgs.xremap
     pkgs.hypridle
+    pkgs.playerctl
+    pkgs.pwvucontrol
     customQuickshell
     hostIntegratedGoogleChrome
     pkgs.xwayland-satellite
@@ -33,6 +41,8 @@ pkgs.symlinkJoin {
     pkgs.xdg-desktop-portal-gnome
     pkgs.xdg-desktop-portal-gtk
     pkgs.xdg-desktop-portal
+    pkgs.recursive
+    pkgs.maple-mono.NL-TTF
 
     pkgs.uv
     pkgs.ty
