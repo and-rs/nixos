@@ -4,7 +4,7 @@ let
     (import ../common/terminal.nix { inherit pkgs inputs; })
     ++ (import ../common/tooling.nix { inherit pkgs; });
 
-  customQuickshell = import ./quickshell.nix { inherit pkgs; };
+  hostIntegratedHyprlock = import ./hyprlock.nix { inherit pkgs; };
   hostIntegratedGoogleChrome = import ./google-chrome.nix { inherit pkgs; };
 in
 pkgs.symlinkJoin {
@@ -19,7 +19,6 @@ pkgs.symlinkJoin {
     pkgs.jujutsu
     pkgs.podman
     pkgs.terraform
-    pkgs.snowflake-cli
 
     pkgs.slurp
     pkgs.ffmpeg
@@ -32,9 +31,10 @@ pkgs.symlinkJoin {
     pkgs.satty
     pkgs.xremap
     pkgs.hypridle
+    hostIntegratedHyprlock
     pkgs.playerctl
     pkgs.pwvucontrol
-    customQuickshell
+    pkgs.quickshell
     hostIntegratedGoogleChrome
     pkgs.xwayland-satellite
     pkgs.kdePackages.qtdeclarative
