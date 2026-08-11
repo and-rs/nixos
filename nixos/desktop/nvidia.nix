@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   systemd.services.nvidia-powerd.enable = false;
   boot.blacklistedKernelModules = [ "nouveau" ];
@@ -16,12 +16,12 @@
   ];
 
   hardware.nvidia = {
-    open = false;
+    open = true;
     nvidiaSettings = true;
     modesetting.enable = true;
     dynamicBoost.enable = true;
     powerManagement.enable = true;
-    powerManagement.finegrained = false;
+    powerManagement.finegrained = true;
     prime = {
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";

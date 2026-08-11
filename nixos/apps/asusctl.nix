@@ -47,14 +47,14 @@ let
       rm -rf $out/.cargo $out/.cargo-husky
     '';
     outputHashMode = "recursive";
-    outputHash = "sha256-XZcjMONjKwuruJN2x5w7NbptwiKtn0UYOeCMfgXXV3o=";
+    outputHash = "sha256-p6nsWnIgPMDf0CS/NpkOarVdQBfWCs0F8utg+cRZGSA=";
   };
 in
 rustPlatform.buildRustPackage {
   pname = "asusctl";
   inherit version;
   src = sourceWithLock;
-  cargoHash = "sha256-6M5ErhW82DeG25QI4MCTKhi+chqtpLYrOZ03UbFb8lo=";
+  cargoHash = "sha256-jhcXuHLWg+pPO+BUcESsOOsjDDmEtrbOI2Tx+hZrOXg=";
 
   postPatch = ''
     substituteInPlace data/asusd.service \

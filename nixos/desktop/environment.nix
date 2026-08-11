@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   disableDBus =
     pkg:
@@ -35,6 +40,11 @@ in
   };
 
   services.upower.enable = true;
+  # Use the normal NixOS system profile rather than Hyprland's default PATH.
+  systemd.user.services.hypridle.path = lib.mkForce [
+    config.system.path
+  ];
+
   programs = {
     dconf.enable = true;
     niri.useNautilus = true;
@@ -67,7 +77,6 @@ in
     wf-recorder
     quickshell
     xwayland
-    hypridle
     upower
     slurp
     grim
