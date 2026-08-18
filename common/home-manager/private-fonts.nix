@@ -17,10 +17,6 @@ let
       file = ../../secrets/fonts/commit-font.tar.gz.age;
       installDir = "commit-font";
     };
-    hermit-font = {
-      file = ../../secrets/fonts/hermit-font.tar.gz.age;
-      installDir = "hermit-font";
-    };
     input-font = {
       file = ../../secrets/fonts/input-font.tar.gz.age;
       installDir = "input-font";
@@ -28,6 +24,10 @@ let
     lucide-icons = {
       file = ../../secrets/fonts/lucide-icons.tar.gz.age;
       installDir = "lucide-icons";
+    };
+    md-io-font = {
+      file = ../../secrets/fonts/md-io-font.tar.gz.age;
+      installDir = "md-io-font";
     };
     phosphor-icons = {
       file = ../../secrets/fonts/phosphor-icons.tar.gz.age;

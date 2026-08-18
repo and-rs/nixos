@@ -9,9 +9,9 @@ in
 {
   "hetzner.age".publicKeys = allKeys;
   "fonts/commit-font.tar.gz.age".publicKeys = allKeys;
-  "fonts/hermit-font.tar.gz.age".publicKeys = allKeys;
   "fonts/input-font.tar.gz.age".publicKeys = allKeys;
   "fonts/lucide-icons.tar.gz.age".publicKeys = allKeys;
+  "fonts/md-io-font.tar.gz.age".publicKeys = allKeys;
   "fonts/phosphor-icons.tar.gz.age".publicKeys = allKeys;
   "fonts/ocrx-font-ttf.tar.gz.age".publicKeys = allKeys;
   "fonts/ocrx-font-otf.tar.gz.age".publicKeys = allKeys;
