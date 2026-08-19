@@ -27,11 +27,13 @@ amadeus-install:
   set -euo pipefail
   sudo nix profile remove 0 >/dev/null 2>&1 || true
   sudo nix profile install .#amadeus --impure
+  /nix/var/nix/profiles/default/bin/private-fonts-profile-watch-install
 
 amadeus-upgrade:
   #!/usr/bin/env bash
   set -euo pipefail
   sudo nix profile upgrade 0 --impure
+  /nix/var/nix/profiles/default/bin/private-fonts-profile-watch-install
 
 # --- font ---
 
@@ -57,5 +59,4 @@ plan:
 
 clean:
   terraform -chdir=infra destroy
-
 

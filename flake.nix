@@ -72,6 +72,15 @@
           pkgsPinned.callPackage ./nixos/apps/obs-backgroundremoval.nix { };
       };
 
+      amadeusPkgs = import nixpkgs {
+        system = linuxSystem;
+        config.allowUnfree = true;
+        overlays = [
+          nixgl.overlay
+          packagesOverlayShared
+        ];
+      };
+
       mkDevShell =
         system:
         import ./devshell.nix {
@@ -85,16 +94,13 @@
       devShells.${linuxSystem}.default = mkDevShell linuxSystem;
       devShells.${darwinSystem}.default = mkDevShell darwinSystem;
 
-      packages.${linuxSystem}.amadeus = import ./amadeus/default.nix {
-        inherit inputs;
-        pkgs = import nixpkgs {
-          system = linuxSystem;
-          config.allowUnfree = true;
-          overlays = [
-            nixgl.overlay
-            packagesOverlayShared
-          ];
+      packages.${linuxSystem} = {
+        amadeus = import ./amadeus/default.nix {
+          inherit inputs;
+          pkgs = amadeusPkgs;
         };
+
+        private-fonts = import ./common/private-fonts.nix { pkgs = amadeusPkgs; };
       };
 
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {

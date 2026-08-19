@@ -8,7 +8,7 @@
   imports = [
     inputs.agenix.homeManagerModules.default
     ./hetzner.nix
-    ./private-fonts.nix
+    ./private-fonts-activation.nix
   ]
   ++ lib.optionals isLinux [
     ./cursor.nix

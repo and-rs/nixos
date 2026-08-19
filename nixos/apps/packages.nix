@@ -6,6 +6,7 @@ let
 
     prismlauncher
     picocrypt-cli
+    showmethekey
     keepassxc
     obsidian
     vesktop

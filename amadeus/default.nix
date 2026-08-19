@@ -6,6 +6,7 @@ let
 
   hostIntegratedHyprlock = import ./hyprlock.nix { inherit pkgs; };
   hostIntegratedGoogleChrome = import ./google-chrome.nix { inherit pkgs; };
+  privateFonts = import ../common/private-fonts.nix { inherit pkgs; };
 in
 pkgs.symlinkJoin {
   name = "user-tools";
@@ -36,6 +37,7 @@ pkgs.symlinkJoin {
     pkgs.pwvucontrol
     pkgs.quickshell
     hostIntegratedGoogleChrome
+    privateFonts
     pkgs.xwayland-satellite
     pkgs.kdePackages.qtdeclarative
     pkgs.xdg-desktop-portal-gnome
