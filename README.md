@@ -17,3 +17,7 @@ Private font archives remain encrypted under `secrets/fonts`. Home Manager decry
 atomically synchronizes the active set during activation. The Amadeus profile installs a
 user-level path watcher which performs the same synchronization whenever the root Nix
 profile changes, including removal of fonts when the profile no longer contains them.
+
+The Home Manager integration is enabled by default. To remove the deployed fonts, set
+`privateFonts.enable = false` and apply one rebuild; the activation then removes the
+managed font directory and refreshes the Linux font cache.

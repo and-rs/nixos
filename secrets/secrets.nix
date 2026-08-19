@@ -8,14 +8,14 @@ let
     darwinKey
   ];
   fontRecipients = infrastructureRecipients ++ builtins.filter (key: key != "") [ amadeusKey ];
+  fontSecrets = builtins.listToAttrs (
+    map (font: {
+      name = "fonts/${font.archive}";
+      value.publicKeys = fontRecipients;
+    }) (import ../common/private-fonts-manifest.nix)
+  );
 in
 {
   "hetzner.age".publicKeys = infrastructureRecipients;
-  "fonts/commit-font.tar.gz.age".publicKeys = fontRecipients;
-  "fonts/input-font.tar.gz.age".publicKeys = fontRecipients;
-  "fonts/lucide-icons.tar.gz.age".publicKeys = fontRecipients;
-  "fonts/md-io-font.tar.gz.age".publicKeys = fontRecipients;
-  "fonts/phosphor-icons.tar.gz.age".publicKeys = fontRecipients;
-  "fonts/ocrx-font-ttf.tar.gz.age".publicKeys = fontRecipients;
-  "fonts/ocrx-font-otf.tar.gz.age".publicKeys = fontRecipients;
 }
+// fontSecrets

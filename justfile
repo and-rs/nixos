@@ -41,10 +41,13 @@ font-encrypt src name:
   #!/usr/bin/env bash
   set -euo pipefail
   mkdir -p secrets/fonts
+  archive="{{name}}.tar.gz.age"
+  archive_json="$(nix eval --impure --raw --expr "builtins.toJSON \"$archive\"")"
+  nix eval --impure --raw --expr "let manifest = import ./common/private-fonts-manifest.nix; in if builtins.any (font: font.archive == $archive_json) manifest then \"ok\" else builtins.throw \"unknown private font archive: $archive\"" >/dev/null
   tmp="$(mktemp --suffix=.tar.gz)"
   trap 'rm -f "$tmp"' EXIT
   tar -C "$(dirname "{{src}}")" -czf "$tmp" "$(basename "{{src}}")"
-  keys_expr='builtins.concatStringsSep "\n" ((import ./secrets/secrets.nix)."fonts/{{name}}.tar.gz.age".publicKeys)'
+  keys_expr="builtins.concatStringsSep \"\\n\" ((import ./secrets/secrets.nix).\"fonts/$archive\".publicKeys)"
   keys="$(nix eval --impure --raw --expr "$keys_expr")"
   recipients=()
   while IFS= read -r k; do
@@ -56,7 +59,17 @@ font-rekey:
   #!/usr/bin/env bash
   set -euo pipefail
   identity="${AGENIX_IDENTITY:-$HOME/.ssh/agenix}"
-  for file in secrets/fonts/*.age; do
+  shopt -s nullglob
+  files=(secrets/fonts/*.age)
+  if ((${#files[@]} == 0)); then
+    echo "no private font archives found" >&2
+    exit 1
+  fi
+
+  stage="$(mktemp -d secrets/fonts/.font-rekey.XXXXXX)"
+  trap 'rm -rf "$stage"' EXIT
+
+  for file in "${files[@]}"; do
     rule="${file#secrets/}"
     keys_expr="builtins.concatStringsSep \"\\n\" ((import ./secrets/secrets.nix).\"$rule\".publicKeys)"
     keys="$(nix eval --impure --raw --expr "$keys_expr")"
@@ -64,12 +77,20 @@ font-rekey:
     while IFS= read -r key; do
       [ -n "$key" ] && recipients+=("-r" "$key")
     done <<< "$keys"
+    if ((${#recipients[@]} == 0)); then
+      echo "no recipients configured for $rule" >&2
+      exit 1
+    fi
 
-    tmp="$(mktemp --suffix=.age)"
-    trap 'rm -f "$tmp"' EXIT
-    age --decrypt --identity "$identity" "$file" | age "${recipients[@]}" --output "$tmp"
-    mv "$tmp" "$file"
-    trap - EXIT
+    staged="$stage/$(basename "$file")"
+    age --decrypt --identity "$identity" -- "$file" \
+      | age "${recipients[@]}" --output "$staged"
+    age --decrypt --identity "$identity" -- "$staged" \
+      | tar --list --gzip >/dev/null
+  done
+
+  for file in "${files[@]}"; do
+    mv -- "$stage/$(basename "$file")" "$file"
   done
 
 # --- Infrastructure ---

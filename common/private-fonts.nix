@@ -1,42 +1,12 @@
 { pkgs }:
 let
-  archives = [
-    {
-      archive = "commit-font.tar.gz.age";
-      directory = "commit-font";
-      file = ../secrets/fonts/commit-font.tar.gz.age;
+  archives = map (
+    font:
+    font
+    // {
+      file = ../secrets/fonts/${font.archive};
     }
-    {
-      archive = "input-font.tar.gz.age";
-      directory = "input-font";
-      file = ../secrets/fonts/input-font.tar.gz.age;
-    }
-    {
-      archive = "lucide-icons.tar.gz.age";
-      directory = "lucide-icons";
-      file = ../secrets/fonts/lucide-icons.tar.gz.age;
-    }
-    {
-      archive = "md-io-font.tar.gz.age";
-      directory = "md-io-font";
-      file = ../secrets/fonts/md-io-font.tar.gz.age;
-    }
-    {
-      archive = "phosphor-icons.tar.gz.age";
-      directory = "phosphor-icons";
-      file = ../secrets/fonts/phosphor-icons.tar.gz.age;
-    }
-    {
-      archive = "ocrx-font-otf.tar.gz.age";
-      directory = "ocrx-font-otf";
-      file = ../secrets/fonts/ocrx-font-otf.tar.gz.age;
-    }
-    {
-      archive = "ocrx-font-ttf.tar.gz.age";
-      directory = "ocrx-font-ttf";
-      file = ../secrets/fonts/ocrx-font-ttf.tar.gz.age;
-    }
-  ];
+  ) (import ./private-fonts-manifest.nix);
 
   manifest = pkgs.writeText "private-fonts-manifest" (
     builtins.concatStringsSep "\n" (map (font: "${font.archive}\t${font.directory}") archives) + "\n"
