@@ -56,7 +56,21 @@ font-rekey:
   #!/usr/bin/env bash
   set -euo pipefail
   identity="${AGENIX_IDENTITY:-$HOME/.ssh/agenix}"
-  RULES=secrets/secrets.nix agenix -r -i "$identity"
+  for file in secrets/fonts/*.age; do
+    rule="${file#secrets/}"
+    keys_expr="builtins.concatStringsSep \"\\n\" ((import ./secrets/secrets.nix).\"$rule\".publicKeys)"
+    keys="$(nix eval --impure --raw --expr "$keys_expr")"
+    recipients=()
+    while IFS= read -r key; do
+      [ -n "$key" ] && recipients+=("-r" "$key")
+    done <<< "$keys"
+
+    tmp="$(mktemp --suffix=.age)"
+    trap 'rm -f "$tmp"' EXIT
+    age --decrypt --identity "$identity" "$file" | age "${recipients[@]}" --output "$tmp"
+    mv "$tmp" "$file"
+    trap - EXIT
+  done
 
 # --- Infrastructure ---
 
