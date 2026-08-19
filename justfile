@@ -52,6 +52,12 @@ font-encrypt src name:
   done <<< "$keys"
   age "${recipients[@]}" -o "secrets/fonts/{{name}}.tar.gz.age" "$tmp"
 
+font-rekey:
+  #!/usr/bin/env bash
+  set -euo pipefail
+  identity="${AGENIX_IDENTITY:-$HOME/.ssh/agenix}"
+  RULES=secrets/secrets.nix agenix -r -i "$identity"
+
 # --- Infrastructure ---
 
 plan:
@@ -59,4 +65,3 @@ plan:
 
 clean:
   terraform -chdir=infra destroy
-
