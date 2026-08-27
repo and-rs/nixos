@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (pkgs.stdenv) isLinux isDarwin;
+  inherit (pkgs.stdenv.hostPlatform) isLinux isDarwin;
 
   mountPoint = "${config.home.homeDirectory}/Mounts/Hetzner";
   secretPath = config.age.secrets.hetzner.path;

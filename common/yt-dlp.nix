@@ -2,7 +2,7 @@
 
 let
   ytDlpWrapper =
-    if pkgs.stdenv.isLinux then
+    if pkgs.stdenv.hostPlatform.isLinux then
       pkgs.writeShellScriptBin "yt-dlp" ''
         set -e
         REAL_RESOLV=$(${pkgs.coreutils}/bin/readlink -f /etc/resolv.conf)
@@ -17,7 +17,7 @@ let
           -- ${pkgs.yt-dlp}/bin/yt-dlp "$@"
       ''
 
-    else if pkgs.stdenv.isDarwin then
+    else if pkgs.stdenv.hostPlatform.isDarwin then
       pkgs.writeShellScriptBin "yt-dlp" ''
         port=$(python3 -c "import socket; s=socket.socket(); s.bind((\"\",0)); print(s.getsockname()[1]); s.close()")
 

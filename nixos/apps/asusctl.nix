@@ -1,11 +1,7 @@
 {
   lib,
   stdenv,
-  stdenvNoCC,
   rustPlatform,
-  cargo,
-  git,
-  cacert,
   fetchFromGitHub,
   systemd,
   coreutils,
@@ -22,39 +18,19 @@
 }:
 
 let
-  version = "6.3.11";
+  version = "6.4.0";
   src = fetchFromGitHub {
     owner = "OpenGamingCollective";
     repo = "asusctl";
-    tag = version;
-    hash = "sha256-g/AZuXbAMrq9mIUCpm2oNhFClNcP3OjqbrL3zr+lJS8=";
-  };
-
-  sourceWithLock = stdenvNoCC.mkDerivation {
-    pname = "asusctl-source";
-    inherit version src;
-    buildPhase = ''
-      export PATH=${cargo}/bin:${git}/bin:$PATH
-      export CARGO_HOME=$TMPDIR/cargo
-      export CARGO_NET_GIT_FETCH_WITH_CLI=true
-      export GIT_SSL_CAINFO=${cacert}/etc/ssl/certs/ca-bundle.crt
-      export SSL_CERT_FILE=${cacert}/etc/ssl/certs/ca-bundle.crt
-      export CARGO_HTTP_CAINFO=${cacert}/etc/ssl/certs/ca-bundle.crt
-      cargo generate-lockfile
-    '';
-    installPhase = ''
-      cp -r . $out
-      rm -rf $out/.cargo $out/.cargo-husky
-    '';
-    outputHashMode = "recursive";
-    outputHash = "sha256-p6nsWnIgPMDf0CS/NpkOarVdQBfWCs0F8utg+cRZGSA=";
+    # Pin the commit instead of a retaggable GitHub release tag.
+    rev = "e6c1469ccf2a745c6a1aff763852df90066c6baa";
+    hash = "sha256-qLdOdZaQm3t7LhvoCCo/FwZo4O7Z9aP1KPPlERgZX00=";
   };
 in
 rustPlatform.buildRustPackage {
   pname = "asusctl";
-  inherit version;
-  src = sourceWithLock;
-  cargoHash = "sha256-jhcXuHLWg+pPO+BUcESsOOsjDDmEtrbOI2Tx+hZrOXg=";
+  inherit version src;
+  cargoHash = "sha256-sAJ4el6URZXHD2NWiWpJSBf8Qeq2v/y+F9KpMCc8BbE=";
 
   postPatch = ''
     substituteInPlace data/asusd.service \
