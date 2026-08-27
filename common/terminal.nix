@@ -32,6 +32,7 @@ with pkgs;
   neovide
   cmatrix
   ripgrep
+  ghostty
   slides
   dotbot
   broot
