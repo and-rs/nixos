@@ -1,7 +1,6 @@
 { pkgs }:
 with pkgs;
 [
-  bun
   deno
   biome
   corepack
