@@ -3,6 +3,7 @@ with pkgs;
 [
   inputs.agenix.packages.${stdenv.hostPlatform.system}.default
   bob-nvim
+  chezmoi
   helix
 
   yek
@@ -32,7 +33,6 @@ with pkgs;
   neovide
   cmatrix
   ripgrep
-  ghostty
   slides
   dotbot
   broot

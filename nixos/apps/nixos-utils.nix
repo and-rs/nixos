@@ -7,7 +7,6 @@
   environment.systemPackages = with pkgs; [
     # terminal
     tailwindcss_4
-    ghostty
     file
     glab
     dex

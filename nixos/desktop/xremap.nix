@@ -68,6 +68,7 @@ in
           name = "emacs_macos";
           application.not = [
             "com.mitchellh.ghostty"
+            "com.mitchellh.ghostty-debug"
             "steam_app_813780"
             "org.pwmt.zathura"
             "Alacritty"
