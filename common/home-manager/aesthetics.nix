@@ -5,7 +5,6 @@
     material-symbols
 
     # ui fonts
-    hanken-grotesk
     recursive
 
     papirus-icon-theme
@@ -25,7 +24,7 @@
   gtk = {
     enable = true;
     font = {
-      name = "Hanken Grotesk";
+      name = "SF Pro";
       size = 10;
     };
     theme = {

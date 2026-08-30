@@ -2,7 +2,6 @@
 {
   fonts = {
     packages = with pkgs; [
-      hanken-grotesk # UI
       adwaita-fonts
 
       monaspace
@@ -20,8 +19,8 @@
       };
       defaultFonts = {
         monospace = [ "CommitMono" ];
-        sansSerif = [ "Hanken Grotesk" ];
-        serif = [ "Hanken Grotesk" ];
+        sansSerif = [ "SF Pro" ];
+        serif = [ "SF Pro" ];
       };
     };
   };

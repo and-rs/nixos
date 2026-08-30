@@ -27,4 +27,8 @@
     archive = "ocrx-font-ttf.tar.gz.age";
     directory = "ocrx-font-ttf";
   }
+  {
+    archive = "sf-pro-font.tar.gz.age";
+    directory = "sf-pro-font";
+  }
 ]
