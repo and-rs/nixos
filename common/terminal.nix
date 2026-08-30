@@ -4,19 +4,16 @@ with pkgs;
   inputs.agenix.packages.${stdenv.hostPlatform.system}.default
   bob-nvim
   chezmoi
-  helix
 
   yek
   opencode
 
   fzf
-  skim
   tmux
   direnv
   zoxide
   oh-my-posh
 
-  nufmt
   nushell
   topiary
   carapace
@@ -50,4 +47,7 @@ with pkgs;
   fd
   gh
   jq
+]
+++ lib.optionals stdenv.hostPlatform.isLinux [
+  inputs.ghostty.packages.${stdenv.hostPlatform.system}.default
 ]

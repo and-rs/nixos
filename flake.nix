@@ -29,6 +29,7 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ghostty.url = "github:and-rs/ghostty/pr-14052-fractional-scale";
   };
 
   outputs =
